@@ -41,6 +41,12 @@ public class main {
             System.out.println("No se encontró ningún socio con DNI: " + dniABuscar);
         }
 
-    }
+    
+    SocioData sd = new SocioData();
+
+    sd.bajaLogica(1); 
+
+    sd.altaLogica(1);
 }
     
+}
