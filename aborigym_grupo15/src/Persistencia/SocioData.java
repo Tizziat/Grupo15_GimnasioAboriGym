@@ -69,7 +69,57 @@ public class SocioData {
         }
         return socio;
     }   
+     public void altaLogica(int id) {
+        String sql = "UPDATE socios SET estado = 1 WHERE id_socio = ?";
 
+        try {
+            PreparedStatement ps = con.prepareStatement(sql);
+            ps.setInt(1, id);
+
+            int exito = ps.executeUpdate();
+            if (exito == 1) {
+                System.out.println("Se dio de alta el socio con ID: " + id);
+            }
+            ps.close();
+
+        } catch (SQLException ex) {
+            System.out.println("Error: " + ex.getMessage());
+        }
+    }
+     public void bajaLogica(int id) {
+        String sql = "UPDATE socios SET estado = 0 WHERE id_socio = ?";
+
+        try {
+            PreparedStatement ps = con.prepareStatement(sql);
+            ps.setInt(1, id);
+
+            int exito = ps.executeUpdate();
+            if (exito == 1) {
+                System.out.println("Se dio de baja el socio con ID: " + id);
+            }
+            ps.close();
+
+        } catch (SQLException ex) {
+            System.out.println("Error: " + ex.getMessage());
+        }
+    }
+     public void borrarSocio(int id) {
+        String sql = "DELETE FROM socios WHERE id_socio= ?";
+
+        try {
+            PreparedStatement ps = con.prepareStatement(sql);
+            ps.setInt(1, id);
+
+            int exito = ps.executeUpdate();
+            if (exito == 1) {
+                System.out.println("Socio eliminado físicamente de la base de datos.");
+            }
+            ps.close();
+
+        } catch (SQLException ex) {
+            System.out.println("Error al borrar el Socio: " + ex.getMessage());
+        }
+    }
 }
 
 
