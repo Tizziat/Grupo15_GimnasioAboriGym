@@ -1,6 +1,8 @@
 package Vistas;
 
+import Modelo.Entrenador;
 import Modelo.Socio;
+import Persistencia.EntrenadorData;
 import Persistencia.SocioData;
 
 
@@ -42,11 +44,29 @@ public class main {
         }
 
     
-    SocioData sd = new SocioData();
+        SocioData sd = new SocioData();
 
-    sd.bajaLogica(1); 
+        sd.bajaLogica(1); 
+        sd.altaLogica(1);
+        
+        ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+        
+         System.out.println("=== TEST DE ENTRENADOR POR CONSOLA ===");
 
-    sd.altaLogica(1);
+        // se declara la variable entrenadorData e instanciamos el objeto (aca se conecta el objeto con la base de datos cuando el constructor llama a Conexion.getConexion)
+        EntrenadorData entrenadorData = new EntrenadorData();
+
+        System.out.println("\n------------------------------------------------");
+        System.out.println("PRUEBA: Guardar Entrenador");
+        System.out.println("------------------------------------------------");
+
+        // Creamos un entrenador  (el ID no va por que lo genera la bdd)
+        Entrenador nuevoEntrenador = new Entrenador("2323233", "Carlos", "Gómez", "Musculación", true);
+
+        // aca se ejecuta el guardado del entrenador
+        entrenadorData.guardarEntrenador(nuevoEntrenador);
+
+        System.out.println("\n=== FIN DE LA PRUEBA ===");
+    }
 }
     
-}

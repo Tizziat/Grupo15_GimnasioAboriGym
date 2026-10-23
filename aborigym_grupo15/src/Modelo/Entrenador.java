@@ -1,16 +1,10 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
+
 package Modelo;
 
-/**
- *
- * @author tizzi
- */
+
 public class Entrenador {
     private int idEntrenador;
-    private int dni;
+    private String dni;
     private String nombre;
     private String apellido;
     private String especialidad;
@@ -19,7 +13,15 @@ public class Entrenador {
     public Entrenador() {
     }
 
-    public Entrenador(int idEntrenador, int dni, String nombre, String apellido, String especialidad, boolean estado) {
+    public Entrenador(String dni, String nombre, String apellido, String especialidad, boolean estado) {
+        this.dni = dni;
+        this.nombre = nombre;
+        this.apellido = apellido;
+        this.especialidad = especialidad;
+        this.estado = estado;
+    }
+    
+    public Entrenador(int idEntrenador, String dni, String nombre, String apellido, String especialidad, boolean estado) {
         this.idEntrenador = idEntrenador;
         this.dni = dni;
         this.nombre = nombre;
@@ -36,11 +38,11 @@ public class Entrenador {
         this.idEntrenador = idEntrenador;
     }
 
-    public int getDni() {
+    public String getDni() {
         return dni;
     }
 
-    public void setDni(int dni) {
+    public void setDni(String dni) {
         this.dni = dni;
     }
 
@@ -76,6 +78,10 @@ public class Entrenador {
         this.estado = estado;
     }
     
+    @Override
+    public String toString() {
+        return apellido + ", " + nombre + " (" + especialidad + ")";
+    }
     
     
 }
