@@ -28,21 +28,140 @@ public class MenuPrincipal extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jMenuBar1 = new javax.swing.JMenuBar();
+        jMenu1 = new javax.swing.JMenu();
+        jMenu2 = new javax.swing.JMenu();
+        jMenuItem1 = new javax.swing.JMenuItem();
+        jMenuItem2 = new javax.swing.JMenuItem();
+        jDesktop1 = new javax.swing.JDesktopPane();
+        jMenuBar2 = new javax.swing.JMenuBar();
+        jmSocio = new javax.swing.JMenu();
+        jmISocio = new javax.swing.JMenuItem();
+        jmEntrenador = new javax.swing.JMenu();
+        jmIentrenador = new javax.swing.JMenuItem();
+        jmAsistencia = new javax.swing.JMenu();
+        jmIasistencia = new javax.swing.JMenuItem();
+        jmPase = new javax.swing.JMenu();
+        jmIpases = new javax.swing.JMenuItem();
+        jmClaseG = new javax.swing.JMenu();
+        jmIclases = new javax.swing.JMenuItem();
+        jmSalir = new javax.swing.JMenu();
+
+        jMenu1.setText("File");
+        jMenuBar1.add(jMenu1);
+
+        jMenu2.setText("Edit");
+        jMenuBar1.add(jMenu2);
+
+        jMenuItem1.setText("jMenuItem1");
+
+        jMenuItem2.setText("jMenuItem2");
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+
+        javax.swing.GroupLayout jDesktop1Layout = new javax.swing.GroupLayout(jDesktop1);
+        jDesktop1.setLayout(jDesktop1Layout);
+        jDesktop1Layout.setHorizontalGroup(
+            jDesktop1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 689, Short.MAX_VALUE)
+        );
+        jDesktop1Layout.setVerticalGroup(
+            jDesktop1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 555, Short.MAX_VALUE)
+        );
+
+        jmSocio.setText("Socio");
+
+        jmISocio.setText("Formulario de Socios");
+        jmISocio.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jmISocioActionPerformed(evt);
+            }
+        });
+        jmSocio.add(jmISocio);
+
+        jMenuBar2.add(jmSocio);
+
+        jmEntrenador.setText("Entrenador");
+
+        jmIentrenador.setText("Formulario de Entrenador");
+        jmEntrenador.add(jmIentrenador);
+
+        jMenuBar2.add(jmEntrenador);
+
+        jmAsistencia.setText("Asistencia");
+
+        jmIasistencia.setText("Gestion de Asistencias");
+        jmIasistencia.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jmIasistenciaActionPerformed(evt);
+            }
+        });
+        jmAsistencia.add(jmIasistencia);
+
+        jMenuBar2.add(jmAsistencia);
+
+        jmPase.setText("Pase");
+
+        jmIpases.setText("Gestion de Pases");
+        jmPase.add(jmIpases);
+
+        jMenuBar2.add(jmPase);
+
+        jmClaseG.setText("Clase Gym");
+
+        jmIclases.setText("Gestion de Clases");
+        jmClaseG.add(jmIclases);
+
+        jMenuBar2.add(jmClaseG);
+
+        jmSalir.setText("Salir");
+        jmSalir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jmSalirActionPerformed(evt);
+            }
+        });
+        jMenuBar2.add(jmSalir);
+
+        setJMenuBar(jMenuBar2);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addComponent(jDesktop1)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(jDesktop1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jmSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmSalirActionPerformed
+        dispose();
+    }//GEN-LAST:event_jmSalirActionPerformed
+
+    private void jmISocioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmISocioActionPerformed
+                                        
+    vistaSocio vs = new vistaSocio();
+    jDesktop1.add(vs);
+    vs.setVisible(true);
+    vs.toFront();
+        
+             
+    }//GEN-LAST:event_jmISocioActionPerformed
+
+    private void jmIasistenciaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmIasistenciaActionPerformed
+       vistaAsistencia va = new vistaAsistencia();
+       jDesktop1.add(va);
+       va.setVisible(true);
+       va.toFront();
+       
+    }//GEN-LAST:event_jmIasistenciaActionPerformed
 
     /**
      * @param args the command line arguments
@@ -70,5 +189,23 @@ public class MenuPrincipal extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JDesktopPane jDesktop1;
+    private javax.swing.JMenu jMenu1;
+    private javax.swing.JMenu jMenu2;
+    private javax.swing.JMenuBar jMenuBar1;
+    private javax.swing.JMenuBar jMenuBar2;
+    private javax.swing.JMenuItem jMenuItem1;
+    private javax.swing.JMenuItem jMenuItem2;
+    private javax.swing.JMenu jmAsistencia;
+    private javax.swing.JMenu jmClaseG;
+    private javax.swing.JMenu jmEntrenador;
+    private javax.swing.JMenuItem jmISocio;
+    private javax.swing.JMenuItem jmIasistencia;
+    private javax.swing.JMenuItem jmIclases;
+    private javax.swing.JMenuItem jmIentrenador;
+    private javax.swing.JMenuItem jmIpases;
+    private javax.swing.JMenu jmPase;
+    private javax.swing.JMenu jmSalir;
+    private javax.swing.JMenu jmSocio;
     // End of variables declaration//GEN-END:variables
 }
