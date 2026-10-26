@@ -51,11 +51,17 @@
           <Properties>
             <Property name="text" type="java.lang.String" value="Entrenador"/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jmEntrenadorActionPerformed"/>
+          </Events>
           <SubComponents>
             <MenuItem class="javax.swing.JMenuItem" name="jmIentrenador">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Formulario de Entrenador"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jmIentrenadorActionPerformed"/>
+              </Events>
             </MenuItem>
           </SubComponents>
         </Menu>

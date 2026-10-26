@@ -83,8 +83,18 @@ public class MenuPrincipal extends javax.swing.JFrame {
         jMenuBar2.add(jmSocio);
 
         jmEntrenador.setText("Entrenador");
+        jmEntrenador.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jmEntrenadorActionPerformed(evt);
+            }
+        });
 
         jmIentrenador.setText("Formulario de Entrenador");
+        jmIentrenador.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jmIentrenadorActionPerformed(evt);
+            }
+        });
         jmEntrenador.add(jmIentrenador);
 
         jMenuBar2.add(jmEntrenador);
@@ -162,6 +172,18 @@ public class MenuPrincipal extends javax.swing.JFrame {
        va.toFront();
        
     }//GEN-LAST:event_jmIasistenciaActionPerformed
+
+    private void jmEntrenadorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmEntrenadorActionPerformed
+      
+    }//GEN-LAST:event_jmEntrenadorActionPerformed
+
+    private void jmIentrenadorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmIentrenadorActionPerformed
+        // TODO add your handling code here:
+        vistaEntrenador ve = new vistaEntrenador();
+        jDesktop1.add(ve);
+        ve.setVisible(true);
+        ve.toFront();
+    }//GEN-LAST:event_jmIentrenadorActionPerformed
 
     /**
      * @param args the command line arguments

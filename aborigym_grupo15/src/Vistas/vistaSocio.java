@@ -397,40 +397,40 @@ public class vistaSocio extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_jbEliminarActionPerformed
     }
     private void jbAltaBajaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbAltaBajaActionPerformed
-         if (jtfID.getText().trim().isEmpty()) {
-            javax.swing.JOptionPane.showMessageDialog(
-                this, "Primero debe buscar un socio."
-            );
-            return;
-        }
-
-        try {
-            int id = Integer.parseInt(jtfID.getText().trim());
-
-            SocioData sd  = new SocioData();
-
-            if (jrbActivo.isSelected()) {
-                sd.bajaLogica(id);
-                javax.swing.JOptionPane.showMessageDialog(
-                    this, "Socio dado de baja."
-                );
-            } else if (jrbInactivo.isSelected()) {
-                sd.altaLogica(id);
-                javax.swing.JOptionPane.showMessageDialog(
-                    this, "Socio dado de alta."
-                );
-            } else {
-                javax.swing.JOptionPane.showMessageDialog(
-                    this, "Seleccione Activo o Inactivo."
-                );
-            }
-            jbMostrar.doClick();
-
-        } catch (NumberFormatException e) {
-            javax.swing.JOptionPane.showMessageDialog(
-                this, "ID incorrecto."
-            );
-        }    
+//         if (jtfID.getText().trim().isEmpty()) {
+//            javax.swing.JOptionPane.showMessageDialog(
+//                this, "Primero debe buscar un socio."
+//            );
+//            return;
+//        }
+//
+//        try {
+//            int id = Integer.parseInt(jtfID.getText().trim());
+//
+//            SocioData sd  = new SocioData();
+//
+//            if (jrbActivo.isSelected()) {
+//                sd.bajaLogica(id);
+//                javax.swing.JOptionPane.showMessageDialog(
+//                    this, "Socio dado de baja."
+//                );
+//            } else if (jrbInactivo.isSelected()) {
+//                sd.altaLogica(id);
+//                javax.swing.JOptionPane.showMessageDialog(
+//                    this, "Socio dado de alta."
+//                );
+//            } else {
+//                javax.swing.JOptionPane.showMessageDialog(
+//                    this, "Seleccione Activo o Inactivo."
+//                );
+//            }
+//            jbMostrar.doClick();
+//
+//        } catch (NumberFormatException e) {
+//            javax.swing.JOptionPane.showMessageDialog(
+//                this, "ID incorrecto."
+//            );
+//        }    
     }//GEN-LAST:event_jbAltaBajaActionPerformed
     private void cargarTabla() {
     DefaultTableModel modelo = (DefaultTableModel) jTable1.getModel();
