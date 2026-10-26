@@ -59,6 +59,7 @@ public class vistaSocio extends javax.swing.JInternalFrame {
         jbEliminar = new javax.swing.JButton();
         jbAltaBaja = new javax.swing.JButton();
         jbGuardar = new javax.swing.JButton();
+        jbMostrar = new javax.swing.JButton();
 
         jLid.setText("ID Socio");
 
@@ -123,6 +124,8 @@ public class vistaSocio extends javax.swing.JInternalFrame {
         jbGuardar.setText("Guardar");
         jbGuardar.addActionListener(this::jbGuardarActionPerformed);
 
+        jbMostrar.setText("Mostrar");
+
         jdescritorio.setLayer(jLid, javax.swing.JLayeredPane.DEFAULT_LAYER);
         jdescritorio.setLayer(jlDNI, javax.swing.JLayeredPane.DEFAULT_LAYER);
         jdescritorio.setLayer(jlNombre, javax.swing.JLayeredPane.DEFAULT_LAYER);
@@ -148,6 +151,7 @@ public class vistaSocio extends javax.swing.JInternalFrame {
         jdescritorio.setLayer(jbEliminar, javax.swing.JLayeredPane.DEFAULT_LAYER);
         jdescritorio.setLayer(jbAltaBaja, javax.swing.JLayeredPane.DEFAULT_LAYER);
         jdescritorio.setLayer(jbGuardar, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        jdescritorio.setLayer(jbMostrar, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
         javax.swing.GroupLayout jdescritorioLayout = new javax.swing.GroupLayout(jdescritorio);
         jdescritorio.setLayout(jdescritorioLayout);
@@ -192,9 +196,12 @@ public class vistaSocio extends javax.swing.JInternalFrame {
                                 .addComponent(jtfEdad, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 77, javax.swing.GroupLayout.PREFERRED_SIZE))))
                     .addGroup(jdescritorioLayout.createSequentialGroup()
                         .addContainerGap()
-                        .addComponent(jlEstado)
-                        .addGap(18, 18, 18)
-                        .addComponent(jrbActivo)
+                        .addGroup(jdescritorioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jbMostrar)
+                            .addGroup(jdescritorioLayout.createSequentialGroup()
+                                .addComponent(jlEstado)
+                                .addGap(18, 18, 18)
+                                .addComponent(jrbActivo)))
                         .addGap(18, 18, 18)
                         .addComponent(jrbInactivo)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 25, Short.MAX_VALUE)
@@ -266,7 +273,8 @@ public class vistaSocio extends javax.swing.JInternalFrame {
                     .addComponent(jbActualizar)
                     .addComponent(jbEliminar)
                     .addComponent(jbAltaBaja)
-                    .addComponent(jbGuardar))
+                    .addComponent(jbGuardar)
+                    .addComponent(jbMostrar))
                 .addContainerGap(17, Short.MAX_VALUE))
         );
 
@@ -389,7 +397,40 @@ public class vistaSocio extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_jbEliminarActionPerformed
     }
     private void jbAltaBajaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbAltaBajaActionPerformed
-        // TODO add your handling code here:
+         if (jtfID.getText().trim().isEmpty()) {
+            javax.swing.JOptionPane.showMessageDialog(
+                this, "Primero debe buscar un socio."
+            );
+            return;
+        }
+
+        try {
+            int id = Integer.parseInt(jtfID.getText().trim());
+
+            SocioData sd  = new SocioData();
+
+            if (jrbActivo.isSelected()) {
+                sd.bajaLogica(id);
+                javax.swing.JOptionPane.showMessageDialog(
+                    this, "Socio dado de baja."
+                );
+            } else if (jrbInactivo.isSelected()) {
+                sd.altaLogica(id);
+                javax.swing.JOptionPane.showMessageDialog(
+                    this, "Socio dado de alta."
+                );
+            } else {
+                javax.swing.JOptionPane.showMessageDialog(
+                    this, "Seleccione Activo o Inactivo."
+                );
+            }
+            jbMostrar.doClick();
+
+        } catch (NumberFormatException e) {
+            javax.swing.JOptionPane.showMessageDialog(
+                this, "ID incorrecto."
+            );
+        }    
     }//GEN-LAST:event_jbAltaBajaActionPerformed
     private void cargarTabla() {
     DefaultTableModel modelo = (DefaultTableModel) jTable1.getModel();
@@ -462,6 +503,7 @@ public class vistaSocio extends javax.swing.JInternalFrame {
     private javax.swing.JButton jbAltaBaja;
     private javax.swing.JButton jbEliminar;
     private javax.swing.JButton jbGuardar;
+    private javax.swing.JButton jbMostrar;
     private javax.swing.JButton jbNuevo;
     private javax.swing.JDesktopPane jdescritorio;
     private javax.swing.JLabel jlApellido;
