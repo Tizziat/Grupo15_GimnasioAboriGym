@@ -7,6 +7,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
 
 public class SocioData {
     
@@ -43,7 +44,39 @@ public class SocioData {
             System.err.println("Error al guardar el socio: " + ex.getMessage());
         }
     }
-    
+    public ArrayList<Socio> listarSocios() {
+    ArrayList<Socio> lista = new ArrayList<>();
+
+    String sql = "SELECT * FROM socios";
+
+    try {
+        PreparedStatement ps = con.prepareStatement(sql);
+        ResultSet rs = ps.executeQuery();
+
+        while (rs.next()) {
+            Socio socio = new Socio();
+
+            socio.setIdSocio(rs.getInt("id_socio"));
+            socio.setDni(rs.getString("dni"));
+            socio.setNombre(rs.getString("nombre"));
+            socio.setApellido(rs.getString("apellido"));
+            socio.setEdad(rs.getInt("edad"));
+            socio.setCorreo(rs.getString("correo"));
+            socio.setTelefono(rs.getString("telefono"));
+            socio.setEstado(rs.getBoolean("estado"));
+
+            lista.add(socio);
+        }
+
+        rs.close();
+        ps.close();
+
+    } catch (SQLException ex) {
+        System.out.println("Error al listar socios: " + ex.getMessage());
+    }
+
+    return lista;
+}
     public Socio buscarSocio (String dni){
         String sql = "SELECT * FROM socios WHERE dni = ?";
         Socio socio = null;
@@ -120,6 +153,37 @@ public class SocioData {
             System.out.println("Error al borrar el Socio: " + ex.getMessage());
         }
     }
+     //para actualizar los datos
+     public void actualizarSocio(Socio s) {
+    String sql = "UPDATE socios SET dni=?, nombre=?, apellido=?, edad=?, "
+               + "correo=?, telefono=?, estado=? WHERE id_socio=?";
+
+    try {
+        PreparedStatement ps = con.prepareStatement(sql);
+
+        ps.setString(1, s.getDni());
+        ps.setString(2, s.getNombre());
+        ps.setString(3, s.getApellido());
+        ps.setInt(4, s.getEdad());
+        ps.setString(5, s.getCorreo());
+        ps.setString(6, s.getTelefono());
+        ps.setBoolean(7, s.isEstado());
+        ps.setInt(8, s.getIdSocio());
+
+        int exito = ps.executeUpdate();
+
+        if (exito == 1) {
+            System.out.println("Socio actualizado correctamente.");
+        } else {
+            System.out.println("No se encontró el socio.");
+        }
+
+        ps.close();
+
+    } catch (SQLException ex) {
+        System.out.println("Error al actualizar socio: " + ex.getMessage());
+    }
+}
 }
 
 
