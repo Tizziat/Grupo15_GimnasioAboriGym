@@ -63,19 +63,12 @@
                                       <Component id="jtfDNI" alignment="1" min="-2" pref="122" max="-2" attributes="0"/>
                                   </Group>
                               </Group>
-                              <Group type="103" alignment="0" groupAlignment="1" max="-2" attributes="0">
-                                  <Group type="102" alignment="0" attributes="0">
-                                      <Component id="jlID" min="-2" max="-2" attributes="0"/>
-                                      <EmptySpace max="32767" attributes="0"/>
-                                      <Component id="jtfID" min="-2" pref="70" max="-2" attributes="0"/>
-                                  </Group>
-                                  <Group type="102" alignment="0" attributes="0">
-                                      <Component id="jlEstado" min="-2" max="-2" attributes="0"/>
-                                      <EmptySpace type="separate" max="-2" attributes="0"/>
-                                      <Component id="jrbActivo" min="-2" max="-2" attributes="0"/>
-                                      <EmptySpace type="separate" max="-2" attributes="0"/>
-                                      <Component id="jrbInactivo" min="-2" max="-2" attributes="0"/>
-                                  </Group>
+                              <Group type="102" alignment="0" attributes="0">
+                                  <Component id="jlEstado" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace type="separate" max="-2" attributes="0"/>
+                                  <Component id="jrbActivo" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace type="separate" max="-2" attributes="0"/>
+                                  <Component id="jrbInactivo" min="-2" max="-2" attributes="0"/>
                               </Group>
                           </Group>
                       </Group>
@@ -149,11 +142,6 @@
                               <Component id="jrbInactivo" alignment="3" min="-2" max="-2" attributes="0"/>
                               <Component id="jlEstado" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
-                          <EmptySpace min="-2" pref="21" max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="3" attributes="0">
-                              <Component id="jlID" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="jtfID" alignment="3" min="-2" max="-2" attributes="0"/>
-                          </Group>
                           <EmptySpace max="32767" attributes="0"/>
                           <Component id="jbBuscar" min="-2" max="-2" attributes="0"/>
                       </Group>
@@ -182,11 +170,6 @@
             <Property name="text" type="java.lang.String" value="Datos del Entrenador"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JLabel" name="jlID">
-          <Properties>
-            <Property name="text" type="java.lang.String" value="ID Entrenador:"/>
-          </Properties>
-        </Component>
         <Component class="javax.swing.JLabel" name="jlDNI">
           <Properties>
             <Property name="text" type="java.lang.String" value="DNI:"/>
@@ -206,8 +189,6 @@
           <Properties>
             <Property name="text" type="java.lang.String" value="Especialidad:"/>
           </Properties>
-        </Component>
-        <Component class="javax.swing.JTextField" name="jtfID">
         </Component>
         <Component class="javax.swing.JTextField" name="jtfDNI">
         </Component>
@@ -247,12 +228,12 @@
               <Properties>
                 <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
                   <Table columnCount="6" rowCount="4">
-                    <Column editable="true" title="ID Entrenador" type="java.lang.Object"/>
-                    <Column editable="true" title="DNI" type="java.lang.Object"/>
-                    <Column editable="true" title="Nombre" type="java.lang.Object"/>
-                    <Column editable="true" title="Apellido" type="java.lang.Object"/>
-                    <Column editable="true" title="Especialidad" type="java.lang.Object"/>
-                    <Column editable="true" title="Estado" type="java.lang.Object"/>
+                    <Column editable="false" title="ID Entrenador" type="java.lang.Object"/>
+                    <Column editable="false" title="DNI" type="java.lang.Object"/>
+                    <Column editable="false" title="Nombre" type="java.lang.Object"/>
+                    <Column editable="false" title="Apellido" type="java.lang.Object"/>
+                    <Column editable="false" title="Especialidad" type="java.lang.Object"/>
+                    <Column editable="false" title="Estado" type="java.lang.Object"/>
                   </Table>
                 </Property>
                 <Property name="columnModel" type="javax.swing.table.TableColumnModel" editor="org.netbeans.modules.form.editors2.TableColumnModelEditor">
@@ -293,6 +274,9 @@
                   <TableHeader reorderingAllowed="true" resizingAllowed="true"/>
                 </Property>
               </Properties>
+              <Events>
+                <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="jTable1MouseClicked"/>
+              </Events>
             </Component>
           </SubComponents>
         </Container>
@@ -320,36 +304,57 @@
           <Properties>
             <Property name="text" type="java.lang.String" value="Nuevo"/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jbNuevoActionPerformed"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JButton" name="jbGuardar">
           <Properties>
             <Property name="text" type="java.lang.String" value="Guardar"/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jbGuardarActionPerformed"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JButton" name="jbActualizar">
           <Properties>
             <Property name="text" type="java.lang.String" value="Actualizar"/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jbActualizarActionPerformed"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JButton" name="jbEliminar">
           <Properties>
             <Property name="text" type="java.lang.String" value="Eliminar"/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jbEliminarActionPerformed"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JButton" name="jbAltaBaja">
           <Properties>
             <Property name="text" type="java.lang.String" value="Alta/Baja"/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jbAltaBajaActionPerformed"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JButton" name="jbMostrar">
           <Properties>
             <Property name="text" type="java.lang.String" value="Mostrar Entrenadores"/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jbMostrarActionPerformed"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JButton" name="jbBuscar">
           <Properties>
             <Property name="text" type="java.lang.String" value="Buscar"/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jbBuscarActionPerformed"/>
+          </Events>
         </Component>
       </SubComponents>
     </Container>
