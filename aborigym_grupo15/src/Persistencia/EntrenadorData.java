@@ -45,7 +45,7 @@ public class EntrenadorData {
     public ArrayList<Entrenador> listarEntrenadores(){
         ArrayList<Entrenador> lista = new ArrayList<>();
             
-        String sql = "SELECT * FROM entrenador";
+        String sql = "SELECT * FROM entrenadores";
         
         try{
             PreparedStatement ps = con.prepareStatement(sql);
@@ -86,6 +86,7 @@ public class EntrenadorData {
                 entrenador.setDni(rs.getString("dni"));
                 entrenador.setNombre(rs.getString("nombre"));
                 entrenador.setApellido(rs.getString("apellido"));
+                entrenador.setEspecialidad(rs.getString("especialidad")); // Esta es la nueva
                 entrenador.setEstado(rs.getBoolean("estado"));
             }
             ps.close();
@@ -93,6 +94,7 @@ public class EntrenadorData {
             System.out.println("Error al buscar entrenador: " + ex.getMessage());
         }
         return entrenador;
+                
     }
     
     public void altaLogica(int id) {
@@ -148,7 +150,8 @@ public class EntrenadorData {
         }
     }
     public void actualizarEntrenador(Entrenador e) {
-    String sql = "UPDATE entrenadores SET dni = ?, nombre = ?, apellido = ?, estado = ? WHERE id_entrenador = ?";
+    String sql = "UPDATE entrenadores SET dni = ?, nombre = ?, apellido = ?, "
+        + "especialidad = ?, estado = ? WHERE id_entrenador = ?";
 
     try {
         PreparedStatement ps = con.prepareStatement(sql);
@@ -156,9 +159,10 @@ public class EntrenadorData {
         ps.setString(1, e.getDni());
         ps.setString(2, e.getNombre());
         ps.setString(3, e.getApellido());
-        ps.setBoolean(4, e.isEstado());
-        ps.setInt(5, e.getIdEntrenador());
-
+        ps.setString(4, e.getEspecialidad());
+        ps.setBoolean(5, e.isEstado());
+        ps.setInt(6, e.getIdEntrenador());
+        
         int exito = ps.executeUpdate();
 
         if (exito == 1) {

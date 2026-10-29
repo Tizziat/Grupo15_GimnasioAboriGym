@@ -1,5 +1,5 @@
 
-package Vistas;
+package Pruebas;
 import Modelo.Pase;
 import Modelo.Socio;
 import Persistencia.PaseData;
