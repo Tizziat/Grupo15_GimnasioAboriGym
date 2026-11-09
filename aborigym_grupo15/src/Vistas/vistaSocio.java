@@ -136,6 +136,7 @@ public class vistaSocio extends javax.swing.JInternalFrame {
         jbGuardar.addActionListener(this::jbGuardarActionPerformed);
 
         jbMostrar.setText("Mostrar Socios");
+        jbMostrar.addActionListener(this::jbMostrarActionPerformed);
 
         jButton1.setText("Buscar");
         jButton1.addActionListener(this::jButton1ActionPerformed);
@@ -413,9 +414,10 @@ public class vistaSocio extends javax.swing.JInternalFrame {
 
         } catch (NumberFormatException e) {
             JOptionPane.showMessageDialog(this, "El ID debe ser un número.");
-        }
-    }//GEN-LAST:event_jbEliminarActionPerformed
     }
+    }
+    }//GEN-LAST:event_jbEliminarActionPerformed
+
     private void jbAltaBajaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbAltaBajaActionPerformed
          if (jtfID.getText().trim().isEmpty()) {
             javax.swing.JOptionPane.showMessageDialog(
@@ -464,8 +466,8 @@ public class vistaSocio extends javax.swing.JInternalFrame {
         modelo.addRow(new Object[]{
             s.getIdSocio(),
             s.getDni(),
-            s.getApellido(),
             s.getNombre(),
+            s.getApellido(),
             s.getEdad(),
             s.getCorreo(),
             s.getTelefono(),
@@ -564,6 +566,10 @@ public class vistaSocio extends javax.swing.JInternalFrame {
             }
         }
     }//GEN-LAST:event_jTable1MouseClicked
+
+    private void jbMostrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbMostrarActionPerformed
+         cargarTabla();
+    }//GEN-LAST:event_jbMostrarActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
