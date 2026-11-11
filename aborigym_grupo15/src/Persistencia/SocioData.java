@@ -10,17 +10,17 @@ import java.sql.Statement;
 import java.util.ArrayList;
 
 public class SocioData {
-    
+
     private Connection con = null;
 
     public SocioData() {
         // conexion a la base de datos
         this.con = Conexion.getConexion();
     }
-    
+
     /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     // INSERT INTO socio
-    public void guardarSocio (Socio s){
+    public void guardarSocio(Socio s) {
         String sql = "INSERT INTO socios (dni, nombre, apellido, edad, correo, telefono, estado) VALUES (?,?,?,?,?,?,?)";//1
         try {
             PreparedStatement ps = con.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);//2
@@ -31,9 +31,9 @@ public class SocioData {
             ps.setString(5, s.getCorreo());
             ps.setString(6, s.getTelefono());
             ps.setBoolean(7, s.isEstado());
-            
+
             ps.executeUpdate();//3
-            
+
             ResultSet rs = ps.getGeneratedKeys();// id generado por la bdd
             if (rs.next()) {
                 s.setIdSocio(rs.getInt(1)); // se lo asignamos al objeto socio
@@ -44,47 +44,49 @@ public class SocioData {
             System.err.println("Error al guardar el socio: " + ex.getMessage());
         }
     }
+
     public ArrayList<Socio> listarSocios() {
-    ArrayList<Socio> lista = new ArrayList<>();
+        ArrayList<Socio> lista = new ArrayList<>();
 
-    String sql = "SELECT * FROM socios";
+        String sql = "SELECT * FROM socios";
 
-    try {
-        PreparedStatement ps = con.prepareStatement(sql);
-        ResultSet rs = ps.executeQuery();
+        try {
+            PreparedStatement ps = con.prepareStatement(sql);
+            ResultSet rs = ps.executeQuery();
 
-        while (rs.next()) {
-            Socio socio = new Socio();
+            while (rs.next()) {
+                Socio socio = new Socio();
 
-            socio.setIdSocio(rs.getInt("id_socio"));
-            socio.setDni(rs.getString("dni"));
-            socio.setNombre(rs.getString("nombre"));
-            socio.setApellido(rs.getString("apellido"));
-            socio.setEdad(rs.getInt("edad"));
-            socio.setCorreo(rs.getString("correo"));
-            socio.setTelefono(rs.getString("telefono"));
-            socio.setEstado(rs.getBoolean("estado"));
+                socio.setIdSocio(rs.getInt("id_socio"));
+                socio.setDni(rs.getString("dni"));
+                socio.setNombre(rs.getString("nombre"));
+                socio.setApellido(rs.getString("apellido"));
+                socio.setEdad(rs.getInt("edad"));
+                socio.setCorreo(rs.getString("correo"));
+                socio.setTelefono(rs.getString("telefono"));
+                socio.setEstado(rs.getBoolean("estado"));
 
-            lista.add(socio);
+                lista.add(socio);
+            }
+
+            rs.close();
+            ps.close();
+
+        } catch (SQLException ex) {
+            System.out.println("Error al listar socios: " + ex.getMessage());
         }
 
-        rs.close();
-        ps.close();
-
-    } catch (SQLException ex) {
-        System.out.println("Error al listar socios: " + ex.getMessage());
+        return lista;
     }
 
-    return lista;
-}
-    public Socio buscarSocio (String dni){
+    public Socio buscarSocio(String dni) {
         String sql = "SELECT * FROM socios WHERE dni = ?";
         Socio socio = null;
         try {
             PreparedStatement ps = con.prepareStatement(sql);//2
             ps.setString(1, dni);
             ResultSet rs = ps.executeQuery();//3
-            
+
             if (rs.next()) {
                 socio = new Socio();
                 socio.setIdSocio(rs.getInt("id_socio"));
@@ -101,8 +103,36 @@ public class SocioData {
             System.out.println("Error al buscar socio: " + ex.getMessage());
         }
         return socio;
-    }   
-     public void altaLogica(int id) {
+    }
+
+    public Socio buscarSocioPorId(int idSocio) {
+        String sql = "SELECT * FROM socios WHERE id_socio = ?";
+        Socio socio = null;
+        try {
+            PreparedStatement ps = con.prepareStatement(sql);
+            ps.setInt(1, idSocio);
+            ResultSet rs = ps.executeQuery();
+
+            if (rs.next()) {
+                socio = new Socio();
+                socio.setIdSocio(rs.getInt("id_socio"));
+                socio.setDni(rs.getString("dni"));
+                socio.setNombre(rs.getString("nombre"));
+                socio.setApellido(rs.getString("apellido"));
+                socio.setEdad(rs.getInt("edad"));
+                socio.setCorreo(rs.getString("correo"));
+                socio.setTelefono(rs.getString("telefono"));
+                socio.setEstado(rs.getBoolean("estado"));
+            }
+            rs.close();
+            ps.close();
+        } catch (SQLException ex) {
+            System.out.println("Error al buscar socio por ID: " + ex.getMessage());
+        }
+        return socio;
+    }
+
+    public void altaLogica(int id) {
         String sql = "UPDATE socios SET estado = 1 WHERE id_socio = ?";
 
         try {
@@ -119,7 +149,8 @@ public class SocioData {
             System.out.println("Error: " + ex.getMessage());
         }
     }
-     public void bajaLogica(int id) {
+
+    public void bajaLogica(int id) {
         String sql = "UPDATE socios SET estado = 0 WHERE id_socio = ?";
 
         try {
@@ -136,7 +167,8 @@ public class SocioData {
             System.out.println("Error: " + ex.getMessage());
         }
     }
-     public void borrarSocio(int id) {
+
+    public void borrarSocio(int id) {
         String sql = "DELETE FROM socios WHERE id_socio= ?";
 
         try {
@@ -153,45 +185,36 @@ public class SocioData {
             System.out.println("Error al borrar el Socio: " + ex.getMessage());
         }
     }
-     //para actualizar los datos
-     public void actualizarSocio(Socio s) {
-    String sql = "UPDATE socios SET dni=?, nombre=?, apellido=?, edad=?, "
-               + "correo=?, telefono=?, estado=? WHERE id_socio=?";
+    //para actualizar los datos
 
-    try {
-        PreparedStatement ps = con.prepareStatement(sql);
+    public void actualizarSocio(Socio s) {
+        String sql = "UPDATE socios SET dni=?, nombre=?, apellido=?, edad=?, "
+                + "correo=?, telefono=?, estado=? WHERE id_socio=?";
 
-        ps.setString(1, s.getDni());
-        ps.setString(2, s.getNombre());
-        ps.setString(3, s.getApellido());
-        ps.setInt(4, s.getEdad());
-        ps.setString(5, s.getCorreo());
-        ps.setString(6, s.getTelefono());
-        ps.setBoolean(7, s.isEstado());
-        ps.setInt(8, s.getIdSocio());
+        try {
+            PreparedStatement ps = con.prepareStatement(sql);
 
-        int exito = ps.executeUpdate();
+            ps.setString(1, s.getDni());
+            ps.setString(2, s.getNombre());
+            ps.setString(3, s.getApellido());
+            ps.setInt(4, s.getEdad());
+            ps.setString(5, s.getCorreo());
+            ps.setString(6, s.getTelefono());
+            ps.setBoolean(7, s.isEstado());
+            ps.setInt(8, s.getIdSocio());
 
-        if (exito == 1) {
-            System.out.println("Socio actualizado correctamente.");
-        } else {
-            System.out.println("No se encontró el socio.");
+            int exito = ps.executeUpdate();
+
+            if (exito == 1) {
+                System.out.println("Socio actualizado correctamente.");
+            } else {
+                System.out.println("No se encontró el socio.");
+            }
+
+            ps.close();
+
+        } catch (SQLException ex) {
+            System.out.println("Error al actualizar socio: " + ex.getMessage());
         }
-
-        ps.close();
-
-    } catch (SQLException ex) {
-        System.out.println("Error al actualizar socio: " + ex.getMessage());
     }
 }
-}
-
-
-
-    
-
-
-
-    
-    
-
