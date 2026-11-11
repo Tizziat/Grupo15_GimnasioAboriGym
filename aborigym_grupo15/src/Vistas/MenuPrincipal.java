@@ -9,7 +9,7 @@ package Vistas;
  * @author tizzi
  */
 public class MenuPrincipal extends javax.swing.JFrame {
-    
+
     private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(MenuPrincipal.class.getName());
 
     /**
@@ -46,6 +46,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
         jmClaseG = new javax.swing.JMenu();
         jmIclases = new javax.swing.JMenuItem();
         jmSalir = new javax.swing.JMenu();
+        jMenuItem3 = new javax.swing.JMenuItem();
 
         jMenu1.setText("File");
         jMenuBar1.add(jMenu1);
@@ -59,6 +60,8 @@ public class MenuPrincipal extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
+        jDesktop1.setPreferredSize(new java.awt.Dimension(669, 501));
+
         javax.swing.GroupLayout jDesktop1Layout = new javax.swing.GroupLayout(jDesktop1);
         jDesktop1.setLayout(jDesktop1Layout);
         jDesktop1Layout.setHorizontalGroup(
@@ -67,7 +70,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
         );
         jDesktop1Layout.setVerticalGroup(
             jDesktop1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 555, Short.MAX_VALUE)
+            .addGap(0, 501, Short.MAX_VALUE)
         );
 
         jmSocio.setText("Socio");
@@ -131,6 +134,15 @@ public class MenuPrincipal extends javax.swing.JFrame {
                 jmSalirActionPerformed(evt);
             }
         });
+
+        jMenuItem3.setText("Salir");
+        jMenuItem3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem3ActionPerformed(evt);
+            }
+        });
+        jmSalir.add(jMenuItem3);
+
         jMenuBar2.add(jmSalir);
 
         setJMenuBar(jMenuBar2);
@@ -139,13 +151,11 @@ public class MenuPrincipal extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jDesktop1)
+            .addComponent(jDesktop1, javax.swing.GroupLayout.DEFAULT_SIZE, 689, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(jDesktop1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
+            .addComponent(jDesktop1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
 
         pack();
@@ -156,34 +166,57 @@ public class MenuPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_jmSalirActionPerformed
 
     private void jmISocioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmISocioActionPerformed
-                                        
-    vistaSocio vs = new vistaSocio();
-    jDesktop1.add(vs);
-    vs.setVisible(true);
-    vs.toFront();
-        
-             
+        jDesktop1.removeAll();
+        vistaSocio vs = new vistaSocio();
+        jDesktop1.add(vs);
+        vs.setVisible(true);
+        vs.toFront();
+
+        try {
+            vs.setMaximum(true);
+        } catch (java.beans.PropertyVetoException e) {
+        }
+        jDesktop1.repaint();
+
     }//GEN-LAST:event_jmISocioActionPerformed
 
     private void jmIasistenciaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmIasistenciaActionPerformed
-       vistaAsistencia va = new vistaAsistencia();
-       jDesktop1.add(va);
-       va.setVisible(true);
-       va.toFront();
-       
+        jDesktop1.removeAll();
+        vistaAsistencia va  = new vistaAsistencia();
+        jDesktop1.add(va);
+        va.setVisible(true);
+        va.toFront();
+
+        try {
+            va.setMaximum(true);
+        } catch (java.beans.PropertyVetoException e) {
+        }
+        jDesktop1.repaint();
     }//GEN-LAST:event_jmIasistenciaActionPerformed
 
     private void jmEntrenadorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmEntrenadorActionPerformed
-      
+
     }//GEN-LAST:event_jmEntrenadorActionPerformed
 
     private void jmIentrenadorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmIentrenadorActionPerformed
         // TODO add your handling code here:
+        jDesktop1.removeAll();
         vistaEntrenador ve = new vistaEntrenador();
         jDesktop1.add(ve);
         ve.setVisible(true);
         ve.toFront();
+
+        try {
+            ve.setMaximum(true);
+        } catch (java.beans.PropertyVetoException e) {
+        }
+        jDesktop1.repaint();
     }//GEN-LAST:event_jmIentrenadorActionPerformed
+
+    private void jMenuItem3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem3ActionPerformed
+        // TODO add your handling code here:
+        dispose();
+    }//GEN-LAST:event_jMenuItem3ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -218,6 +251,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
     private javax.swing.JMenuBar jMenuBar2;
     private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JMenuItem jMenuItem2;
+    private javax.swing.JMenuItem jMenuItem3;
     private javax.swing.JMenu jmAsistencia;
     private javax.swing.JMenu jmClaseG;
     private javax.swing.JMenu jmEntrenador;

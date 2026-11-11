@@ -63,44 +63,66 @@ public class vistaSocio extends javax.swing.JInternalFrame {
         jbMostrar = new javax.swing.JButton();
         jButton1 = new javax.swing.JButton();
 
+        jdescritorio.setPreferredSize(new java.awt.Dimension(669, 501));
+        jdescritorio.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
         jLid.setText("ID Socio");
+        jdescritorio.add(jLid, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 299, -1, -1));
 
         jlDNI.setText("DNI:");
+        jdescritorio.add(jlDNI, new org.netbeans.lib.awtextra.AbsoluteConstraints(19, 59, -1, -1));
 
         jlNombre.setText("Nombre:");
+        jdescritorio.add(jlNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(19, 93, -1, -1));
 
-        jlDatos.setFont(new java.awt.Font("Segoe UI Historic", 1, 18)); // NOI18N
+        jlDatos.setFont(new java.awt.Font("Segoe UI Historic", 1, 24)); // NOI18N
         jlDatos.setText("Datos del Socio");
+        jdescritorio.add(jlDatos, new org.netbeans.lib.awtextra.AbsoluteConstraints(39, 0, -1, -1));
 
         jtfID.setEditable(false);
         jtfID.addActionListener(this::jtfIDActionPerformed);
+        jdescritorio.add(jtfID, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 299, 69, -1));
+        jdescritorio.add(jtfDNI, new org.netbeans.lib.awtextra.AbsoluteConstraints(99, 56, 141, -1));
 
         jtfNombre.addActionListener(this::jtfNombreActionPerformed);
+        jdescritorio.add(jtfNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(99, 90, 141, -1));
 
         jlApellido.setText("Apellido:");
+        jdescritorio.add(jlApellido, new org.netbeans.lib.awtextra.AbsoluteConstraints(19, 127, -1, -1));
 
         jtfApellido.addActionListener(this::jtfApellidoActionPerformed);
+        jdescritorio.add(jtfApellido, new org.netbeans.lib.awtextra.AbsoluteConstraints(99, 124, 141, -1));
 
         jlEdad.setText("Edad:");
+        jdescritorio.add(jlEdad, new org.netbeans.lib.awtextra.AbsoluteConstraints(19, 161, -1, -1));
+        jdescritorio.add(jtfEdad, new org.netbeans.lib.awtextra.AbsoluteConstraints(169, 158, 71, -1));
 
         jlCorreo.setText("Correo:");
+        jdescritorio.add(jlCorreo, new org.netbeans.lib.awtextra.AbsoluteConstraints(19, 195, -1, -1));
+        jdescritorio.add(jtfCorreo, new org.netbeans.lib.awtextra.AbsoluteConstraints(99, 192, 141, -1));
 
         jlTelefono.setText("Telefono:");
+        jdescritorio.add(jlTelefono, new org.netbeans.lib.awtextra.AbsoluteConstraints(19, 229, -1, -1));
 
         jtfTelefono.addActionListener(this::jtfTelefonoActionPerformed);
+        jdescritorio.add(jtfTelefono, new org.netbeans.lib.awtextra.AbsoluteConstraints(99, 226, 141, -1));
 
         jlEstado.setText("Estado:");
+        jdescritorio.add(jlEstado, new org.netbeans.lib.awtextra.AbsoluteConstraints(19, 260, -1, -1));
 
         buttonGroup1.add(jrbActivo);
         jrbActivo.setSelected(true);
         jrbActivo.setText("Activo");
         jrbActivo.addActionListener(this::jrbActivoActionPerformed);
+        jdescritorio.add(jrbActivo, new org.netbeans.lib.awtextra.AbsoluteConstraints(81, 260, -1, -1));
 
         buttonGroup1.add(jrbInactivo);
         jrbInactivo.setText("Inactivo");
+        jdescritorio.add(jrbInactivo, new org.netbeans.lib.awtextra.AbsoluteConstraints(175, 260, -1, -1));
 
-        jlListaSocios.setFont(new java.awt.Font("Segoe UI Historic", 1, 18)); // NOI18N
+        jlListaSocios.setFont(new java.awt.Font("Segoe UI Historic", 1, 24)); // NOI18N
         jlListaSocios.setText("Lista de Socios");
+        jdescritorio.add(jlListaSocios, new org.netbeans.lib.awtextra.AbsoluteConstraints(373, 0, -1, -1));
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -120,200 +142,37 @@ public class vistaSocio extends javax.swing.JInternalFrame {
         });
         jScrollPane1.setViewportView(jTable1);
 
+        jdescritorio.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(257, 56, 376, 265));
+
         jbNuevo.setText("Nuevo");
         jbNuevo.addActionListener(this::jbNuevoActionPerformed);
+        jdescritorio.add(jbNuevo, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 380, 229, -1));
 
         jbActualizar.setText("Actualizar");
         jbActualizar.addActionListener(this::jbActualizarActionPerformed);
+        jdescritorio.add(jbActualizar, new org.netbeans.lib.awtextra.AbsoluteConstraints(257, 380, 376, -1));
 
         jbEliminar.setText("Eliminar");
         jbEliminar.addActionListener(this::jbEliminarActionPerformed);
+        jdescritorio.add(jbEliminar, new org.netbeans.lib.awtextra.AbsoluteConstraints(453, 339, 180, -1));
 
         jbAltaBaja.setText("Alta/Baja");
         jbAltaBaja.addActionListener(this::jbAltaBajaActionPerformed);
+        jdescritorio.add(jbAltaBaja, new org.netbeans.lib.awtextra.AbsoluteConstraints(257, 339, 178, -1));
 
         jbGuardar.setText("Guardar");
         jbGuardar.addActionListener(this::jbGuardarActionPerformed);
+        jdescritorio.add(jbGuardar, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 421, 229, -1));
 
         jbMostrar.setText("Mostrar Socios");
         jbMostrar.addActionListener(this::jbMostrarActionPerformed);
+        jdescritorio.add(jbMostrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(257, 421, 376, -1));
 
         jButton1.setText("Buscar");
         jButton1.addActionListener(this::jButton1ActionPerformed);
+        jdescritorio.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 339, 230, -1));
 
-        jdescritorio.setLayer(jLid, javax.swing.JLayeredPane.DEFAULT_LAYER);
-        jdescritorio.setLayer(jlDNI, javax.swing.JLayeredPane.DEFAULT_LAYER);
-        jdescritorio.setLayer(jlNombre, javax.swing.JLayeredPane.DEFAULT_LAYER);
-        jdescritorio.setLayer(jlDatos, javax.swing.JLayeredPane.DEFAULT_LAYER);
-        jdescritorio.setLayer(jtfID, javax.swing.JLayeredPane.DEFAULT_LAYER);
-        jdescritorio.setLayer(jtfDNI, javax.swing.JLayeredPane.DEFAULT_LAYER);
-        jdescritorio.setLayer(jtfNombre, javax.swing.JLayeredPane.DEFAULT_LAYER);
-        jdescritorio.setLayer(jlApellido, javax.swing.JLayeredPane.DEFAULT_LAYER);
-        jdescritorio.setLayer(jtfApellido, javax.swing.JLayeredPane.DEFAULT_LAYER);
-        jdescritorio.setLayer(jlEdad, javax.swing.JLayeredPane.DEFAULT_LAYER);
-        jdescritorio.setLayer(jtfEdad, javax.swing.JLayeredPane.DEFAULT_LAYER);
-        jdescritorio.setLayer(jlCorreo, javax.swing.JLayeredPane.DEFAULT_LAYER);
-        jdescritorio.setLayer(jtfCorreo, javax.swing.JLayeredPane.DEFAULT_LAYER);
-        jdescritorio.setLayer(jlTelefono, javax.swing.JLayeredPane.DEFAULT_LAYER);
-        jdescritorio.setLayer(jtfTelefono, javax.swing.JLayeredPane.DEFAULT_LAYER);
-        jdescritorio.setLayer(jlEstado, javax.swing.JLayeredPane.DEFAULT_LAYER);
-        jdescritorio.setLayer(jrbActivo, javax.swing.JLayeredPane.DEFAULT_LAYER);
-        jdescritorio.setLayer(jrbInactivo, javax.swing.JLayeredPane.DEFAULT_LAYER);
-        jdescritorio.setLayer(jlListaSocios, javax.swing.JLayeredPane.DEFAULT_LAYER);
-        jdescritorio.setLayer(jScrollPane1, javax.swing.JLayeredPane.DEFAULT_LAYER);
-        jdescritorio.setLayer(jbNuevo, javax.swing.JLayeredPane.DEFAULT_LAYER);
-        jdescritorio.setLayer(jbActualizar, javax.swing.JLayeredPane.DEFAULT_LAYER);
-        jdescritorio.setLayer(jbEliminar, javax.swing.JLayeredPane.DEFAULT_LAYER);
-        jdescritorio.setLayer(jbAltaBaja, javax.swing.JLayeredPane.DEFAULT_LAYER);
-        jdescritorio.setLayer(jbGuardar, javax.swing.JLayeredPane.DEFAULT_LAYER);
-        jdescritorio.setLayer(jbMostrar, javax.swing.JLayeredPane.DEFAULT_LAYER);
-        jdescritorio.setLayer(jButton1, javax.swing.JLayeredPane.DEFAULT_LAYER);
-
-        javax.swing.GroupLayout jdescritorioLayout = new javax.swing.GroupLayout(jdescritorio);
-        jdescritorio.setLayout(jdescritorioLayout);
-        jdescritorioLayout.setHorizontalGroup(
-            jdescritorioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jdescritorioLayout.createSequentialGroup()
-                .addGroup(jdescritorioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jdescritorioLayout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jLid)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jtfID, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jdescritorioLayout.createSequentialGroup()
-                        .addGap(44, 44, 44)
-                        .addComponent(jlDatos))
-                    .addGroup(jdescritorioLayout.createSequentialGroup()
-                        .addContainerGap()
-                        .addGroup(jdescritorioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jdescritorioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(jlTelefono)
-                                .addComponent(jlApellido)
-                                .addComponent(jlEdad)
-                                .addComponent(jlCorreo)
-                                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jdescritorioLayout.createSequentialGroup()
-                                    .addGroup(jdescritorioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addComponent(jlNombre)
-                                        .addComponent(jlDNI))
-                                    .addGap(148, 148, 148)))
-                            .addGroup(jdescritorioLayout.createSequentialGroup()
-                                .addComponent(jlEstado)
-                                .addGap(18, 18, 18)
-                                .addComponent(jrbActivo)
-                                .addGap(36, 36, 36)
-                                .addComponent(jrbInactivo)))))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(jdescritorioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jdescritorioLayout.createSequentialGroup()
-                        .addComponent(jlListaSocios)
-                        .addGap(137, 137, 137))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jdescritorioLayout.createSequentialGroup()
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 391, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap())))
-            .addGroup(jdescritorioLayout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(jdescritorioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(jdescritorioLayout.createSequentialGroup()
-                        .addComponent(jbMostrar, javax.swing.GroupLayout.DEFAULT_SIZE, 132, Short.MAX_VALUE)
-                        .addGap(18, 18, 18)
-                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jdescritorioLayout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
-                        .addGroup(jdescritorioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jtfApellido, javax.swing.GroupLayout.PREFERRED_SIZE, 152, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(jdescritorioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                .addGroup(jdescritorioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(jdescritorioLayout.createSequentialGroup()
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(jtfEdad, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addComponent(jtfDNI, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 127, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addComponent(jtfTelefono, javax.swing.GroupLayout.DEFAULT_SIZE, 152, Short.MAX_VALUE)
-                                .addComponent(jtfCorreo))
-                            .addComponent(jtfNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 152, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jbNuevo)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jbGuardar)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jbActualizar)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jbEliminar)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jbAltaBaja)
-                .addContainerGap())
-        );
-        jdescritorioLayout.setVerticalGroup(
-            jdescritorioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jdescritorioLayout.createSequentialGroup()
-                .addGroup(jdescritorioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jlDatos)
-                    .addComponent(jlListaSocios))
-                .addGap(24, 24, 24)
-                .addGroup(jdescritorioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jdescritorioLayout.createSequentialGroup()
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
-                        .addGap(18, 18, 18))
-                    .addGroup(jdescritorioLayout.createSequentialGroup()
-                        .addGroup(jdescritorioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jlDNI)
-                            .addComponent(jtfDNI, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(jdescritorioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jlNombre)
-                            .addComponent(jtfNombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(jdescritorioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jlApellido)
-                            .addComponent(jtfApellido, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(18, 18, 18)
-                        .addGroup(jdescritorioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jlEdad)
-                            .addComponent(jtfEdad, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(18, 18, 18)
-                        .addGroup(jdescritorioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jlCorreo)
-                            .addComponent(jtfCorreo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(jdescritorioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jlTelefono)
-                            .addComponent(jtfTelefono, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(18, 18, 18)
-                        .addGroup(jdescritorioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jlEstado)
-                            .addGroup(jdescritorioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                .addComponent(jrbActivo)
-                                .addComponent(jrbInactivo)))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(jdescritorioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLid)
-                            .addComponent(jtfID, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(35, 104, Short.MAX_VALUE)))
-                .addGroup(jdescritorioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jbNuevo)
-                    .addComponent(jbActualizar)
-                    .addComponent(jbEliminar)
-                    .addComponent(jbAltaBaja)
-                    .addComponent(jbGuardar)
-                    .addComponent(jbMostrar)
-                    .addComponent(jButton1))
-                .addContainerGap())
-        );
-
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jdescritorio)
-                .addContainerGap())
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jdescritorio))
-        );
+        getContentPane().add(jdescritorio, java.awt.BorderLayout.CENTER);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
