@@ -29,9 +29,9 @@ public class AsistenciaData {
         this.claseGymData = new ClaseGymData();
         this.paseData = new PaseData();
     }
-
+ 
     ////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-    // INSERT INTO asistencia (Registra la entrada con validaciones de socio y pase)
+    // INSERT INTO asistencias (Registra la entrada con validaciones de socio y pase)
     public void registrarAsistencia(Asistencia asistencia) {
         // El socio debe estar activo
         if (!asistencia.getSocio().isEstado()) {
@@ -45,8 +45,19 @@ public class AsistenciaData {
             JOptionPane.showMessageDialog(null, "El socio no posee un pase activo o no le quedan clases disponibles.");
             return; // detiene la ejecucion si no tiene pase o cupo
         }
+        // La clase debe existir, estar activa y tener cupo disponible ese dia
+        ClaseGym clase = claseGymData.buscarClasePorId(asistencia.getClaseGym().getIdClase());
+        if (clase == null) {
+            JOptionPane.showMessageDialog(null, "La clase no existe o esta dada de baja.");
+            return; // detiene la ejecucion si la clase no existe
+        }
 
-        String sql = "INSERT INTO asistencia (ID_Socio, ID_Clase, Fecha_Asistencia) VALUES (?, ?, ?)";
+        int inscriptos = contarAsistenciasPorClaseYFecha(clase.getIdClase(), asistencia.getFechaAsistencia());
+        if (inscriptos >= clase.getCapacidad()) {
+            JOptionPane.showMessageDialog(null, "La clase esta completa (" + inscriptos + "/" + clase.getCapacidad() + ").");
+            return; // detiene la ejecucion si no hay cupo
+        }
+        String sql = "INSERT INTO asistencias (ID_Socio, ID_Clase, Fecha_Asistencia) VALUES (?, ?, ?)";
         try {
             PreparedStatement ps = con.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
             ps.setInt(1, asistencia.getSocio().getIdSocio());
@@ -70,9 +81,9 @@ public class AsistenciaData {
     }
 
     ////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-    // UPDATE asistencia (Modifica un registro existente)
+    //  UPDATE asistencias (Modifica un registro existente)
     public void modificarAsistencia(Asistencia asistencia) {
-        String sql = "UPDATE asistencia SET ID_Socio = ?, ID_Clase = ?, Fecha_Asistencia = ? WHERE ID_Asistencia = ?";
+        String sql = " UPDATE asistencias SET ID_Socio = ?, ID_Clase = ?, Fecha_Asistencia = ? WHERE ID_Asistencia = ?";
         try {
             PreparedStatement ps = con.prepareStatement(sql);
             ps.setInt(1, asistencia.getSocio().getIdSocio());
@@ -93,9 +104,9 @@ public class AsistenciaData {
     }
 
     ////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-    // DELETE FROM asistencia (Eliminacion fisica del registro)
+    // DELETE FROM asistencias (Eliminacion fisica del registro)
     public void eliminarAsistencia(int idAsistencia) {
-        String sql = "DELETE FROM asistencia WHERE ID_Asistencia = ?";
+        String sql = "DELETE FROM asistencias WHERE ID_Asistencia = ?";
         try {
             PreparedStatement ps = con.prepareStatement(sql);
             ps.setInt(1, idAsistencia);
@@ -115,7 +126,7 @@ public class AsistenciaData {
     ////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     // SELECT asistencia por ID (Busca una asistencia especifica)
     public Asistencia buscarAsistenciaPorId(int idAsistencia) {
-        String sql = "SELECT * FROM asistencia WHERE ID_Asistencia = ?";
+        String sql = "SELECT * FROM asistencias WHERE ID_Asistencia = ?";
         Asistencia asistencia = null;
         try {
             PreparedStatement ps = con.prepareStatement(sql);
@@ -136,7 +147,7 @@ public class AsistenciaData {
     // SELECT ALL: Devuelve todas las asistencias registradas ordenadas cronologicamente
     public List<Asistencia> listarAsistencias() {
         List<Asistencia> lista = new ArrayList<>();
-        String sql = "SELECT * FROM asistencia ORDER BY Fecha_Asistencia DESC";
+        String sql = "SELECT * FROM asistencias ORDER BY Fecha_Asistencia DESC";
         try {
             PreparedStatement ps = con.prepareStatement(sql);
             ResultSet rs = ps.executeQuery();
@@ -155,7 +166,7 @@ public class AsistenciaData {
     // SELECT por socio: Filtra las asistencias que pertenecen a un socio en particular
     public List<Asistencia> listarPorSocio(int idSocio) {
         List<Asistencia> lista = new ArrayList<>();
-        String sql = "SELECT * FROM asistencia WHERE ID_Socio = ? ORDER BY Fecha_Asistencia DESC";
+        String sql = "SELECT * FROM asistencias WHERE ID_Socio = ? ORDER BY Fecha_Asistencia DESC";
         try {
             PreparedStatement ps = con.prepareStatement(sql);
             ps.setInt(1, idSocio);
@@ -175,7 +186,7 @@ public class AsistenciaData {
     // SELECT por Clase: Filtra todas las asistencias registradas a una clase especifica
     public List<Asistencia> listarPorClase(int idClase) {
         List<Asistencia> lista = new ArrayList<>();
-        String sql = "SELECT * FROM asistencia WHERE ID_Clase = ? ORDER BY Fecha_Asistencia DESC";
+        String sql = "SELECT * FROM asistencias WHERE ID_Clase = ? ORDER BY Fecha_Asistencia DESC";
         try {
             PreparedStatement ps = con.prepareStatement(sql);
             ps.setInt(1, idClase);
@@ -189,6 +200,26 @@ public class AsistenciaData {
             System.err.println("Error al listar asistencias por clase: " + ex.getMessage());
         }
         return lista;
+    }
+
+    // COUNT: cuenta cuántas asistencias tiene una clase en una fecha (para controlar el cupo)
+    public int contarAsistenciasPorClaseYFecha(int idClase, LocalDate fecha) {
+        String sql = "SELECT COUNT(*) FROM asistencias WHERE id_clase = ? AND fecha_asistencia = ?";
+        int cantidad = 0;
+        try {
+            PreparedStatement ps = con.prepareStatement(sql);
+            ps.setInt(1, idClase);
+            ps.setDate(2, Date.valueOf(fecha));
+            ResultSet rs = ps.executeQuery();
+
+            if (rs.next()) {
+                cantidad = rs.getInt(1);
+            }
+            ps.close();
+        } catch (SQLException ex) {
+            System.err.println("Error al contar asistencias: " + ex.getMessage());
+        }
+        return cantidad;
     }
 
     ////////////////////////////////////////////////////////////////////////////////////////////////////////////////
