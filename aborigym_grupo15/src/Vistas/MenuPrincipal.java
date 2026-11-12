@@ -117,11 +117,21 @@ public class MenuPrincipal extends javax.swing.JFrame {
         jmPase.setText("Pase");
 
         jmIpases.setText("Gestion de Pases");
+        jmIpases.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jmIpasesActionPerformed(evt);
+            }
+        });
         jmPase.add(jmIpases);
 
         jMenuBar2.add(jmPase);
 
         jmClaseG.setText("Clase Gym");
+        jmClaseG.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jmClaseGActionPerformed(evt);
+            }
+        });
 
         jmIclases.setText("Gestion de Clases");
         jmClaseG.add(jmIclases);
@@ -217,6 +227,32 @@ public class MenuPrincipal extends javax.swing.JFrame {
         // TODO add your handling code here:
         dispose();
     }//GEN-LAST:event_jMenuItem3ActionPerformed
+
+    private void jmIpasesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmIpasesActionPerformed
+        jDesktop1.removeAll();
+        vistaPase vp = new vistaPase();
+        jDesktop1.add(vp);
+        vp.setVisible(true);
+        vp.toFront();
+        try {
+            vp.setMaximum(true);
+        } catch (java.beans.PropertyVetoException e) {
+        }
+        jDesktop1.repaint();
+    }//GEN-LAST:event_jmIpasesActionPerformed
+
+    private void jmClaseGActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmClaseGActionPerformed
+       jDesktop1.removeAll();
+       vistaClaseGym vcg = new vistaClaseGym();
+       jDesktop1.add(vcg);
+       vcg.setVisible(true);
+       vcg.toFront();
+        try {
+            vcg.setMaximum(true);
+        } catch (java.beans.PropertyVetoException e) {
+        }
+        jDesktop1.repaint();
+    }//GEN-LAST:event_jmClaseGActionPerformed
 
     /**
      * @param args the command line arguments
