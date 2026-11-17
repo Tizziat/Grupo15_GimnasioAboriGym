@@ -21,7 +21,7 @@ public class vistaAsistencia extends javax.swing.JInternalFrame {
      * Creates new form vistaAsistencia
      */
     public vistaAsistencia() {
-        //initComponents();
+        initComponents();
         cargarComboSocios();
         limpiarCampos();
     }

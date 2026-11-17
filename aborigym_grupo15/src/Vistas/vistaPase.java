@@ -369,8 +369,10 @@ public class vistaPase extends javax.swing.JInternalFrame {
             }
 
             paseData.guardarPase(p);
-            JOptionPane.showMessageDialog(this, "Pase guardado. ID: " + p.getIdPase());
-            cargarTabla();
+           if (p.getIdPase() > 0) {   // solo si la base le asignó un ID, o sea, si se guardó
+                JOptionPane.showMessageDialog(this, "Pase guardado. ID: " + p.getIdPase());
+                cargarTabla();
+            }
         } catch (Exception ex) {
             JOptionPane.showMessageDialog(this, "Datos inválidos: cantidad y costo numéricos, fechas AAAA-MM-DD.");
         }

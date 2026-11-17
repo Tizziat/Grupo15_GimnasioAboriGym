@@ -1,8 +1,13 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JInternalFrame.java to edit this template
- */
 package Vistas;
+
+import Modelo.ClaseGym;
+import Modelo.Entrenador;
+import Persistencia.ClaseGymData;
+import Persistencia.EntrenadorData;
+import java.util.ArrayList;
+import java.util.List;
+import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -13,10 +18,50 @@ public class vistaClaseGym extends javax.swing.JInternalFrame {
     /**
      * Creates new form vistaClaseGym
      */
+    private DefaultTableModel modelo = new DefaultTableModel();
+    private ClaseGymData claseData = new ClaseGymData();
+    private List<Entrenador> entrenadores = new ArrayList<>(); // mismo orden que el combo
+    private int idClase = -1;                                  // -1 = ninguna clase seleccionada
+
     public vistaClaseGym() {
         initComponents();
-        getContentPane().setComponentZOrder(jDesktopPane1, getContentPane().getComponentCount()-1);
-    
+        getContentPane().setComponentZOrder(jDesktopPane1, getContentPane().getComponentCount() - 1);
+
+        modelo.addColumn("ID");
+        modelo.addColumn("Disciplina");
+        modelo.addColumn("Entrenador");
+        modelo.addColumn("Horario");
+        modelo.addColumn("Capacidad");
+        modelo.addColumn("Estado");
+        jTable1.setModel(modelo);
+
+        cargarEntrenadores();
+        cargarTabla();
+    }
+
+    private void cargarEntrenadores() {
+        jcbEntrenador.removeAllItems();
+        entrenadores.clear();
+        for (Entrenador e : new EntrenadorData().listarEntrenadores()) {
+            if (e.isEstado()) { // solo entrenadores activos
+                entrenadores.add(e);
+                jcbEntrenador.addItem(e.getApellido() + ", " + e.getNombre() + " (" + e.getEspecialidad() + ")");
+            }
+        }
+    }
+
+    private void cargarTabla() {
+        modelo.setRowCount(0);
+        for (ClaseGym c : claseData.listarTodasLasClases()) {
+            modelo.addRow(new Object[]{
+                c.getIdClase(),
+                c.getNombre(),
+                c.getEntrenador().getApellido() + ", " + c.getEntrenador().getNombre(),
+                c.getHorario(),
+                c.getCapacidad(),
+                c.isEstado() ? "Activa" : "Inactiva"
+            });
+        }
     }
 
     /**
@@ -28,6 +73,7 @@ public class vistaClaseGym extends javax.swing.JInternalFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        buttonGroup1 = new javax.swing.ButtonGroup();
         jDesktopPane1 = new javax.swing.JDesktopPane();
         jlTitulo = new javax.swing.JLabel();
         jlId = new javax.swing.JLabel();
@@ -56,6 +102,11 @@ public class vistaClaseGym extends javax.swing.JInternalFrame {
         jbMostrar = new javax.swing.JButton();
 
         setForeground(java.awt.Color.darkGray);
+        addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                formMouseClicked(evt);
+            }
+        });
 
         jlTitulo.setFont(new java.awt.Font("Segoe UI Historic", 1, 24)); // NOI18N
         jlTitulo.setForeground(new java.awt.Color(255, 255, 255));
@@ -104,10 +155,12 @@ public class vistaClaseGym extends javax.swing.JInternalFrame {
         jlEstado.setForeground(new java.awt.Color(255, 255, 255));
         jlEstado.setText("Estado:");
 
+        buttonGroup1.add(jrbActivo);
         jrbActivo.setForeground(new java.awt.Color(255, 255, 255));
         jrbActivo.setText("Activo");
         jrbActivo.addActionListener(this::jrbActivoActionPerformed);
 
+        buttonGroup1.add(jrbInactivo);
         jrbInactivo.setForeground(new java.awt.Color(255, 255, 255));
         jrbInactivo.setText("Inactivo");
         jrbInactivo.addActionListener(this::jrbInactivoActionPerformed);
@@ -125,6 +178,7 @@ public class vistaClaseGym extends javax.swing.JInternalFrame {
 
         jbNuevo.setForeground(java.awt.Color.darkGray);
         jbNuevo.setText("Nuevo");
+        jbNuevo.addActionListener(this::jbNuevoActionPerformed);
 
         jbEliminar.setForeground(java.awt.Color.darkGray);
         jbEliminar.setText("Eliminar");
@@ -142,6 +196,7 @@ public class vistaClaseGym extends javax.swing.JInternalFrame {
 
         jbMostrar.setForeground(java.awt.Color.darkGray);
         jbMostrar.setText("Mostrar Clases");
+        jbMostrar.addActionListener(this::jbMostrarActionPerformed);
 
         jDesktopPane1.setLayer(jlTitulo, javax.swing.JLayeredPane.DEFAULT_LAYER);
         jDesktopPane1.setLayer(jlId, javax.swing.JLayeredPane.DEFAULT_LAYER);
@@ -213,23 +268,25 @@ public class vistaClaseGym extends javax.swing.JInternalFrame {
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addComponent(jcbEntrenador, javax.swing.GroupLayout.PREFERRED_SIZE, 132, javax.swing.GroupLayout.PREFERRED_SIZE))))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jDesktopPane1Layout.createSequentialGroup()
-                        .addGap(28, 28, 28)
+                        .addGap(37, 37, 37)
                         .addGroup(jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jbNuevo, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 211, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jbEliminar, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jbActualizar, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 211, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jbGuardar, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 211, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addComponent(jbNuevo, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 211, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(jbActualizar, javax.swing.GroupLayout.PREFERRED_SIZE, 211, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(jbGuardar, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 211, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(jbEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addComponent(jbBuscar, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 211, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addGroup(jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jDesktopPane1Layout.createSequentialGroup()
                         .addGap(18, 18, 18)
-                        .addGroup(jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 329, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jbMostrar, javax.swing.GroupLayout.PREFERRED_SIZE, 323, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+                        .addContainerGap())
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jDesktopPane1Layout.createSequentialGroup()
-                        .addGap(24, 24, 24)
-                        .addComponent(jbAltaBaja, javax.swing.GroupLayout.PREFERRED_SIZE, 323, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(12, Short.MAX_VALUE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 52, Short.MAX_VALUE)
+                        .addGroup(jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jbMostrar, javax.swing.GroupLayout.PREFERRED_SIZE, 323, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jbAltaBaja, javax.swing.GroupLayout.PREFERRED_SIZE, 323, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(20, 20, 20))))
         );
         jDesktopPane1Layout.setVerticalGroup(
             jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -237,15 +294,10 @@ public class vistaClaseGym extends javax.swing.JInternalFrame {
                 .addGroup(jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jlTitulo)
                     .addComponent(jlClases))
-                .addGroup(jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGap(16, 16, 16)
+                .addGroup(jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 335, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(jDesktopPane1Layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 345, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jbAltaBaja)
-                        .addGap(0, 0, Short.MAX_VALUE))
-                    .addGroup(jDesktopPane1Layout.createSequentialGroup()
-                        .addGap(26, 26, 26)
                         .addGroup(jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 0, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jlId)
@@ -272,29 +324,35 @@ public class vistaClaseGym extends javax.swing.JInternalFrame {
                             .addComponent(jrbActivo)
                             .addComponent(jrbInactivo))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jbBuscar)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 14, Short.MAX_VALUE)
-                        .addComponent(jbNuevo)
+                        .addComponent(jbBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(12, 12, 12)
-                        .addComponent(jbGuardar)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jbActualizar)
-                        .addGap(18, 18, 18)
-                        .addGroup(jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jbEliminar)
-                            .addComponent(jbMostrar))))
-                .addGap(13, 13, 13))
+                        .addComponent(jbNuevo)
+                        .addGap(11, 11, 11)
+                        .addComponent(jbGuardar)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jbAltaBaja)
+                    .addComponent(jbActualizar))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jbMostrar)
+                    .addComponent(jbEliminar))
+                .addGap(0, 32, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jDesktopPane1)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jDesktopPane1))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jDesktopPane1)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(jDesktopPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
 
         pack();
@@ -309,19 +367,138 @@ public class vistaClaseGym extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_jrbInactivoActionPerformed
 
     private void jbActualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbActualizarActionPerformed
-        // TODO add your handling code here:
+        if (idClase == -1) {
+            JOptionPane.showMessageDialog(this, "Seleccione una clase de la tabla.");
+            return;
+        }
+        try {
+            String disciplina = jtfNombre.getText().trim();
+            if (disciplina.isEmpty() || jcbEntrenador.getSelectedIndex() == -1) {
+                JOptionPane.showMessageDialog(this, "Complete todos los campos.");
+                return;
+            }
+            Entrenador ent = entrenadores.get(jcbEntrenador.getSelectedIndex());
+            java.time.LocalTime horario = java.time.LocalTime.parse(jtfHorario.getText().trim());
+            int capacidad = Integer.parseInt(jtfCapacidad.getText().trim());
+            if (capacidad <= 0) {
+                JOptionPane.showMessageDialog(this, "La capacidad debe ser mayor a 0.");
+                return;
+            }
+
+            // Constructor CON id: estamos modificando una clase que ya existe
+            ClaseGym c = new ClaseGym(idClase, disciplina, ent, horario, capacidad, jrbActivo.isSelected());
+            claseData.modificarClase(c);   // valida especialidad y horario (sin compararse consigo misma)
+            cargarTabla();
+        } catch (NumberFormatException ex) {
+            JOptionPane.showMessageDialog(this, "La capacidad debe ser un número.");
+        } catch (java.time.format.DateTimeParseException ex) {
+            JOptionPane.showMessageDialog(this, "Horario con formato HH:mm (ej: 09:00, 18:30).");
+        }
     }//GEN-LAST:event_jbActualizarActionPerformed
 
     private void jbGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbGuardarActionPerformed
-        // TODO add your handling code here:
+        try {
+            String disciplina = jtfNombre.getText().trim();
+            if (disciplina.isEmpty() || jtfHorario.getText().trim().isEmpty()
+                    || jtfCapacidad.getText().trim().isEmpty()) {
+                JOptionPane.showMessageDialog(this, "Complete todos los campos.");
+                return;
+            }
+            if (jcbEntrenador.getSelectedIndex() == -1) {
+                JOptionPane.showMessageDialog(this, "Seleccione un entrenador.");
+                return;
+            }
+
+            //El combo y la lista están en el mismo orden: misma posición = mismo entrenador
+            Entrenador ent = entrenadores.get(jcbEntrenador.getSelectedIndex());
+            java.time.LocalTime horario = java.time.LocalTime.parse(jtfHorario.getText().trim()); // HH:mm
+            int capacidad = Integer.parseInt(jtfCapacidad.getText().trim());
+
+            if (capacidad <= 0) {
+                JOptionPane.showMessageDialog(this, "La capacidad debe ser mayor a 0.");
+                return;
+            }
+
+            ClaseGym c = new ClaseGym(disciplina, ent, horario, capacidad, true);
+            claseData.guardarClase(c);   //acá se validan especialidad, entrenador activo y horario
+
+            if (c.getIdClase() > 0) {    //se guardó (la base le asignó un ID)
+                cargarTabla();
+            }
+        } catch (NumberFormatException ex) {
+            JOptionPane.showMessageDialog(this, "La capacidad debe ser un número.");
+        } catch (java.time.format.DateTimeParseException ex) {
+            JOptionPane.showMessageDialog(this, "Horario con formato HH:mm (ej: 09:00, 18:30).");
+        }
     }//GEN-LAST:event_jbGuardarActionPerformed
 
     private void jbAltaBajaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbAltaBajaActionPerformed
-        // TODO add your handling code here:
+        if (idClase == -1) {
+            JOptionPane.showMessageDialog(this, "Seleccione una clase de la tabla.");
+            return;
+        }
+        ClaseGym c = claseData.buscarClasePorId(idClase);
+        if (c.isEstado()) {
+            claseData.darDeBajaClase(idClase);
+            jrbInactivo.setSelected(true);
+        } else {
+            claseData.darDeAltaClase(idClase);
+            jrbActivo.setSelected(true);
+        }
+        cargarTabla();
     }//GEN-LAST:event_jbAltaBajaActionPerformed
+
+    private void jbMostrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbMostrarActionPerformed
+        cargarTabla();
+    }//GEN-LAST:event_jbMostrarActionPerformed
+
+    private void formMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_formMouseClicked
+        int fila = jTable1.getSelectedRow();
+        if (fila == -1) {
+            return;
+        }
+        idClase = Integer.parseInt(modelo.getValueAt(fila, 0).toString());
+        ClaseGym c = claseData.buscarClasePorId(idClase);   // traemos la clase completa de la BD
+        if (c == null) {
+            return;
+        }
+
+        jtfID.setText(String.valueOf(idClase));
+        jtfNombre.setText(c.getNombre());
+        jtfHorario.setText(c.getHorario().toString());      // queda "18:00"
+        jtfCapacidad.setText(String.valueOf(c.getCapacidad()));
+
+        // Buscar en la lista la posición de su entrenador para seleccionarlo en el combo
+        for (int i = 0; i < entrenadores.size(); i++) {
+            if (entrenadores.get(i).getIdEntrenador() == c.getEntrenador().getIdEntrenador()) {
+                jcbEntrenador.setSelectedIndex(i);
+                break;
+            }
+        }
+
+        if (c.isEstado()) {
+            jrbActivo.setSelected(true);
+        } else {
+            jrbInactivo.setSelected(true);
+        }    }//GEN-LAST:event_formMouseClicked
+
+    private void jbNuevoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbNuevoActionPerformed
+        idClase = -1;
+        jtfID.setText("");
+        jtfNombre.setText("");
+        jtfHorario.setText("");
+        jtfCapacidad.setText("");
+        if (jcbEntrenador.getItemCount() > 0) {
+            jcbEntrenador.setSelectedIndex(0);
+        }
+        jrbActivo.setSelected(true);
+        jTable1.clearSelection();
+        jtfNombre.requestFocus();
+    }//GEN-LAST:event_jbNuevoActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.ButtonGroup buttonGroup1;
     private javax.swing.JDesktopPane jDesktopPane1;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JScrollPane jScrollPane1;

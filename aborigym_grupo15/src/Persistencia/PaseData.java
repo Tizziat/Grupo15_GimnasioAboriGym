@@ -1,6 +1,4 @@
-
 package Persistencia;
-
 
 import Modelo.Conexion;
 import java.sql.Connection;
@@ -81,10 +79,11 @@ public class PaseData {
     ////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     // UPDATE pases (Modifica un pase existente)
     public void modificarPase(Pase pase) {
-        // Validar que el paquete de entradas sea 8, 12 o 20
+        // Al modificar, las entradas pueden haber bajado por las asistencias (ej: 7),
+        // así que solo controlamos que no sea negativa. El 8/12/20 se valida al crear el pase.
         int cant = pase.getCantidadEntradas();
-        if (cant != 8 && cant != 12 && cant != 20) {
-            JOptionPane.showMessageDialog(null, "La cantidad de entradas debe ser 8, 12 o 20.");
+        if (cant < 0) {
+            JOptionPane.showMessageDialog(null, "La cantidad de entradas no puede ser negativa.");
             return;
         }
 
