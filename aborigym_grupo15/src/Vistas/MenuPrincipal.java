@@ -134,6 +134,11 @@ public class MenuPrincipal extends javax.swing.JFrame {
         });
 
         jmIclases.setText("Gestion de Clases");
+        jmIclases.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jmIclasesActionPerformed(evt);
+            }
+        });
         jmClaseG.add(jmIclases);
 
         jMenuBar2.add(jmClaseG);
@@ -253,6 +258,21 @@ public class MenuPrincipal extends javax.swing.JFrame {
         }
         jDesktop1.repaint();
     }//GEN-LAST:event_jmClaseGActionPerformed
+
+    private void jmIclasesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmIclasesActionPerformed
+        // TODO add your handling code here:
+        jDesktop1.removeAll();
+        vistaSocio vcg = new vistaSocio();
+        jDesktop1.add(vcg);
+        vcg.setVisible(true);
+        vcg.toFront();
+
+        try {
+            vcg.setMaximum(true);
+        } catch (java.beans.PropertyVetoException e) {
+        }
+        jDesktop1.repaint();
+    }//GEN-LAST:event_jmIclasesActionPerformed
 
     /**
      * @param args the command line arguments

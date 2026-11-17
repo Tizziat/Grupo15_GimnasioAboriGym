@@ -63,67 +63,102 @@ public class vistaSocio extends javax.swing.JInternalFrame {
         jbMostrar = new javax.swing.JButton();
         jButton1 = new javax.swing.JButton();
 
+        setForeground(java.awt.Color.white);
+
         jdescritorio.setPreferredSize(new java.awt.Dimension(669, 501));
         jdescritorio.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        jLid.setForeground(new java.awt.Color(255, 255, 255));
         jLid.setText("ID Socio");
-        jdescritorio.add(jLid, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 299, -1, -1));
+        jdescritorio.add(jLid, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 300, -1, -1));
 
+        jlDNI.setBackground(new java.awt.Color(255, 255, 255));
+        jlDNI.setForeground(new java.awt.Color(255, 255, 255));
         jlDNI.setText("DNI:");
         jdescritorio.add(jlDNI, new org.netbeans.lib.awtextra.AbsoluteConstraints(19, 59, -1, -1));
 
+        jlNombre.setForeground(new java.awt.Color(255, 255, 255));
         jlNombre.setText("Nombre:");
         jdescritorio.add(jlNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(19, 93, -1, -1));
 
+        jlDatos.setBackground(new java.awt.Color(255, 255, 255));
         jlDatos.setFont(new java.awt.Font("Segoe UI Historic", 1, 24)); // NOI18N
+        jlDatos.setForeground(new java.awt.Color(255, 255, 255));
         jlDatos.setText("Datos del Socio");
         jdescritorio.add(jlDatos, new org.netbeans.lib.awtextra.AbsoluteConstraints(39, 0, -1, -1));
 
         jtfID.setEditable(false);
+        jtfID.setForeground(java.awt.Color.darkGray);
+        jtfID.setToolTipText("");
         jtfID.addActionListener(this::jtfIDActionPerformed);
         jdescritorio.add(jtfID, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 299, 69, -1));
+
+        jtfDNI.setForeground(java.awt.Color.darkGray);
+        jtfDNI.setToolTipText("");
         jdescritorio.add(jtfDNI, new org.netbeans.lib.awtextra.AbsoluteConstraints(99, 56, 141, -1));
 
+        jtfNombre.setForeground(java.awt.Color.darkGray);
+        jtfNombre.setToolTipText("");
         jtfNombre.addActionListener(this::jtfNombreActionPerformed);
         jdescritorio.add(jtfNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(99, 90, 141, -1));
 
+        jlApellido.setForeground(new java.awt.Color(255, 255, 255));
         jlApellido.setText("Apellido:");
         jdescritorio.add(jlApellido, new org.netbeans.lib.awtextra.AbsoluteConstraints(19, 127, -1, -1));
 
+        jtfApellido.setForeground(java.awt.Color.darkGray);
+        jtfApellido.setToolTipText("");
         jtfApellido.addActionListener(this::jtfApellidoActionPerformed);
         jdescritorio.add(jtfApellido, new org.netbeans.lib.awtextra.AbsoluteConstraints(99, 124, 141, -1));
 
+        jlEdad.setForeground(new java.awt.Color(255, 255, 255));
         jlEdad.setText("Edad:");
         jdescritorio.add(jlEdad, new org.netbeans.lib.awtextra.AbsoluteConstraints(19, 161, -1, -1));
+
+        jtfEdad.setForeground(java.awt.Color.darkGray);
+        jtfEdad.setToolTipText("");
         jdescritorio.add(jtfEdad, new org.netbeans.lib.awtextra.AbsoluteConstraints(169, 158, 71, -1));
 
+        jlCorreo.setForeground(new java.awt.Color(255, 255, 255));
         jlCorreo.setText("Correo:");
         jdescritorio.add(jlCorreo, new org.netbeans.lib.awtextra.AbsoluteConstraints(19, 195, -1, -1));
+
+        jtfCorreo.setForeground(java.awt.Color.darkGray);
+        jtfCorreo.setToolTipText("");
         jdescritorio.add(jtfCorreo, new org.netbeans.lib.awtextra.AbsoluteConstraints(99, 192, 141, -1));
 
+        jlTelefono.setForeground(new java.awt.Color(255, 255, 255));
         jlTelefono.setText("Telefono:");
         jdescritorio.add(jlTelefono, new org.netbeans.lib.awtextra.AbsoluteConstraints(19, 229, -1, -1));
 
+        jtfTelefono.setForeground(java.awt.Color.darkGray);
+        jtfTelefono.setToolTipText("");
         jtfTelefono.addActionListener(this::jtfTelefonoActionPerformed);
         jdescritorio.add(jtfTelefono, new org.netbeans.lib.awtextra.AbsoluteConstraints(99, 226, 141, -1));
 
+        jlEstado.setForeground(new java.awt.Color(255, 255, 255));
         jlEstado.setText("Estado:");
         jdescritorio.add(jlEstado, new org.netbeans.lib.awtextra.AbsoluteConstraints(19, 260, -1, -1));
 
         buttonGroup1.add(jrbActivo);
+        jrbActivo.setForeground(java.awt.Color.white);
         jrbActivo.setSelected(true);
         jrbActivo.setText("Activo");
         jrbActivo.addActionListener(this::jrbActivoActionPerformed);
         jdescritorio.add(jrbActivo, new org.netbeans.lib.awtextra.AbsoluteConstraints(81, 260, -1, -1));
 
         buttonGroup1.add(jrbInactivo);
+        jrbInactivo.setForeground(java.awt.Color.white);
         jrbInactivo.setText("Inactivo");
         jdescritorio.add(jrbInactivo, new org.netbeans.lib.awtextra.AbsoluteConstraints(175, 260, -1, -1));
 
+        jlListaSocios.setBackground(new java.awt.Color(255, 255, 255));
         jlListaSocios.setFont(new java.awt.Font("Segoe UI Historic", 1, 24)); // NOI18N
+        jlListaSocios.setForeground(new java.awt.Color(255, 255, 255));
         jlListaSocios.setText("Lista de Socios");
         jdescritorio.add(jlListaSocios, new org.netbeans.lib.awtextra.AbsoluteConstraints(373, 0, -1, -1));
 
+        jTable1.setForeground(java.awt.Color.darkGray);
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null, null, null, null, null},
@@ -135,6 +170,7 @@ public class vistaSocio extends javax.swing.JInternalFrame {
                 "ID Socio", "DNI", "Nombre", "Apellido", "Edad", "Correo", "Telefono", "Estado"
             }
         ));
+        jTable1.setToolTipText("");
         jTable1.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jTable1MouseClicked(evt);
@@ -144,31 +180,45 @@ public class vistaSocio extends javax.swing.JInternalFrame {
 
         jdescritorio.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(257, 56, 376, 265));
 
+        jbNuevo.setForeground(java.awt.Color.darkGray);
         jbNuevo.setText("Nuevo");
+        jbNuevo.setToolTipText("");
         jbNuevo.addActionListener(this::jbNuevoActionPerformed);
         jdescritorio.add(jbNuevo, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 380, 229, -1));
 
+        jbActualizar.setForeground(java.awt.Color.darkGray);
         jbActualizar.setText("Actualizar");
+        jbActualizar.setToolTipText("");
         jbActualizar.addActionListener(this::jbActualizarActionPerformed);
         jdescritorio.add(jbActualizar, new org.netbeans.lib.awtextra.AbsoluteConstraints(257, 380, 376, -1));
 
+        jbEliminar.setForeground(java.awt.Color.darkGray);
         jbEliminar.setText("Eliminar");
+        jbEliminar.setToolTipText("");
         jbEliminar.addActionListener(this::jbEliminarActionPerformed);
         jdescritorio.add(jbEliminar, new org.netbeans.lib.awtextra.AbsoluteConstraints(453, 339, 180, -1));
 
+        jbAltaBaja.setForeground(java.awt.Color.darkGray);
         jbAltaBaja.setText("Alta/Baja");
+        jbAltaBaja.setToolTipText("");
         jbAltaBaja.addActionListener(this::jbAltaBajaActionPerformed);
         jdescritorio.add(jbAltaBaja, new org.netbeans.lib.awtextra.AbsoluteConstraints(257, 339, 178, -1));
 
+        jbGuardar.setForeground(java.awt.Color.darkGray);
         jbGuardar.setText("Guardar");
+        jbGuardar.setToolTipText("");
         jbGuardar.addActionListener(this::jbGuardarActionPerformed);
         jdescritorio.add(jbGuardar, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 421, 229, -1));
 
+        jbMostrar.setForeground(java.awt.Color.darkGray);
         jbMostrar.setText("Mostrar Socios");
+        jbMostrar.setToolTipText("");
         jbMostrar.addActionListener(this::jbMostrarActionPerformed);
         jdescritorio.add(jbMostrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(257, 421, 376, -1));
 
+        jButton1.setForeground(java.awt.Color.darkGray);
         jButton1.setText("Buscar");
+        jButton1.setToolTipText("");
         jButton1.addActionListener(this::jButton1ActionPerformed);
         jdescritorio.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 339, 230, -1));
 

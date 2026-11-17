@@ -52,10 +52,12 @@ public class vistaClaseGym extends javax.swing.JInternalFrame {
         jbEliminar = new javax.swing.JButton();
         jbGuardar = new javax.swing.JButton();
         jbBuscar = new javax.swing.JButton();
-        jbMostrar = new javax.swing.JButton();
         jlClases = new javax.swing.JLabel();
+        jbMostrar = new javax.swing.JButton();
 
-        jlTitulo.setFont(new java.awt.Font("Segoe UI Historic", 0, 24)); // NOI18N
+        setForeground(java.awt.Color.darkGray);
+
+        jlTitulo.setFont(new java.awt.Font("Segoe UI Historic", 1, 24)); // NOI18N
         jlTitulo.setForeground(new java.awt.Color(255, 255, 255));
         jlTitulo.setText("Clases del Gym");
 
@@ -63,7 +65,9 @@ public class vistaClaseGym extends javax.swing.JInternalFrame {
         jlId.setText("ID Clase:");
 
         jtfID.setEditable(false);
+        jtfID.setForeground(java.awt.Color.darkGray);
 
+        jTable1.setForeground(java.awt.Color.darkGray);
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
@@ -80,13 +84,19 @@ public class vistaClaseGym extends javax.swing.JInternalFrame {
         jlNombre.setForeground(new java.awt.Color(255, 255, 255));
         jlNombre.setText("Nombre:");
 
+        jtfNombre.setForeground(java.awt.Color.darkGray);
+
         jlEntrenador.setForeground(new java.awt.Color(255, 255, 255));
         jlEntrenador.setText("Entrenador:");
 
         jlHorario.setForeground(new java.awt.Color(255, 255, 255));
         jlHorario.setText("Horario:");
 
+        jtfHorario.setForeground(java.awt.Color.darkGray);
+
         jLabel6.setText("Capacidad");
+
+        jtfCapacidad.setForeground(java.awt.Color.darkGray);
 
         jlCapacidad.setForeground(new java.awt.Color(255, 255, 255));
         jlCapacidad.setText("Capacidad:");
@@ -102,26 +112,36 @@ public class vistaClaseGym extends javax.swing.JInternalFrame {
         jrbInactivo.setText("Inactivo");
         jrbInactivo.addActionListener(this::jrbInactivoActionPerformed);
 
+        jcbEntrenador.setForeground(java.awt.Color.darkGray);
         jcbEntrenador.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
+        jbActualizar.setForeground(java.awt.Color.darkGray);
         jbActualizar.setText("Actualizar");
         jbActualizar.addActionListener(this::jbActualizarActionPerformed);
 
+        jbAltaBaja.setForeground(java.awt.Color.darkGray);
         jbAltaBaja.setText("Alta/Baja");
+        jbAltaBaja.addActionListener(this::jbAltaBajaActionPerformed);
 
+        jbNuevo.setForeground(java.awt.Color.darkGray);
         jbNuevo.setText("Nuevo");
 
+        jbEliminar.setForeground(java.awt.Color.darkGray);
         jbEliminar.setText("Eliminar");
 
+        jbGuardar.setForeground(java.awt.Color.darkGray);
         jbGuardar.setText("Guardar");
+        jbGuardar.addActionListener(this::jbGuardarActionPerformed);
 
+        jbBuscar.setForeground(java.awt.Color.darkGray);
         jbBuscar.setText("Buscar");
-
-        jbMostrar.setText("Mostrar Clases");
 
         jlClases.setFont(new java.awt.Font("Segoe UI Historic", 1, 24)); // NOI18N
         jlClases.setForeground(new java.awt.Color(255, 255, 255));
         jlClases.setText("Lista de Clases");
+
+        jbMostrar.setForeground(java.awt.Color.darkGray);
+        jbMostrar.setText("Mostrar Clases");
 
         jDesktopPane1.setLayer(jlTitulo, javax.swing.JLayeredPane.DEFAULT_LAYER);
         jDesktopPane1.setLayer(jlId, javax.swing.JLayeredPane.DEFAULT_LAYER);
@@ -145,18 +165,24 @@ public class vistaClaseGym extends javax.swing.JInternalFrame {
         jDesktopPane1.setLayer(jbEliminar, javax.swing.JLayeredPane.DEFAULT_LAYER);
         jDesktopPane1.setLayer(jbGuardar, javax.swing.JLayeredPane.DEFAULT_LAYER);
         jDesktopPane1.setLayer(jbBuscar, javax.swing.JLayeredPane.DEFAULT_LAYER);
-        jDesktopPane1.setLayer(jbMostrar, javax.swing.JLayeredPane.DEFAULT_LAYER);
         jDesktopPane1.setLayer(jlClases, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        jDesktopPane1.setLayer(jbMostrar, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
         javax.swing.GroupLayout jDesktopPane1Layout = new javax.swing.GroupLayout(jDesktopPane1);
         jDesktopPane1.setLayout(jDesktopPane1Layout);
         jDesktopPane1Layout.setHorizontalGroup(
             jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jDesktopPane1Layout.createSequentialGroup()
-                .addGroup(jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jDesktopPane1Layout.createSequentialGroup()
-                        .addGap(19, 19, 19)
-                        .addGroup(jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+            .addGroup(jDesktopPane1Layout.createSequentialGroup()
+                .addGap(27, 27, 27)
+                .addComponent(jlTitulo)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jlClases)
+                .addGap(102, 102, 102))
+            .addGroup(jDesktopPane1Layout.createSequentialGroup()
+                .addGroup(jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jDesktopPane1Layout.createSequentialGroup()
+                        .addGap(34, 34, 34)
+                        .addGroup(jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jDesktopPane1Layout.createSequentialGroup()
                                 .addGroup(jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(jlNombre)
@@ -165,15 +191,17 @@ public class vistaClaseGym extends javax.swing.JInternalFrame {
                                         .addComponent(jlCapacidad)
                                         .addComponent(jlHorario, javax.swing.GroupLayout.Alignment.LEADING))
                                     .addComponent(jlId))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addGroup(jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jtfNombre)
+                                .addGroup(jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                     .addGroup(jDesktopPane1Layout.createSequentialGroup()
-                                        .addGroup(jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                            .addComponent(jtfCapacidad)
-                                            .addComponent(jtfHorario)
-                                            .addComponent(jtfID, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                        .addGap(0, 0, Short.MAX_VALUE))))
+                                        .addGap(58, 58, 58)
+                                        .addGroup(jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(jtfHorario, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(jtfCapacidad, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(jtfID, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                        .addGap(6, 6, 6))
+                                    .addGroup(jDesktopPane1Layout.createSequentialGroup()
+                                        .addGap(14, 14, 14)
+                                        .addComponent(jtfNombre))))
                             .addGroup(jDesktopPane1Layout.createSequentialGroup()
                                 .addComponent(jlEstado)
                                 .addGap(20, 20, 20)
@@ -182,54 +210,42 @@ public class vistaClaseGym extends javax.swing.JInternalFrame {
                                 .addComponent(jrbInactivo))
                             .addGroup(jDesktopPane1Layout.createSequentialGroup()
                                 .addComponent(jlEntrenador)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jcbEntrenador, javax.swing.GroupLayout.PREFERRED_SIZE, 138, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 341, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jDesktopPane1Layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jbNuevo, javax.swing.GroupLayout.PREFERRED_SIZE, 223, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jbEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 223, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 0, Short.MAX_VALUE)))
-                .addGap(16, 16, 16))
-            .addGroup(jDesktopPane1Layout.createSequentialGroup()
-                .addContainerGap()
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(jcbEntrenador, javax.swing.GroupLayout.PREFERRED_SIZE, 132, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jDesktopPane1Layout.createSequentialGroup()
+                        .addGap(28, 28, 28)
+                        .addGroup(jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jbNuevo, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 211, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jbEliminar, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jbActualizar, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 211, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jbGuardar, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 211, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jbBuscar, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 211, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addGroup(jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jDesktopPane1Layout.createSequentialGroup()
-                        .addComponent(jbGuardar, javax.swing.GroupLayout.PREFERRED_SIZE, 223, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(12, 12, 12)
-                        .addComponent(jbBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, 223, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jDesktopPane1Layout.createSequentialGroup()
-                        .addComponent(jbActualizar, javax.swing.GroupLayout.PREFERRED_SIZE, 223, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jbAltaBaja, javax.swing.GroupLayout.PREFERRED_SIZE, 223, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 0, Short.MAX_VALUE)))
-                .addGap(18, 18, 18)
-                .addComponent(jbMostrar, javax.swing.GroupLayout.DEFAULT_SIZE, 133, Short.MAX_VALUE)
-                .addGap(10, 10, 10))
-            .addGroup(jDesktopPane1Layout.createSequentialGroup()
-                .addGap(27, 27, 27)
-                .addComponent(jlTitulo)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jlClases)
-                .addGap(96, 96, 96))
+                        .addGap(18, 18, 18)
+                        .addGroup(jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 329, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jbMostrar, javax.swing.GroupLayout.PREFERRED_SIZE, 323, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jDesktopPane1Layout.createSequentialGroup()
+                        .addGap(24, 24, 24)
+                        .addComponent(jbAltaBaja, javax.swing.GroupLayout.PREFERRED_SIZE, 323, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(12, Short.MAX_VALUE))
         );
         jDesktopPane1Layout.setVerticalGroup(
             jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jDesktopPane1Layout.createSequentialGroup()
-                .addGroup(jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jlTitulo)
-                    .addGroup(jDesktopPane1Layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jlClases)))
+                    .addComponent(jlClases))
                 .addGroup(jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jDesktopPane1Layout.createSequentialGroup()
-                        .addGap(15, 15, 15)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 253, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 345, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jbAltaBaja)
+                        .addGap(0, 0, Short.MAX_VALUE))
                     .addGroup(jDesktopPane1Layout.createSequentialGroup()
-                        .addGap(20, 20, 20)
+                        .addGap(26, 26, 26)
                         .addGroup(jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 0, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jlId)
@@ -255,20 +271,19 @@ public class vistaClaseGym extends javax.swing.JInternalFrame {
                             .addComponent(jlEstado)
                             .addComponent(jrbActivo)
                             .addComponent(jrbInactivo))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 78, Short.MAX_VALUE)
-                        .addGroup(jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jbNuevo)
-                            .addComponent(jbEliminar))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jbBuscar)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 14, Short.MAX_VALUE)
+                        .addComponent(jbNuevo)
+                        .addGap(12, 12, 12)
+                        .addComponent(jbGuardar)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jbActualizar)
+                        .addGap(18, 18, 18)
                         .addGroup(jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jbActualizar)
-                            .addComponent(jbAltaBaja)
-                            .addComponent(jbMostrar))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jbGuardar)
-                            .addComponent(jbBuscar))
-                        .addGap(31, 31, 31))))
+                            .addComponent(jbEliminar)
+                            .addComponent(jbMostrar))))
+                .addGap(13, 13, 13))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -296,6 +311,14 @@ public class vistaClaseGym extends javax.swing.JInternalFrame {
     private void jbActualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbActualizarActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jbActualizarActionPerformed
+
+    private void jbGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbGuardarActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jbGuardarActionPerformed
+
+    private void jbAltaBajaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbAltaBajaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jbAltaBajaActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

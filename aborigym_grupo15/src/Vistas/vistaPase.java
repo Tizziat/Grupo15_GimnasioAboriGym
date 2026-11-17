@@ -5,7 +5,9 @@
 package Vistas;
 
 import Modelo.Pase;
+import Modelo.Socio;
 import Persistencia.PaseData;
+import java.math.BigDecimal;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
@@ -58,24 +60,25 @@ public class vistaPase extends javax.swing.JInternalFrame {
         jlFin = new javax.swing.JLabel();
         jtfFin = new javax.swing.JTextField();
         jlCosto = new javax.swing.JLabel();
-        jtfCosto = new javax.swing.JTextField();
+        jDesktopPane1 = new javax.swing.JDesktopPane();
+        jlPase = new javax.swing.JLabel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        jTable1 = new javax.swing.JTable();
+        jbMostrar = new javax.swing.JButton();
+        jbEliminar = new javax.swing.JButton();
+        jbGuardar = new javax.swing.JButton();
+        jbAltaBaja = new javax.swing.JButton();
+        jbNuevo = new javax.swing.JButton();
+        jbActualizar = new javax.swing.JButton();
+        jbBuscar = new javax.swing.JButton();
         jlEstado = new javax.swing.JLabel();
         jrbActivo = new javax.swing.JRadioButton();
         jrbInactivo = new javax.swing.JRadioButton();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
-        jbNuevo = new javax.swing.JButton();
-        jbActualizar = new javax.swing.JButton();
-        jbEliminar = new javax.swing.JButton();
-        jbAltaBaja = new javax.swing.JButton();
-        jbGuardar = new javax.swing.JButton();
-        jbBuscar = new javax.swing.JButton();
-        jbMostrar = new javax.swing.JButton();
-        jDesktopPane1 = new javax.swing.JDesktopPane();
-        jlPase = new javax.swing.JLabel();
+        jtfCosto = new javax.swing.JTextField();
 
         jTextField1.setText("jTextField1");
 
+        setForeground(java.awt.Color.darkGray);
         setPreferredSize(new java.awt.Dimension(600, 600));
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
@@ -89,46 +92,41 @@ public class vistaPase extends javax.swing.JInternalFrame {
         getContentPane().add(jLIdPase, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 70, 65, -1));
 
         jtfIdPase.setEditable(false);
+        jtfIdPase.setForeground(java.awt.Color.darkGray);
         jtfIdPase.addActionListener(this::jtfIdPaseActionPerformed);
         getContentPane().add(jtfIdPase, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 70, 160, -1));
 
         jlCantidad.setForeground(new java.awt.Color(255, 255, 255));
         jlCantidad.setText("Cantidad :");
         getContentPane().add(jlCantidad, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 110, 65, -1));
+
+        jtfCantidad.setForeground(java.awt.Color.darkGray);
         getContentPane().add(jtfCantidad, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 110, 160, -1));
 
         jlInicio.setForeground(new java.awt.Color(255, 255, 255));
         jlInicio.setText("Fecha inicio:");
         getContentPane().add(jlInicio, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 150, -1, -1));
 
+        jtfInicio.setForeground(java.awt.Color.darkGray);
         jtfInicio.addActionListener(this::jtfInicioActionPerformed);
         getContentPane().add(jtfInicio, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 150, 160, -1));
 
         jlFin.setForeground(new java.awt.Color(255, 255, 255));
         jlFin.setText("Fecha fin:");
         getContentPane().add(jlFin, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 190, -1, 20));
+
+        jtfFin.setForeground(java.awt.Color.darkGray);
         getContentPane().add(jtfFin, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 190, 160, -1));
 
         jlCosto.setForeground(new java.awt.Color(255, 255, 255));
         jlCosto.setText("Costo:");
         getContentPane().add(jlCosto, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 230, -1, -1));
 
-        jtfCosto.addActionListener(this::jtfCostoActionPerformed);
-        getContentPane().add(jtfCosto, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 230, 72, -1));
+        jlPase.setFont(new java.awt.Font("Segoe UI Historic", 1, 24)); // NOI18N
+        jlPase.setForeground(new java.awt.Color(255, 255, 255));
+        jlPase.setText("Lista de pases");
 
-        jlEstado.setForeground(new java.awt.Color(255, 255, 255));
-        jlEstado.setText("Estado:");
-        getContentPane().add(jlEstado, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 280, -1, -1));
-
-        jrbActivo.setForeground(new java.awt.Color(255, 255, 255));
-        jrbActivo.setText("Activo");
-        getContentPane().add(jrbActivo, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 280, -1, -1));
-
-        jrbInactivo.setForeground(new java.awt.Color(255, 255, 255));
-        jrbInactivo.setText("Inactivo");
-        jrbInactivo.addActionListener(this::jrbInactivoActionPerformed);
-        getContentPane().add(jrbInactivo, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 280, -1, 20));
-
+        jTable1.setForeground(java.awt.Color.darkGray);
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null, null, null},
@@ -142,59 +140,127 @@ public class vistaPase extends javax.swing.JInternalFrame {
         ));
         jScrollPane1.setViewportView(jTable1);
 
-        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 30, 365, 329));
+        jbMostrar.setForeground(java.awt.Color.darkGray);
+        jbMostrar.setText("Mostrar Pases");
 
+        jbEliminar.setForeground(java.awt.Color.darkGray);
+        jbEliminar.setText("Eliminar");
+        jbEliminar.addActionListener(this::jbEliminarActionPerformed);
+
+        jbGuardar.setForeground(java.awt.Color.darkGray);
+        jbGuardar.setText("Guardar");
+        jbGuardar.addActionListener(this::jbGuardarActionPerformed);
+
+        jbAltaBaja.setForeground(java.awt.Color.darkGray);
+        jbAltaBaja.setText("Alta/Baja");
+        jbAltaBaja.addActionListener(this::jbAltaBajaActionPerformed);
+
+        jbNuevo.setForeground(java.awt.Color.darkGray);
         jbNuevo.setText("Nuevo");
         jbNuevo.setMaximumSize(new java.awt.Dimension(143, 23));
         jbNuevo.setMinimumSize(new java.awt.Dimension(143, 23));
         jbNuevo.addActionListener(this::jbNuevoActionPerformed);
-        getContentPane().add(jbNuevo, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 370, 229, -1));
 
+        jbActualizar.setForeground(java.awt.Color.darkGray);
         jbActualizar.setText("Actualizar");
         jbActualizar.addActionListener(this::jbActualizarActionPerformed);
-        getContentPane().add(jbActualizar, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 400, 229, -1));
 
-        jbEliminar.setText("Eliminar");
-        jbEliminar.addActionListener(this::jbEliminarActionPerformed);
-        getContentPane().add(jbEliminar, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 430, 230, -1));
-
-        jbAltaBaja.setText("Alta/Baja");
-        jbAltaBaja.addActionListener(this::jbAltaBajaActionPerformed);
-        getContentPane().add(jbAltaBaja, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 370, 230, -1));
-
-        jbGuardar.setText("Guardar");
-        jbGuardar.addActionListener(this::jbGuardarActionPerformed);
-        getContentPane().add(jbGuardar, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 400, 229, -1));
-
+        jbBuscar.setForeground(java.awt.Color.darkGray);
         jbBuscar.setText("Buscar");
-        getContentPane().add(jbBuscar, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 430, 229, -1));
 
-        jbMostrar.setText("Mostrar Pases");
-        getContentPane().add(jbMostrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 400, 170, -1));
+        jlEstado.setForeground(new java.awt.Color(255, 255, 255));
+        jlEstado.setText("Estado:");
 
-        jlPase.setFont(new java.awt.Font("Segoe UI Historic", 1, 24)); // NOI18N
-        jlPase.setForeground(new java.awt.Color(255, 255, 255));
-        jlPase.setText("Lista de pases");
+        jrbActivo.setForeground(new java.awt.Color(255, 255, 255));
+        jrbActivo.setText("Activo");
+
+        jrbInactivo.setForeground(new java.awt.Color(255, 255, 255));
+        jrbInactivo.setText("Inactivo");
+        jrbInactivo.addActionListener(this::jrbInactivoActionPerformed);
+
+        jtfCosto.setForeground(java.awt.Color.darkGray);
+        jtfCosto.addActionListener(this::jtfCostoActionPerformed);
 
         jDesktopPane1.setLayer(jlPase, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        jDesktopPane1.setLayer(jScrollPane1, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        jDesktopPane1.setLayer(jbMostrar, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        jDesktopPane1.setLayer(jbEliminar, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        jDesktopPane1.setLayer(jbGuardar, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        jDesktopPane1.setLayer(jbAltaBaja, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        jDesktopPane1.setLayer(jbNuevo, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        jDesktopPane1.setLayer(jbActualizar, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        jDesktopPane1.setLayer(jbBuscar, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        jDesktopPane1.setLayer(jlEstado, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        jDesktopPane1.setLayer(jrbActivo, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        jDesktopPane1.setLayer(jrbInactivo, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        jDesktopPane1.setLayer(jtfCosto, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
         javax.swing.GroupLayout jDesktopPane1Layout = new javax.swing.GroupLayout(jDesktopPane1);
         jDesktopPane1.setLayout(jDesktopPane1Layout);
         jDesktopPane1Layout.setHorizontalGroup(
             jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jDesktopPane1Layout.createSequentialGroup()
-                .addContainerGap(412, Short.MAX_VALUE)
-                .addComponent(jlPase)
-                .addGap(382, 382, 382))
+            .addGroup(jDesktopPane1Layout.createSequentialGroup()
+                .addGap(32, 32, 32)
+                .addGroup(jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jDesktopPane1Layout.createSequentialGroup()
+                        .addComponent(jlPase)
+                        .addGap(117, 117, 117))
+                    .addGroup(jDesktopPane1Layout.createSequentialGroup()
+                        .addGroup(jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addComponent(jbNuevo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jbBuscar, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jDesktopPane1Layout.createSequentialGroup()
+                                .addComponent(jlEstado)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 56, Short.MAX_VALUE)
+                                .addComponent(jrbActivo)
+                                .addGap(13, 13, 13)
+                                .addComponent(jrbInactivo))
+                            .addComponent(jtfCosto, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jbGuardar, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jbActualizar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addGap(46, 46, 46)
+                        .addGroup(jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(jbAltaBaja, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 359, Short.MAX_VALUE)
+                            .addComponent(jbMostrar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jbEliminar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addContainerGap(24, Short.MAX_VALUE))))
         );
         jDesktopPane1Layout.setVerticalGroup(
             jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jDesktopPane1Layout.createSequentialGroup()
-                .addComponent(jlPase)
-                .addGap(0, 438, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jDesktopPane1Layout.createSequentialGroup()
+                .addGroup(jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(jDesktopPane1Layout.createSequentialGroup()
+                        .addComponent(jlPase)
+                        .addGap(29, 29, 29)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 275, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jDesktopPane1Layout.createSequentialGroup()
+                        .addComponent(jtfCosto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addGroup(jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jlEstado)
+                            .addComponent(jrbActivo)
+                            .addComponent(jrbInactivo, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(18, 18, 18)
+                        .addComponent(jbBuscar)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(jDesktopPane1Layout.createSequentialGroup()
+                        .addComponent(jbNuevo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jbGuardar)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jbActualizar))
+                    .addGroup(jDesktopPane1Layout.createSequentialGroup()
+                        .addComponent(jbAltaBaja)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jbEliminar)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jbMostrar)))
+                .addGap(29, 29, 29))
         );
 
-        getContentPane().add(jDesktopPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 950, 470));
+        getContentPane().add(jDesktopPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 690, 470));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -208,7 +274,7 @@ public class vistaPase extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_jtfCostoActionPerformed
 
     private void jbActualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbActualizarActionPerformed
-         if (idPase == -1) {
+        if (idPase == -1) {
             JOptionPane.showMessageDialog(this, "Debe buscar o seleccionar un pase primero.");
             return;
         }
@@ -217,21 +283,39 @@ public class vistaPase extends javax.swing.JInternalFrame {
         String fechaInicio = jtfInicio.getText().trim();
         String fechaFin = jtfFin.getText().trim();
         String costo = jtfCosto.getText().trim();
-        
-//no es combo.
-        if (cantidad.isEmpty() || fechaInicio.isEmpty() || fechaFin.isEmpty() || costo.isEmpty() || jcbEstadogetSelectedIndex() <= 0) {
+
+        //no es combo.
+        if (cantidad.isEmpty() || fechaInicio.isEmpty() || fechaFin.isEmpty() || costo.isEmpty()
+                || (!jrbActivo.isSelected() && !jrbInactivo.isSelected())) {
             JOptionPane.showMessageDialog(this, "Complete todos los campos.");
             return;
         }
-    //cambiar no es combo es radio group
-        String estado  = jcbEstado.getSelectedItem().toString();
-        boolean estado = jrbActivo.isSelected();
-//estado: mal
-        Pase e = new Pase(cantidad, fechaInicio, fechaFin, costo, estado);
-        paseData.actualizarPase(p);
 
-        JOptionPane.showMessageDialog(this, "Datos actualizados correctamente.");
-        cargarTabla();
+        try {
+            int cantidadEntradas = Integer.parseInt(cantidad);
+            java.time.LocalDate fInicio = java.time.LocalDate.parse(fechaInicio); // Formato: AAAA-MM-DD
+            java.time.LocalDate fFin = java.time.LocalDate.parse(fechaFin);
+            java.math.BigDecimal costoPase = new java.math.BigDecimal(costo);
+            boolean estado = jrbActivo.isSelected();
+
+            // Recuperamos el pase actual para mantener el socio asignado originalmente
+            Pase paseActual = paseData.buscarPasePorId(idPase);
+            if (paseActual == null) {
+                JOptionPane.showMessageDialog(this, "No se encontró el pase seleccionado.");
+                return;
+            }
+
+            Pase p = new Pase(idPase, paseActual.getSocio(), cantidadEntradas, fInicio, fFin, costoPase, estado);
+            paseData.modificarPase(p);
+
+            JOptionPane.showMessageDialog(this, "Datos actualizados correctamente.");
+            cargarTabla();
+
+        } catch (NumberFormatException ex) {
+            JOptionPane.showMessageDialog(this, "Cantidad y costo deben ser valores numeros válidos.");
+        } catch (java.time.format.DateTimeParseException ex) {
+            JOptionPane.showMessageDialog(this, "Formato de fecha incorrecto. Use AAAA-MM-DD.");
+        }
     }//GEN-LAST:event_jbActualizarActionPerformed
 
     private void jbEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbEliminarActionPerformed
