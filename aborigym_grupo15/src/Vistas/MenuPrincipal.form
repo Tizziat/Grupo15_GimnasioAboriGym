@@ -173,6 +173,9 @@
           <Dimension value="[669, 501]"/>
         </Property>
       </Properties>
+      <AuxValues>
+        <AuxValue name="JavaCodeGenerator_CreateCodeCustom" type="java.lang.String" value="new DesktopFondo()"/>
+      </AuxValues>
 
       <Layout>
         <DimensionLayout dim="0">

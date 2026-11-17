@@ -216,5 +216,7 @@ public class SocioData {
         } catch (SQLException ex) {
             System.out.println("Error al actualizar socio: " + ex.getMessage());
         }
+    
     }
 }
+  

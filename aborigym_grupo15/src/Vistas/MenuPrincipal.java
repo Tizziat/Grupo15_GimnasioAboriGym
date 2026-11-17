@@ -16,7 +16,9 @@ public class MenuPrincipal extends javax.swing.JFrame {
      * Creates new form NewJFrame
      */
     public MenuPrincipal() {
-        initComponents();
+     initComponents();
+
+    
     }
 
     /**
@@ -33,7 +35,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
         jMenu2 = new javax.swing.JMenu();
         jMenuItem1 = new javax.swing.JMenuItem();
         jMenuItem2 = new javax.swing.JMenuItem();
-        jDesktop1 = new javax.swing.JDesktopPane();
+        jDesktop1 = new DesktopFondo();
         jMenuBar2 = new javax.swing.JMenuBar();
         jmSocio = new javax.swing.JMenu();
         jmISocio = new javax.swing.JMenuItem();

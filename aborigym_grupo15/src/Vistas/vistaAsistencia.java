@@ -4,6 +4,13 @@
  */
 package Vistas;
 
+import Modelo.Asistencia;
+import Modelo.Socio;
+import Persistencia.AsistenciaData;
+import Persistencia.SocioData;
+import java.util.ArrayList;
+import java.util.HashSet;
+
 /**
  *
  * @author Luly2
@@ -14,9 +21,42 @@ public class vistaAsistencia extends javax.swing.JInternalFrame {
      * Creates new form vistaAsistencia
      */
     public vistaAsistencia() {
-        initComponents();
+        //initComponents();
+        cargarComboSocios();
+        limpiarCampos();
     }
 
+    private void cargarComboSocios() {
+        jCBsocio.removeAllItems();
+        SocioData sd = new SocioData();
+        ArrayList<Socio> lista = sd.listarSocios();
+
+        for (Socio socio : lista) {
+            jCBsocio.addItem(socio);
+        }
+    }
+
+    private void limpiarCampos() {
+        jTFid.setText("");
+        jCBsocio.setSelectedIndex(-1);
+        jCBclaseG.setSelectedIndex(-1);
+        jTFfecha.setText("");
+        jCBopcion.setSelectedIndex(-1);
+
+    }
+     private void cargarTabla() {
+//        modelo.setRowCount(0);
+//        for (Asistencia a : AsistenciaData.listarAsistencias()) {
+//            modelo.addRow(new Object[]{
+//                a.getIdAsistencia(),
+//                a.getFechaAsistencia(),
+//                a.getClaseGym(),             ARREGLAR ERROR EN MODELO
+//                a.getSocio(),
+//            
+//            });
+//        }
+//     }
+     }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -84,23 +124,16 @@ public class vistaAsistencia extends javax.swing.JInternalFrame {
         jlFecha.setText("Fecha Asistencia:");
         jDesktopPane1.add(jlFecha, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 183, -1, -1));
 
-        jTFid.setForeground(new java.awt.Color(0, 0, 0));
         jTFid.addActionListener(this::jTFidActionPerformed);
         jDesktopPane1.add(jTFid, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 70, 77, -1));
 
-        jCBsocio.setForeground(new java.awt.Color(0, 0, 0));
-        jCBsocio.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         jCBsocio.addActionListener(this::jCBsocioActionPerformed);
         jDesktopPane1.add(jCBsocio, new org.netbeans.lib.awtextra.AbsoluteConstraints(136, 106, 139, -1));
 
-        jCBclaseG.setForeground(new java.awt.Color(0, 0, 0));
         jCBclaseG.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         jDesktopPane1.add(jCBclaseG, new org.netbeans.lib.awtextra.AbsoluteConstraints(136, 146, 139, -1));
-
-        jTFfecha.setForeground(new java.awt.Color(0, 0, 0));
         jDesktopPane1.add(jTFfecha, new org.netbeans.lib.awtextra.AbsoluteConstraints(136, 180, 139, -1));
 
-        jTable1.setForeground(new java.awt.Color(0, 0, 0));
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
@@ -116,7 +149,6 @@ public class vistaAsistencia extends javax.swing.JInternalFrame {
 
         jDesktopPane1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(294, 66, 362, 386));
 
-        jbNuevo.setForeground(new java.awt.Color(0, 0, 0));
         jbNuevo.setText("Nuevo");
         jbNuevo.addActionListener(this::jbNuevoActionPerformed);
         jDesktopPane1.add(jbNuevo, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 289, 269, -1));
@@ -126,29 +158,23 @@ public class vistaAsistencia extends javax.swing.JInternalFrame {
         jlBuscarPor.setText("Buscar por:");
         jDesktopPane1.add(jlBuscarPor, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 217, -1, -1));
 
-        jCBopcion.setForeground(new java.awt.Color(0, 0, 0));
         jCBopcion.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         jDesktopPane1.add(jCBopcion, new org.netbeans.lib.awtextra.AbsoluteConstraints(136, 214, 139, -1));
 
-        jbBuscar.setForeground(new java.awt.Color(0, 0, 0));
         jbBuscar.setText("Buscar");
         jDesktopPane1.add(jbBuscar, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 254, 269, -1));
 
-        jbModificar.setForeground(new java.awt.Color(0, 0, 0));
         jbModificar.setText("Modificar");
         jbModificar.addActionListener(this::jbModificarActionPerformed);
         jDesktopPane1.add(jbModificar, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 324, 269, -1));
 
-        jbEliminar.setForeground(new java.awt.Color(0, 0, 0));
         jbEliminar.setText("Eliminar");
         jbEliminar.addActionListener(this::jbEliminarActionPerformed);
         jDesktopPane1.add(jbEliminar, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 359, 269, -1));
 
-        jbAltaBaja.setForeground(new java.awt.Color(0, 0, 0));
         jbAltaBaja.setText("Alta/Baja");
         jDesktopPane1.add(jbAltaBaja, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 394, 269, -1));
 
-        jbLimpiar.setForeground(new java.awt.Color(0, 0, 0));
         jbLimpiar.setText("Limpiar");
         jbLimpiar.addActionListener(this::jbLimpiarActionPerformed);
         jDesktopPane1.add(jbLimpiar, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 429, 269, -1));
@@ -165,7 +191,7 @@ public class vistaAsistencia extends javax.swing.JInternalFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jCBsocioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCBsocioActionPerformed
-        // TODO add your handling code here:
+
     }//GEN-LAST:event_jCBsocioActionPerformed
 
     private void jTFidActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTFidActionPerformed
@@ -173,7 +199,13 @@ public class vistaAsistencia extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_jTFidActionPerformed
 
     private void jbNuevoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbNuevoActionPerformed
-        // TODO add your handling code here:
+        jTFid.setText("");
+
+        jCBsocio.setSelectedIndex(-1);
+        jCBclaseG.setSelectedIndex(-1);
+        jTFfecha.setText("");
+        jCBopcion.setSelectedIndex(-1);
+
     }//GEN-LAST:event_jbNuevoActionPerformed
 
     private void jbModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbModificarActionPerformed
@@ -181,18 +213,23 @@ public class vistaAsistencia extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_jbModificarActionPerformed
 
     private void jbEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbEliminarActionPerformed
-        // TODO add your handling code here:
+        int id = Integer.parseInt(jTFid.getText());
+        AsistenciaData ad = new AsistenciaData();
+        ad.eliminarAsistencia(id);
+        limpiarCampos();
+        //cargarTabla();
+
     }//GEN-LAST:event_jbEliminarActionPerformed
 
     private void jbLimpiarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbLimpiarActionPerformed
-        // TODO add your handling code here:
+        limpiarCampos();
     }//GEN-LAST:event_jbLimpiarActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JComboBox<String> jCBclaseG;
     private javax.swing.JComboBox<String> jCBopcion;
-    private javax.swing.JComboBox<String> jCBsocio;
+    private javax.swing.JComboBox<Socio> jCBsocio;
     private javax.swing.JDesktopPane jDesktopPane1;
     private javax.swing.JLabel jLid;
     private javax.swing.JScrollPane jScrollPane1;
@@ -214,3 +251,5 @@ public class vistaAsistencia extends javax.swing.JInternalFrame {
     private javax.swing.JLabel jlSocio;
     // End of variables declaration//GEN-END:variables
 }
+    
+    
