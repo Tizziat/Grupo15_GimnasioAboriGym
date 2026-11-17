@@ -45,11 +45,18 @@ public class AsistenciaData {
             JOptionPane.showMessageDialog(null, "El socio no posee un pase activo o no le quedan clases disponibles.");
             return; // detiene la ejecucion si no tiene pase o cupo
         }
+
         // La clase debe existir, estar activa y tener cupo disponible ese dia
         ClaseGym clase = claseGymData.buscarClasePorId(asistencia.getClaseGym().getIdClase());
-        if (clase == null) {
+        if (clase == null || !clase.isEstado()) {
             JOptionPane.showMessageDialog(null, "La clase no existe o esta dada de baja.");
             return; // detiene la ejecucion si la clase no existe
+        }
+
+        // El socio no debe estar ya anotado en esa misma clase ese mismo dia
+        if (socioYaInscripto(asistencia.getSocio().getIdSocio(), clase.getIdClase(), asistencia.getFechaAsistencia())) {
+            JOptionPane.showMessageDialog(null, "El socio ya se encuentra inscripto en esta clase para esa fecha.");
+            return;
         }
 
         int inscriptos = contarAsistenciasPorClaseYFecha(clase.getIdClase(), asistencia.getFechaAsistencia());
@@ -57,6 +64,7 @@ public class AsistenciaData {
             JOptionPane.showMessageDialog(null, "La clase esta completa (" + inscriptos + "/" + clase.getCapacidad() + ").");
             return; // detiene la ejecucion si no hay cupo
         }
+
         String sql = "INSERT INTO asistencias (ID_Socio, ID_Clase, Fecha_Asistencia) VALUES (?, ?, ?)";
         try {
             PreparedStatement ps = con.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
@@ -81,9 +89,9 @@ public class AsistenciaData {
     }
 
     ////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-    //  UPDATE asistencias (Modifica un registro existente)
+    // UPDATE asistencias (Modifica un registro existente)
     public void modificarAsistencia(Asistencia asistencia) {
-        String sql = " UPDATE asistencias SET ID_Socio = ?, ID_Clase = ?, Fecha_Asistencia = ? WHERE ID_Asistencia = ?";
+        String sql = "UPDATE asistencias SET ID_Socio = ?, ID_Clase = ?, Fecha_Asistencia = ? WHERE ID_Asistencia = ?";
         try {
             PreparedStatement ps = con.prepareStatement(sql);
             ps.setInt(1, asistencia.getSocio().getIdSocio());
@@ -104,8 +112,14 @@ public class AsistenciaData {
     }
 
     ////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-    // DELETE FROM asistencias (Eliminacion fisica del registro)
+    // DELETE FROM asistencias (Eliminacion fisica del registro y reintegro de entrada)
     public void eliminarAsistencia(int idAsistencia) {
+        Asistencia asis = buscarAsistenciaPorId(idAsistencia);
+        if (asis == null) {
+            JOptionPane.showMessageDialog(null, "No se encontro la asistencia especificada.");
+            return;
+        }
+
         String sql = "DELETE FROM asistencias WHERE ID_Asistencia = ?";
         try {
             PreparedStatement ps = con.prepareStatement(sql);
@@ -113,9 +127,12 @@ public class AsistenciaData {
 
             int filas = ps.executeUpdate();
             if (filas > 0) {
+                // Devolvemos 1 entrada al pase activo del socio
+                Pase pase = paseData.obtenerPaseActivoPorSocio(asis.getSocio().getIdSocio());
+                if (pase != null) {
+                    paseData.devolverEntrada(pase.getIdPase());
+                }
                 JOptionPane.showMessageDialog(null, "Registro de asistencia eliminado.");
-            } else {
-                JOptionPane.showMessageDialog(null, "No se encontro la asistencia especificada.");
             }
             ps.close();
         } catch (SQLException ex) {
@@ -202,6 +219,7 @@ public class AsistenciaData {
         return lista;
     }
 
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     // COUNT: cuenta cuántas asistencias tiene una clase en una fecha (para controlar el cupo)
     public int contarAsistenciasPorClaseYFecha(int idClase, LocalDate fecha) {
         String sql = "SELECT COUNT(*) FROM asistencias WHERE id_clase = ? AND fecha_asistencia = ?";
@@ -237,5 +255,48 @@ public class AsistenciaData {
         asistencia.setFechaAsistencia(rs.getDate("Fecha_Asistencia").toLocalDate());
 
         return asistencia;
+    }
+
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    // METODO AUXILIAR: Verifica si el socio ya esta inscripto en esa clase y fecha
+    private boolean socioYaInscripto(int idSocio, int idClase, LocalDate fecha) {
+        String sql = "SELECT COUNT(*) FROM asistencias WHERE ID_Socio = ? AND ID_Clase = ? AND Fecha_Asistencia = ?";
+        try {
+            PreparedStatement ps = con.prepareStatement(sql);
+            ps.setInt(1, idSocio);
+            ps.setInt(2, idClase);
+            ps.setDate(3, Date.valueOf(fecha));
+            ResultSet rs = ps.executeQuery();
+
+            if (rs.next()) {
+                int cantidad = rs.getInt(1);
+                ps.close();
+                return cantidad > 0;
+            }
+            ps.close();
+        } catch (SQLException ex) {
+            System.err.println("Error al verificar inscripcion duplicada: " + ex.getMessage());
+        }
+        return false;
+    }
+
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    // SELECT por Fecha: Filtra las asistencias registradas en una fecha puntual
+    public List<Asistencia> listarPorFecha(LocalDate fecha) {
+        List<Asistencia> lista = new ArrayList<>();
+        String sql = "SELECT * FROM asistencias WHERE Fecha_Asistencia = ? ORDER BY ID_Asistencia DESC";
+        try {
+            PreparedStatement ps = con.prepareStatement(sql);
+            ps.setDate(1, Date.valueOf(fecha));
+            ResultSet rs = ps.executeQuery();
+
+            while (rs.next()) {
+                lista.add(instanciarAsistenciaDesdeResultSet(rs));
+            }
+            ps.close();
+        } catch (SQLException ex) {
+            System.err.println("Error al listar asistencias por fecha: " + ex.getMessage());
+        }
+        return lista;
     }
 }

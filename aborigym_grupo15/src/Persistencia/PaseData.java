@@ -15,49 +15,81 @@ import java.util.ArrayList;
 import java.util.List;
 import javax.swing.JOptionPane;
 
-    public class PaseData {
+public class PaseData {
 
-    private  Connection con ;
- 
+    private Connection con;
+
     private SocioData socioData;
-    
+
     public PaseData() {
         con = Conexion.getConexion();
         socioData = new SocioData();
     }
+
     public void guardarPase(Pase pase) {
-    String sql = "INSERT INTO pases "
-            + "(id_socio, cantidad_entradas, fecha_inicio, fecha_fin, costo, estado) "
-            + "VALUES (?, ?, ?, ?, ?, ?)";
-
-    try (PreparedStatement ps =
-            con.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS)) {
-
-        ps.setInt(1, pase.getSocio().getIdSocio());
-        ps.setInt(2, pase.getCantidadEntradas());
-        ps.setDate(3, java.sql.Date.valueOf(pase.getFechaInicio()));
-        ps.setDate(4, java.sql.Date.valueOf(pase.getFechaFin()));
-        ps.setBigDecimal(5, pase.getCosto());
-        ps.setBoolean(6, pase.isEstado());
-
-        ps.executeUpdate();
-
-        try (ResultSet rs = ps.getGeneratedKeys()) {
-            if (rs.next()) {
-                pase.setIdPase(rs.getInt(1));
-                System.out.println("Pase guardado con éxito. ID: " + pase.getIdPase());
-            }
+        // Validar que el paquete de entradas sea 8, 12 o 20
+        int cant = pase.getCantidadEntradas();
+        if (cant != 8 && cant != 12 && cant != 20) {
+            JOptionPane.showMessageDialog(null, "La cantidad de entradas debe ser 8, 12 o 20.");
+            return;
         }
 
-    } catch (SQLException ex) {
-        System.err.println("Error al guardar el pase: " + ex.getMessage());
+        // Validar que el socio exista y este activo
+        if (pase.getSocio() == null || !pase.getSocio().isEstado()) {
+            JOptionPane.showMessageDialog(null, "El socio no existe o esta inactivo.");
+            return;
+        }
+
+        // Validar que el socio no tenga ya otro pase activo vigente
+        if (obtenerPaseActivoPorSocio(pase.getSocio().getIdSocio()) != null) {
+            JOptionPane.showMessageDialog(null, "El socio ya posee un pase activo vigente.");
+            return;
+        }
+
+        // Calcular automaticamente fecha_fin a 30 dias si no fue asignada
+        if (pase.getFechaFin() == null && pase.getFechaInicio() != null) {
+            pase.setFechaFin(pase.getFechaInicio().plusDays(30));
+        }
+
+        String sql = "INSERT INTO pases "
+                + "(id_socio, cantidad_entradas, fecha_inicio, fecha_fin, costo, estado) "
+                + "VALUES (?, ?, ?, ?, ?, ?)";
+
+        try (PreparedStatement ps = con.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS)) {
+
+            ps.setInt(1, pase.getSocio().getIdSocio());
+            ps.setInt(2, pase.getCantidadEntradas());
+            ps.setDate(3, java.sql.Date.valueOf(pase.getFechaInicio()));
+            ps.setDate(4, java.sql.Date.valueOf(pase.getFechaFin()));
+            ps.setBigDecimal(5, pase.getCosto());
+            ps.setBoolean(6, pase.isEstado());
+
+            ps.executeUpdate();
+
+            try (ResultSet rs = ps.getGeneratedKeys()) {
+                if (rs.next()) {
+                    pase.setIdPase(rs.getInt(1));
+                    System.out.println("Pase guardado con éxito. ID: " + pase.getIdPase());
+                }
+            }
+
+        } catch (SQLException ex) {
+            System.err.println("Error al guardar el pase: " + ex.getMessage());
+        }
     }
-}
+
     ////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     // UPDATE pases (Modifica un pase existente)
     public void modificarPase(Pase pase) {
+        // Validar que el paquete de entradas sea 8, 12 o 20
+        int cant = pase.getCantidadEntradas();
+        if (cant != 8 && cant != 12 && cant != 20) {
+            JOptionPane.showMessageDialog(null, "La cantidad de entradas debe ser 8, 12 o 20.");
+            return;
+        }
+
         String sql = "UPDATE pases SET id_socio = ?, cantidad_entradas = ?, fecha_inicio = ?, fecha_fin = ?, costo = ?, estado = ? "
-                   + "WHERE id_pase = ?";
+                + "WHERE id_pase = ?";
         try {
             PreparedStatement ps = con.prepareStatement(sql);
             ps.setInt(1, pase.getSocio().getIdSocio());
@@ -186,5 +218,75 @@ import javax.swing.JOptionPane;
         pase.setCosto(rs.getBigDecimal("costo"));
         pase.setEstado(rs.getBoolean("estado"));
         return pase;
+    }
+
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    // UPDATE pases (Devuelve 1 entrada si se elimina una asistencia)
+    public void devolverEntrada(int idPase) {
+        String sql = "UPDATE pases SET cantidad_entradas = cantidad_entradas + 1 WHERE id_pase = ?";
+        try {
+            PreparedStatement ps = con.prepareStatement(sql);
+            ps.setInt(1, idPase);
+            ps.executeUpdate();
+            ps.close();
+        } catch (SQLException ex) {
+            System.err.println("Error al devolver entrada: " + ex.getMessage());
+        }
+    }
+
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    // SELECT por Socio (Busca todos los pases de un socio en particular)
+    public List<Pase> buscarPasesPorSocio(int idSocio) {
+        List<Pase> lista = new ArrayList<>();
+        String sql = "SELECT * FROM pases WHERE id_socio = ? ORDER BY fecha_inicio DESC";
+        try {
+            PreparedStatement ps = con.prepareStatement(sql);
+            ps.setInt(1, idSocio);
+            ResultSet rs = ps.executeQuery();
+
+            while (rs.next()) {
+                lista.add(instanciarPaseDesdeResultSet(rs));
+            }
+            ps.close();
+        } catch (SQLException ex) {
+            System.err.println("Error al buscar pases por socio: " + ex.getMessage());
+        }
+        return lista;
+    }
+
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    // ALTA LOGICA: Reactiva un pase dado de baja
+    public void altaLogica(int idPase) {
+        String sql = "UPDATE pases SET estado = 1 WHERE id_pase = ?";
+        try {
+            PreparedStatement ps = con.prepareStatement(sql);
+            ps.setInt(1, idPase);
+            int filas = ps.executeUpdate();
+            if (filas > 0) {
+                JOptionPane.showMessageDialog(null, "Pase activado con éxito.");
+            }
+            ps.close();
+        } catch (SQLException ex) {
+            System.err.println("Error al activar pase: " + ex.getMessage());
+        }
+    }
+
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    // DELETE FROM pases (Eliminacion fisica del pase)
+    public void eliminarPase(int idPase) {
+        String sql = "DELETE FROM pases WHERE id_pase = ?";
+        try {
+            PreparedStatement ps = con.prepareStatement(sql);
+            ps.setInt(1, idPase);
+            int filas = ps.executeUpdate();
+            if (filas > 0) {
+                JOptionPane.showMessageDialog(null, "Pase eliminado con éxito.");
+            } else {
+                JOptionPane.showMessageDialog(null, "No se encontró el pase a eliminar.");
+            }
+            ps.close();
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "No se puede eliminar el pase porque tiene registros asociados.");
+        }
     }
 }
