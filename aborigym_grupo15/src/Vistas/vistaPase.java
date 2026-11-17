@@ -23,23 +23,35 @@ public class vistaPase extends javax.swing.JInternalFrame {
 
     public vistaPase() {
         initComponents();
-        getContentPane().setComponentZOrder(jDesktopPane1, getContentPane().getComponentCount()-1);
-    }
-     private void cargarTabla() {
-         modelo.setRowCount(0);
+        getContentPane().setComponentZOrder(jDesktopPane1, getContentPane().getComponentCount() - 1);
+        modelo.addColumn("ID Pase");
+        modelo.addColumn("ID Socio");
+        modelo.addColumn("Entradas");
+        modelo.addColumn("Fecha Inicio");
+        modelo.addColumn("Fecha Fin");
+        modelo.addColumn("Costo");
+        modelo.addColumn("Estado");
+        jTable1.setModel(modelo);
 
-    for (Pase p : paseData.listarPases()) {
-        modelo.addRow(new Object[]{
-            p.getIdPase(),
-            p.getSocio().getIdSocio(),
-            p.getCantidadEntradas(),
-            p.getFechaInicio(),
-            p.getFechaFin(),
-            p.getCosto(),
-            p.isEstado() ? "Activo" : "Inactivo"
-        });
+        cargarTabla();
     }
-}
+
+    private void cargarTabla() {
+        modelo.setRowCount(0);
+
+        for (Pase p : paseData.listarPases()) {
+            modelo.addRow(new Object[]{
+                p.getIdPase(),
+                p.getSocio().getIdSocio(),
+                p.getCantidadEntradas(),
+                p.getFechaInicio(),
+                p.getFechaFin(),
+                p.getCosto(),
+                p.isEstado() ? "Activo" : "Inactivo"
+            });
+        }
+    }
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -50,6 +62,7 @@ public class vistaPase extends javax.swing.JInternalFrame {
     private void initComponents() {
 
         jTextField1 = new javax.swing.JTextField();
+        buttonGroup1 = new javax.swing.ButtonGroup();
         jlTitulo = new javax.swing.JLabel();
         jLIdPase = new javax.swing.JLabel();
         jtfIdPase = new javax.swing.JTextField();
@@ -80,6 +93,11 @@ public class vistaPase extends javax.swing.JInternalFrame {
 
         setForeground(java.awt.Color.darkGray);
         setPreferredSize(new java.awt.Dimension(600, 600));
+        addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                formMouseClicked(evt);
+            }
+        });
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jlTitulo.setFont(new java.awt.Font("Segoe UI Historic", 1, 24)); // NOI18N
@@ -142,6 +160,7 @@ public class vistaPase extends javax.swing.JInternalFrame {
 
         jbMostrar.setForeground(java.awt.Color.darkGray);
         jbMostrar.setText("Mostrar Pases");
+        jbMostrar.addActionListener(this::jbMostrarActionPerformed);
 
         jbEliminar.setForeground(java.awt.Color.darkGray);
         jbEliminar.setText("Eliminar");
@@ -171,9 +190,11 @@ public class vistaPase extends javax.swing.JInternalFrame {
         jlEstado.setForeground(new java.awt.Color(255, 255, 255));
         jlEstado.setText("Estado:");
 
+        buttonGroup1.add(jrbActivo);
         jrbActivo.setForeground(new java.awt.Color(255, 255, 255));
         jrbActivo.setText("Activo");
 
+        buttonGroup1.add(jrbInactivo);
         jrbInactivo.setForeground(new java.awt.Color(255, 255, 255));
         jrbInactivo.setText("Inactivo");
         jrbInactivo.addActionListener(this::jrbInactivoActionPerformed);
@@ -323,12 +344,49 @@ public class vistaPase extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_jbEliminarActionPerformed
 
     private void jbGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbGuardarActionPerformed
+        try {
+            String dni = JOptionPane.showInputDialog(this, "Ingrese el DNI del socio:");
+            Socio socio = new Persistencia.SocioData().buscarSocio(dni);
+            if (socio == null) {
+                JOptionPane.showMessageDialog(this, "Socio no encontrado.");
+                return;
+            }
+            if (!socio.isEstado()) {
+                JOptionPane.showMessageDialog(this, "El socio está dado de baja.");
+                return;
+            }
 
-       
+            Pase p = new Pase(socio,
+                    Integer.parseInt(jtfCantidad.getText().trim()),
+                    java.time.LocalDate.parse(jtfInicio.getText().trim()),
+                    java.time.LocalDate.parse(jtfFin.getText().trim()),
+                    new BigDecimal(jtfCosto.getText().trim()),
+                    true);
+
+            if (p.getFechaFin().isBefore(p.getFechaInicio())) {
+                JOptionPane.showMessageDialog(this, "La fecha de fin no puede ser anterior a la de inicio.");
+                return;
+            }
+
+            paseData.guardarPase(p);
+            JOptionPane.showMessageDialog(this, "Pase guardado. ID: " + p.getIdPase());
+            cargarTabla();
+        } catch (Exception ex) {
+            JOptionPane.showMessageDialog(this, "Datos inválidos: cantidad y costo numéricos, fechas AAAA-MM-DD.");
+        }
+
     }//GEN-LAST:event_jbGuardarActionPerformed
 
     private void jbNuevoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbNuevoActionPerformed
-        // TODO add your handling code here:
+        idPase = -1;
+        jtfIdPase.setText("");
+        jtfCantidad.setText("");
+        jtfInicio.setText("");
+        jtfFin.setText("");
+        jtfCosto.setText("");
+        jrbActivo.setSelected(true); // un pase nuevo arranca activo
+        jTable1.clearSelection();    // desmarca la fila de la tabla
+        jtfCantidad.requestFocus();  // pone el cursor en Cantidad
     }//GEN-LAST:event_jbNuevoActionPerformed
 
     private void jtfIdPaseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jtfIdPaseActionPerformed
@@ -340,11 +398,53 @@ public class vistaPase extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_jrbInactivoActionPerformed
 
     private void jbAltaBajaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbAltaBajaActionPerformed
-        // TODO add your handling code here:
+        if (idPase == -1) {
+            JOptionPane.showMessageDialog(this, "Seleccione un pase de la tabla.");
+            return;
+        }
+
+        Pase p = paseData.buscarPasePorId(idPase); //traemos el pase actual de la BD
+        if (p == null) {
+            JOptionPane.showMessageDialog(this, "No se encontró el pase.");
+            return;
+        }
+
+        if (p.isEstado()) {
+            paseData.cancelarPase(idPase);           //activo → inactivo
+            jrbInactivo.setSelected(true);
+        } else {
+            p.setEstado(true);                       //inactivo → activo
+            paseData.modificarPase(p);
+            jrbActivo.setSelected(true);
+        }
+        cargarTabla();
     }//GEN-LAST:event_jbAltaBajaActionPerformed
+
+    private void jbMostrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbMostrarActionPerformed
+        cargarTabla();
+    }//GEN-LAST:event_jbMostrarActionPerformed
+
+    private void formMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_formMouseClicked
+        int fila = jTable1.getSelectedRow();   // número de fila clickeada (-1 si ninguna)
+        if (fila != -1) {
+            idPase = Integer.parseInt(modelo.getValueAt(fila, 0).toString());
+            jtfIdPase.setText(String.valueOf(idPase));
+            jtfCantidad.setText(modelo.getValueAt(fila, 2).toString());
+            jtfInicio.setText(modelo.getValueAt(fila, 3).toString());
+            jtfFin.setText(modelo.getValueAt(fila, 4).toString());
+            jtfCosto.setText(modelo.getValueAt(fila, 5).toString());
+
+            if (modelo.getValueAt(fila, 6).toString().equals("Activo")) {
+                jrbActivo.setSelected(true);
+            } else {
+                jrbInactivo.setSelected(true);
+            }
+        }
+    }//GEN-LAST:event_formMouseClicked
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.ButtonGroup buttonGroup1;
     private javax.swing.JDesktopPane jDesktopPane1;
     private javax.swing.JLabel jLIdPase;
     private javax.swing.JScrollPane jScrollPane1;

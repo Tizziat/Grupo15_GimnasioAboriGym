@@ -262,7 +262,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
     private void jmIclasesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmIclasesActionPerformed
         // TODO add your handling code here:
         jDesktop1.removeAll();
-        vistaSocio vcg = new vistaSocio();
+        vistaClaseGym vcg = new vistaClaseGym();
         jDesktop1.add(vcg);
         vcg.setVisible(true);
         vcg.toFront();
