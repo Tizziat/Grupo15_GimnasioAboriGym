@@ -4,20 +4,40 @@
  */
 package Vistas;
 
+import Modelo.Pase;
+import Persistencia.PaseData;
+import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
+
 /**
  *
  * @author Luly2
  */
 public class vistaPase extends javax.swing.JInternalFrame {
 
-    /**
-     * Creates new form vistaPase
-     */
+    private DefaultTableModel modelo = new DefaultTableModel();
+    private int idPase = -1;
+    private PaseData paseData = new PaseData();
+
     public vistaPase() {
         initComponents();
         getContentPane().setComponentZOrder(jDesktopPane1, getContentPane().getComponentCount()-1);
     }
+     private void cargarTabla() {
+         modelo.setRowCount(0);
 
+    for (Pase p : paseData.listarPases()) {
+        modelo.addRow(new Object[]{
+            p.getIdPase(),
+            p.getSocio().getIdSocio(),
+            p.getCantidadEntradas(),
+            p.getFechaInicio(),
+            p.getFechaFin(),
+            p.getCosto(),
+            p.isEstado() ? "Activo" : "Inactivo"
+        });
+    }
+}
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -188,7 +208,30 @@ public class vistaPase extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_jtfCostoActionPerformed
 
     private void jbActualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbActualizarActionPerformed
-        // TODO add your handling code here:
+         if (idPase == -1) {
+            JOptionPane.showMessageDialog(this, "Debe buscar o seleccionar un pase primero.");
+            return;
+        }
+
+        String cantidad = jtfCantidad.getText().trim();
+        String fechaInicio = jtfInicio.getText().trim();
+        String fechaFin = jtfFin.getText().trim();
+        String costo = jtfCosto.getText().trim();
+        
+//no es combo.
+        if (cantidad.isEmpty() || fechaInicio.isEmpty() || fechaFin.isEmpty() || costo.isEmpty() || jcbEstadogetSelectedIndex() <= 0) {
+            JOptionPane.showMessageDialog(this, "Complete todos los campos.");
+            return;
+        }
+    //cambiar no es combo es radio group
+        String estado  = jcbEstado.getSelectedItem().toString();
+        boolean estado = jrbActivo.isSelected();
+//estado: mal
+        Pase e = new Pase(cantidad, fechaInicio, fechaFin, costo, estado);
+        paseData.actualizarPase(p);
+
+        JOptionPane.showMessageDialog(this, "Datos actualizados correctamente.");
+        cargarTabla();
     }//GEN-LAST:event_jbActualizarActionPerformed
 
     private void jbEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbEliminarActionPerformed

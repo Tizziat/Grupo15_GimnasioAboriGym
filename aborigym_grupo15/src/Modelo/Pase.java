@@ -47,6 +47,7 @@ public class Pase {
     public void setIdPase(int idPase) {
         this.idPase = idPase;
     }
+    
 
     public Socio getSocio() {
         return socio;
