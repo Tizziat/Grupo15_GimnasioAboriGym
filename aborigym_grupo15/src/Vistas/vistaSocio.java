@@ -205,42 +205,49 @@ jdescritorio.setOpaque(false);
         jbNuevo.setForeground(java.awt.Color.darkGray);
         jbNuevo.setText("Nuevo");
         jbNuevo.setToolTipText("");
+        jbNuevo.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jbNuevo.addActionListener(this::jbNuevoActionPerformed);
         jdescritorio.add(jbNuevo, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 380, 229, -1));
 
         jbActualizar.setForeground(java.awt.Color.darkGray);
         jbActualizar.setText("Actualizar");
         jbActualizar.setToolTipText("");
+        jbActualizar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jbActualizar.addActionListener(this::jbActualizarActionPerformed);
         jdescritorio.add(jbActualizar, new org.netbeans.lib.awtextra.AbsoluteConstraints(257, 380, 376, -1));
 
         jbEliminar.setForeground(java.awt.Color.darkGray);
         jbEliminar.setText("Eliminar");
         jbEliminar.setToolTipText("");
+        jbEliminar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jbEliminar.addActionListener(this::jbEliminarActionPerformed);
         jdescritorio.add(jbEliminar, new org.netbeans.lib.awtextra.AbsoluteConstraints(453, 339, 180, -1));
 
         jbAltaBaja.setForeground(java.awt.Color.darkGray);
         jbAltaBaja.setText("Alta/Baja");
         jbAltaBaja.setToolTipText("");
+        jbAltaBaja.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jbAltaBaja.addActionListener(this::jbAltaBajaActionPerformed);
         jdescritorio.add(jbAltaBaja, new org.netbeans.lib.awtextra.AbsoluteConstraints(257, 339, 178, -1));
 
         jbGuardar.setForeground(java.awt.Color.darkGray);
         jbGuardar.setText("Guardar");
         jbGuardar.setToolTipText("");
+        jbGuardar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jbGuardar.addActionListener(this::jbGuardarActionPerformed);
         jdescritorio.add(jbGuardar, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 421, 229, -1));
 
         jbMostrar.setForeground(java.awt.Color.darkGray);
         jbMostrar.setText("Mostrar Socios");
         jbMostrar.setToolTipText("");
+        jbMostrar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jbMostrar.addActionListener(this::jbMostrarActionPerformed);
         jdescritorio.add(jbMostrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(257, 421, 376, -1));
 
         jButton1.setForeground(java.awt.Color.darkGray);
         jButton1.setText("Buscar");
         jButton1.setToolTipText("");
+        jButton1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jButton1.addActionListener(this::jButton1ActionPerformed);
         jdescritorio.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 339, 230, -1));
 
