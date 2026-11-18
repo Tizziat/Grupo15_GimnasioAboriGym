@@ -13,10 +13,13 @@ public class DesktopFondo extends JDesktopPane {
     private final Image fondo;
 
     public DesktopFondo() {
-        fondo = new ImageIcon(
-            getClass().getResource("/imagenes/fondo.jpeg")
-        ).getImage();
-    }
+        java.net.URL ruta = DesktopFondo.class.getResource("/imagenes/fondo.jpeg");
+
+    System.out.println(ruta);
+
+    fondo = new ImageIcon(ruta).getImage();
+}
+     
 
     @Override
     protected void paintComponent(Graphics g) {

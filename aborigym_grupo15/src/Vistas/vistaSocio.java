@@ -15,14 +15,25 @@ import javax.swing.table.DefaultTableModel;
  */
 public class vistaSocio extends javax.swing.JInternalFrame {
 
+       
     /**
      * Creates new form vistaSocio
      */
     public vistaSocio() {
         initComponents();
         cargarTabla();
-    }
+        
+      ((javax.swing.JComponent) this.getContentPane()).setOpaque(false);
+      jdescritorio.setOpaque(false);
+      jdescritorio.setBackground(new java.awt.Color(0, 0, 0, 0)); 
 
+
+this.setBackground(new java.awt.Color(0, 0, 0, 0));
+this.getRootPane().setOpaque(false);
+((javax.swing.JComponent) this.getContentPane()).setOpaque(false);
+jdescritorio.setOpaque(false);
+        
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -65,18 +76,22 @@ public class vistaSocio extends javax.swing.JInternalFrame {
 
         setForeground(java.awt.Color.white);
 
+        jdescritorio.setOpaque(false);
         jdescritorio.setPreferredSize(new java.awt.Dimension(669, 501));
         jdescritorio.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        jLid.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLid.setForeground(new java.awt.Color(255, 255, 255));
         jLid.setText("ID Socio");
         jdescritorio.add(jLid, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 300, -1, -1));
 
         jlDNI.setBackground(new java.awt.Color(255, 255, 255));
+        jlDNI.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jlDNI.setForeground(new java.awt.Color(255, 255, 255));
         jlDNI.setText("DNI:");
         jdescritorio.add(jlDNI, new org.netbeans.lib.awtextra.AbsoluteConstraints(19, 59, -1, -1));
 
+        jlNombre.setFont(new java.awt.Font("Segoe UI Black", 1, 14)); // NOI18N
         jlNombre.setForeground(new java.awt.Color(255, 255, 255));
         jlNombre.setText("Nombre:");
         jdescritorio.add(jlNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(19, 93, -1, -1));
@@ -102,6 +117,7 @@ public class vistaSocio extends javax.swing.JInternalFrame {
         jtfNombre.addActionListener(this::jtfNombreActionPerformed);
         jdescritorio.add(jtfNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(99, 90, 141, -1));
 
+        jlApellido.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jlApellido.setForeground(new java.awt.Color(255, 255, 255));
         jlApellido.setText("Apellido:");
         jdescritorio.add(jlApellido, new org.netbeans.lib.awtextra.AbsoluteConstraints(19, 127, -1, -1));
@@ -111,6 +127,7 @@ public class vistaSocio extends javax.swing.JInternalFrame {
         jtfApellido.addActionListener(this::jtfApellidoActionPerformed);
         jdescritorio.add(jtfApellido, new org.netbeans.lib.awtextra.AbsoluteConstraints(99, 124, 141, -1));
 
+        jlEdad.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jlEdad.setForeground(new java.awt.Color(255, 255, 255));
         jlEdad.setText("Edad:");
         jdescritorio.add(jlEdad, new org.netbeans.lib.awtextra.AbsoluteConstraints(19, 161, -1, -1));
@@ -119,6 +136,7 @@ public class vistaSocio extends javax.swing.JInternalFrame {
         jtfEdad.setToolTipText("");
         jdescritorio.add(jtfEdad, new org.netbeans.lib.awtextra.AbsoluteConstraints(169, 158, 71, -1));
 
+        jlCorreo.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jlCorreo.setForeground(new java.awt.Color(255, 255, 255));
         jlCorreo.setText("Correo:");
         jdescritorio.add(jlCorreo, new org.netbeans.lib.awtextra.AbsoluteConstraints(19, 195, -1, -1));
@@ -127,6 +145,7 @@ public class vistaSocio extends javax.swing.JInternalFrame {
         jtfCorreo.setToolTipText("");
         jdescritorio.add(jtfCorreo, new org.netbeans.lib.awtextra.AbsoluteConstraints(99, 192, 141, -1));
 
+        jlTelefono.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jlTelefono.setForeground(new java.awt.Color(255, 255, 255));
         jlTelefono.setText("Telefono:");
         jdescritorio.add(jlTelefono, new org.netbeans.lib.awtextra.AbsoluteConstraints(19, 229, -1, -1));
@@ -136,11 +155,13 @@ public class vistaSocio extends javax.swing.JInternalFrame {
         jtfTelefono.addActionListener(this::jtfTelefonoActionPerformed);
         jdescritorio.add(jtfTelefono, new org.netbeans.lib.awtextra.AbsoluteConstraints(99, 226, 141, -1));
 
+        jlEstado.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jlEstado.setForeground(new java.awt.Color(255, 255, 255));
         jlEstado.setText("Estado:");
         jdescritorio.add(jlEstado, new org.netbeans.lib.awtextra.AbsoluteConstraints(19, 260, -1, -1));
 
         buttonGroup1.add(jrbActivo);
+        jrbActivo.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jrbActivo.setForeground(java.awt.Color.white);
         jrbActivo.setSelected(true);
         jrbActivo.setText("Activo");
@@ -148,6 +169,7 @@ public class vistaSocio extends javax.swing.JInternalFrame {
         jdescritorio.add(jrbActivo, new org.netbeans.lib.awtextra.AbsoluteConstraints(81, 260, -1, -1));
 
         buttonGroup1.add(jrbInactivo);
+        jrbInactivo.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jrbInactivo.setForeground(java.awt.Color.white);
         jrbInactivo.setText("Inactivo");
         jdescritorio.add(jrbInactivo, new org.netbeans.lib.awtextra.AbsoluteConstraints(175, 260, -1, -1));

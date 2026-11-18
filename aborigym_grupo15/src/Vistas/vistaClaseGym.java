@@ -37,6 +37,15 @@ public class vistaClaseGym extends javax.swing.JInternalFrame {
 
         cargarEntrenadores();
         cargarTabla();
+        ((javax.swing.JComponent) this.getContentPane()).setOpaque(false);
+      jDesktopPane1.setOpaque(false);
+      jDesktopPane1.setBackground(new java.awt.Color(0, 0, 0, 0)); 
+
+
+this.setBackground(new java.awt.Color(0, 0, 0, 0));
+this.getRootPane().setOpaque(false);
+((javax.swing.JComponent) this.getContentPane()).setOpaque(false);
+jDesktopPane1.setOpaque(false);
     }
 
     private void cargarEntrenadores() {
@@ -112,6 +121,7 @@ public class vistaClaseGym extends javax.swing.JInternalFrame {
         jlTitulo.setForeground(new java.awt.Color(255, 255, 255));
         jlTitulo.setText("Clases del Gym");
 
+        jlId.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jlId.setForeground(new java.awt.Color(255, 255, 255));
         jlId.setText("ID Clase:");
 
@@ -132,14 +142,17 @@ public class vistaClaseGym extends javax.swing.JInternalFrame {
         ));
         jScrollPane1.setViewportView(jTable1);
 
+        jlNombre.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jlNombre.setForeground(new java.awt.Color(255, 255, 255));
         jlNombre.setText("Nombre:");
 
         jtfNombre.setForeground(java.awt.Color.darkGray);
 
+        jlEntrenador.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jlEntrenador.setForeground(new java.awt.Color(255, 255, 255));
         jlEntrenador.setText("Entrenador:");
 
+        jlHorario.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jlHorario.setForeground(new java.awt.Color(255, 255, 255));
         jlHorario.setText("Horario:");
 
@@ -149,18 +162,22 @@ public class vistaClaseGym extends javax.swing.JInternalFrame {
 
         jtfCapacidad.setForeground(java.awt.Color.darkGray);
 
+        jlCapacidad.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jlCapacidad.setForeground(new java.awt.Color(255, 255, 255));
         jlCapacidad.setText("Capacidad:");
 
+        jlEstado.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jlEstado.setForeground(new java.awt.Color(255, 255, 255));
         jlEstado.setText("Estado:");
 
         buttonGroup1.add(jrbActivo);
+        jrbActivo.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jrbActivo.setForeground(new java.awt.Color(255, 255, 255));
         jrbActivo.setText("Activo");
         jrbActivo.addActionListener(this::jrbActivoActionPerformed);
 
         buttonGroup1.add(jrbInactivo);
+        jrbInactivo.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jrbInactivo.setForeground(new java.awt.Color(255, 255, 255));
         jrbInactivo.setText("Inactivo");
         jrbInactivo.addActionListener(this::jrbInactivoActionPerformed);
@@ -282,7 +299,7 @@ public class vistaClaseGym extends javax.swing.JInternalFrame {
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
                         .addContainerGap())
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jDesktopPane1Layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 52, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 29, Short.MAX_VALUE)
                         .addGroup(jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jbMostrar, javax.swing.GroupLayout.PREFERRED_SIZE, 323, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jbAltaBaja, javax.swing.GroupLayout.PREFERRED_SIZE, 323, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -337,7 +354,7 @@ public class vistaClaseGym extends javax.swing.JInternalFrame {
                 .addGroup(jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jbMostrar)
                     .addComponent(jbEliminar))
-                .addGap(0, 32, Short.MAX_VALUE))
+                .addGap(0, 50, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -350,9 +367,7 @@ public class vistaClaseGym extends javax.swing.JInternalFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(jDesktopPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
+            .addComponent(jDesktopPane1)
         );
 
         pack();

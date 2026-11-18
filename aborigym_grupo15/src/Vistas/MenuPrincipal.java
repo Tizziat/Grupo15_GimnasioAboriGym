@@ -183,6 +183,8 @@ public class MenuPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_jmSalirActionPerformed
 
     private void jmISocioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmISocioActionPerformed
+    
+   
         jDesktop1.removeAll();
         vistaSocio vs = new vistaSocio();
         jDesktop1.add(vs);
@@ -194,10 +196,12 @@ public class MenuPrincipal extends javax.swing.JFrame {
         } catch (java.beans.PropertyVetoException e) {
         }
         jDesktop1.repaint();
+        
 
     }//GEN-LAST:event_jmISocioActionPerformed
 
     private void jmIasistenciaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmIasistenciaActionPerformed
+        
         jDesktop1.removeAll();
         vistaAsistencia va  = new vistaAsistencia();
         jDesktop1.add(va);

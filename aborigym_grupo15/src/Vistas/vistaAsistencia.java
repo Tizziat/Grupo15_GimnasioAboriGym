@@ -11,6 +11,7 @@ import Persistencia.SocioData;
 import java.util.ArrayList;
 import java.util.HashSet;
 
+
 /**
  *
  * @author Luly2
@@ -24,6 +25,16 @@ public class vistaAsistencia extends javax.swing.JInternalFrame {
         initComponents();
         cargarComboSocios();
         limpiarCampos();
+        cargarClases();
+        ((javax.swing.JComponent) this.getContentPane()).setOpaque(false);
+      jDesktopPane1.setOpaque(false);
+      jDesktopPane1.setBackground(new java.awt.Color(0, 0, 0, 0)); 
+
+
+this.setBackground(new java.awt.Color(0, 0, 0, 0));
+this.getRootPane().setOpaque(false);
+((javax.swing.JComponent) this.getContentPane()).setOpaque(false);
+jDesktopPane1.setOpaque(false);
     }
 
     private void cargarComboSocios() {
@@ -42,8 +53,17 @@ public class vistaAsistencia extends javax.swing.JInternalFrame {
         jCBclaseG.setSelectedIndex(-1);
         jTFfecha.setText("");
         jCBopcion.setSelectedIndex(-1);
-
     }
+
+    private void cargarClases() {
+        jCBclaseG.removeAllItems();
+        jCBclaseG.addItem("Seleccione..");
+        jCBclaseG.addItem("Musculacion");
+        jCBclaseG.addItem("CrossFit");
+        jCBclaseG.addItem("Spinning");
+        jCBclaseG.addItem("Pilates");
+    }
+
      private void cargarTabla() {
 //        modelo.setRowCount(0);
 //        for (Asistencia a : AsistenciaData.listarAsistencias()) {
@@ -105,27 +125,31 @@ public class vistaAsistencia extends javax.swing.JInternalFrame {
         jDesktopPane1.add(jlDatos, new org.netbeans.lib.awtextra.AbsoluteConstraints(15, 15, -1, -1));
 
         jLid.setBackground(new java.awt.Color(255, 255, 255));
+        jLid.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLid.setForeground(new java.awt.Color(255, 255, 255));
         jLid.setText("ID Asistencia:");
-        jDesktopPane1.add(jLid, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 69, -1, -1));
+        jDesktopPane1.add(jLid, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 70, -1, -1));
 
         jlSocio.setBackground(new java.awt.Color(255, 255, 255));
+        jlSocio.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jlSocio.setForeground(new java.awt.Color(255, 255, 255));
         jlSocio.setText("Socio:");
-        jDesktopPane1.add(jlSocio, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 109, -1, -1));
+        jDesktopPane1.add(jlSocio, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 110, -1, -1));
 
         jlClaseGym.setBackground(new java.awt.Color(255, 255, 255));
+        jlClaseGym.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jlClaseGym.setForeground(new java.awt.Color(255, 255, 255));
         jlClaseGym.setText("Clase Gym:");
-        jDesktopPane1.add(jlClaseGym, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 149, -1, -1));
+        jDesktopPane1.add(jlClaseGym, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 150, -1, -1));
 
         jlFecha.setBackground(new java.awt.Color(255, 255, 255));
+        jlFecha.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jlFecha.setForeground(new java.awt.Color(255, 255, 255));
         jlFecha.setText("Fecha Asistencia:");
         jDesktopPane1.add(jlFecha, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 183, -1, -1));
 
         jTFid.addActionListener(this::jTFidActionPerformed);
-        jDesktopPane1.add(jTFid, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 70, 77, -1));
+        jDesktopPane1.add(jTFid, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 70, 77, -1));
 
         jCBsocio.addActionListener(this::jCBsocioActionPerformed);
         jDesktopPane1.add(jCBsocio, new org.netbeans.lib.awtextra.AbsoluteConstraints(136, 106, 139, -1));
@@ -154,9 +178,10 @@ public class vistaAsistencia extends javax.swing.JInternalFrame {
         jDesktopPane1.add(jbNuevo, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 289, 269, -1));
 
         jlBuscarPor.setBackground(new java.awt.Color(255, 255, 255));
+        jlBuscarPor.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jlBuscarPor.setForeground(new java.awt.Color(255, 255, 255));
         jlBuscarPor.setText("Buscar por:");
-        jDesktopPane1.add(jlBuscarPor, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 217, -1, -1));
+        jDesktopPane1.add(jlBuscarPor, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 220, -1, -1));
 
         jCBopcion.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         jDesktopPane1.add(jCBopcion, new org.netbeans.lib.awtextra.AbsoluteConstraints(136, 214, 139, -1));
