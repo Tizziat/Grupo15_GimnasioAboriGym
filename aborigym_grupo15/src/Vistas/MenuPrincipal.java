@@ -17,6 +17,9 @@ public class MenuPrincipal extends javax.swing.JFrame {
      */
     public MenuPrincipal() {
      initComponents();
+     
+    javax.swing.ImageIcon icono = new javax.swing.ImageIcon(getClass().getResource("/imagenes/logoAborigym.jpeg"));
+    this.setIconImage(icono.getImage());
 
     
     }
@@ -35,7 +38,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
         jMenu2 = new javax.swing.JMenu();
         jMenuItem1 = new javax.swing.JMenuItem();
         jMenuItem2 = new javax.swing.JMenuItem();
-        jDesktop1 = new DesktopFondo();
+        jDesktop1 = new DesktopFondo("/imagenes/fondoAborigym.jpeg");
         jMenuBar2 = new javax.swing.JMenuBar();
         jmSocio = new javax.swing.JMenu();
         jmISocio = new javax.swing.JMenuItem();

@@ -13,18 +13,21 @@ public class DesktopFondo extends JDesktopPane {
     private final Image fondo;
 
     public DesktopFondo() {
-        java.net.URL ruta = DesktopFondo.class.getResource("/imagenes/fondo.jpeg");
-
-    System.out.println(ruta);
-
-    fondo = new ImageIcon(ruta).getImage();
+        this("/imagenes/fondo.jpeg");
+    }
+    
+    public DesktopFondo(String rutaImagen) {
+        java.net.URL ruta = DesktopFondo.class.getResource(rutaImagen);
+        fondo = new ImageIcon(ruta).getImage();
 }
      
 
     @Override
     protected void paintComponent(Graphics g) {
         super.paintComponent(g);
-        g.drawImage(fondo, 0, 0, getWidth(), getHeight(), this);
+        if (fondo != null) {
+            g.drawImage(fondo, 0, 0, getWidth(), getHeight(), this);
+        }
     }
 }
 

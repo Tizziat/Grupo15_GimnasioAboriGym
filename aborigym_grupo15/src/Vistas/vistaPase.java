@@ -35,15 +35,7 @@ public class vistaPase extends javax.swing.JInternalFrame {
         cargarComboSocios();
         limpiarCampos();
         cargarTabla(paseData.listarPases());
-
-        ((javax.swing.JComponent) this.getContentPane()).setOpaque(false);
-        jDesktopPane1.setOpaque(false);
-        jDesktopPane1.setBackground(new java.awt.Color(0, 0, 0, 0));
-
-        this.setBackground(new java.awt.Color(0, 0, 0, 0));
-        this.getRootPane().setOpaque(false);
-        ((javax.swing.JComponent) this.getContentPane()).setOpaque(false);
-        jDesktopPane1.setOpaque(false);
+    
     }
 
     private void cargarComboSocios() {
@@ -92,7 +84,7 @@ public class vistaPase extends javax.swing.JInternalFrame {
 
         jTextField1 = new javax.swing.JTextField();
         buttonGroup1 = new javax.swing.ButtonGroup();
-        jDesktopPane1 = new javax.swing.JDesktopPane();
+        jDesktopPane1 = new DesktopFondo();
         jlPase = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
@@ -131,6 +123,8 @@ public class vistaPase extends javax.swing.JInternalFrame {
         });
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        jDesktopPane1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+
         jlPase.setFont(new java.awt.Font("Segoe UI Historic", 1, 24)); // NOI18N
         jlPase.setForeground(new java.awt.Color(255, 255, 255));
         jlPase.setText("Lista de pases");
@@ -164,39 +158,39 @@ public class vistaPase extends javax.swing.JInternalFrame {
 
         jbMostrar.setForeground(java.awt.Color.darkGray);
         jbMostrar.setText("Mostrar Pases");
-        jbMostrar.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        jbMostrar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jbMostrar.addActionListener(this::jbMostrarActionPerformed);
 
         jbEliminar.setForeground(java.awt.Color.darkGray);
         jbEliminar.setText("Eliminar");
-        jbEliminar.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        jbEliminar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jbEliminar.addActionListener(this::jbEliminarActionPerformed);
 
         jbGuardar.setForeground(java.awt.Color.darkGray);
         jbGuardar.setText("Guardar");
-        jbGuardar.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        jbGuardar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jbGuardar.addActionListener(this::jbGuardarActionPerformed);
 
         jbAltaBaja.setForeground(java.awt.Color.darkGray);
         jbAltaBaja.setText("Alta/Baja");
-        jbAltaBaja.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        jbAltaBaja.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jbAltaBaja.addActionListener(this::jbAltaBajaActionPerformed);
 
         jbNuevo.setForeground(java.awt.Color.darkGray);
         jbNuevo.setText("Nuevo");
-        jbNuevo.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        jbNuevo.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jbNuevo.setMaximumSize(new java.awt.Dimension(143, 23));
         jbNuevo.setMinimumSize(new java.awt.Dimension(143, 23));
         jbNuevo.addActionListener(this::jbNuevoActionPerformed);
 
         jbActualizar.setForeground(java.awt.Color.darkGray);
         jbActualizar.setText("Actualizar");
-        jbActualizar.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        jbActualizar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jbActualizar.addActionListener(this::jbActualizarActionPerformed);
 
         jbBuscar.setForeground(java.awt.Color.darkGray);
         jbBuscar.setText("Buscar");
-        jbBuscar.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        jbBuscar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
 
         jlEstado.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jlEstado.setForeground(new java.awt.Color(255, 255, 255));
@@ -359,7 +353,7 @@ public class vistaPase extends javax.swing.JInternalFrame {
                 .addGroup(jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jlTitulo)
                     .addComponent(jlPase))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 17, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jDesktopPane1Layout.createSequentialGroup()
                         .addGroup(jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)

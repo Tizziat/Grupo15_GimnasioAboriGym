@@ -37,15 +37,6 @@ public class vistaClaseGym extends javax.swing.JInternalFrame {
 
         cargarEntrenadores();
         cargarTabla();
-        ((javax.swing.JComponent) this.getContentPane()).setOpaque(false);
-      jDesktopPane1.setOpaque(false);
-      jDesktopPane1.setBackground(new java.awt.Color(0, 0, 0, 0)); 
-
-
-this.setBackground(new java.awt.Color(0, 0, 0, 0));
-this.getRootPane().setOpaque(false);
-((javax.swing.JComponent) this.getContentPane()).setOpaque(false);
-jDesktopPane1.setOpaque(false);
     }
 
     private void cargarEntrenadores() {
@@ -83,7 +74,7 @@ jDesktopPane1.setOpaque(false);
     private void initComponents() {
 
         buttonGroup1 = new javax.swing.ButtonGroup();
-        jDesktopPane1 = new javax.swing.JDesktopPane();
+        jDesktopPane1 = new DesktopFondo();
         jlTitulo = new javax.swing.JLabel();
         jlId = new javax.swing.JLabel();
         jtfID = new javax.swing.JTextField();
@@ -191,31 +182,31 @@ jDesktopPane1.setOpaque(false);
 
         jbActualizar.setForeground(java.awt.Color.darkGray);
         jbActualizar.setText("Actualizar");
-        jbActualizar.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        jbActualizar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jbActualizar.addActionListener(this::jbActualizarActionPerformed);
 
         jbAltaBaja.setForeground(java.awt.Color.darkGray);
         jbAltaBaja.setText("Alta/Baja");
-        jbAltaBaja.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        jbAltaBaja.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jbAltaBaja.addActionListener(this::jbAltaBajaActionPerformed);
 
         jbNuevo.setForeground(java.awt.Color.darkGray);
         jbNuevo.setText("Nuevo");
-        jbNuevo.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        jbNuevo.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jbNuevo.addActionListener(this::jbNuevoActionPerformed);
 
         jbEliminar.setForeground(java.awt.Color.darkGray);
         jbEliminar.setText("Eliminar");
-        jbEliminar.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        jbEliminar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
 
         jbGuardar.setForeground(java.awt.Color.darkGray);
         jbGuardar.setText("Guardar");
-        jbGuardar.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        jbGuardar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jbGuardar.addActionListener(this::jbGuardarActionPerformed);
 
         jbBuscar.setForeground(java.awt.Color.darkGray);
         jbBuscar.setText("Buscar");
-        jbBuscar.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        jbBuscar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
 
         jlClases.setFont(new java.awt.Font("Segoe UI Historic", 1, 24)); // NOI18N
         jlClases.setForeground(new java.awt.Color(255, 255, 255));
@@ -223,7 +214,7 @@ jDesktopPane1.setOpaque(false);
 
         jbMostrar.setForeground(java.awt.Color.darkGray);
         jbMostrar.setText("Mostrar Clases");
-        jbMostrar.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        jbMostrar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jbMostrar.addActionListener(this::jbMostrarActionPerformed);
 
         jDesktopPane1.setLayer(jlTitulo, javax.swing.JLayeredPane.DEFAULT_LAYER);
@@ -285,10 +276,8 @@ jDesktopPane1.setOpaque(false);
                                         .addComponent(jrbInactivo))
                                     .addGroup(jDesktopPane1Layout.createSequentialGroup()
                                         .addGap(51, 51, 51)
-                                        .addComponent(jtfID, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                                        .addComponent(jtfID, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE))))
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jDesktopPane1Layout.createSequentialGroup()
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addGroup(jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(jtfCapacidad, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(jtfHorario, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -321,7 +310,7 @@ jDesktopPane1.setOpaque(false);
                     .addComponent(jlClases))
                 .addGroup(jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jDesktopPane1Layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 30, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGroup(jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jtfID, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jlId))

@@ -23,15 +23,6 @@ public class vistaSocio extends javax.swing.JInternalFrame {
         initComponents();
         cargarTabla();
 
-        ((javax.swing.JComponent) this.getContentPane()).setOpaque(false);
-        jdescritorio.setOpaque(false);
-        jdescritorio.setBackground(new java.awt.Color(0, 0, 0, 0));
-
-        this.setBackground(new java.awt.Color(0, 0, 0, 0));
-        this.getRootPane().setOpaque(false);
-        ((javax.swing.JComponent) this.getContentPane()).setOpaque(false);
-        jdescritorio.setOpaque(false);
-
     }
     /**
      * This method is called from within the constructor to initialize the form.
@@ -43,7 +34,7 @@ public class vistaSocio extends javax.swing.JInternalFrame {
     private void initComponents() {
 
         buttonGroup1 = new javax.swing.ButtonGroup();
-        jdescritorio = new javax.swing.JDesktopPane();
+        jdescritorio = new DesktopFondo();
         jLid = new javax.swing.JLabel();
         jlDNI = new javax.swing.JLabel();
         jlNombre = new javax.swing.JLabel();
@@ -75,7 +66,8 @@ public class vistaSocio extends javax.swing.JInternalFrame {
 
         setForeground(java.awt.Color.white);
 
-        jdescritorio.setOpaque(false);
+        jdescritorio.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jdescritorio.setOpaque(true);
         jdescritorio.setPreferredSize(new java.awt.Dimension(669, 501));
         jdescritorio.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
@@ -212,49 +204,49 @@ public class vistaSocio extends javax.swing.JInternalFrame {
         jbNuevo.setForeground(java.awt.Color.darkGray);
         jbNuevo.setText("Nuevo");
         jbNuevo.setToolTipText("");
-        jbNuevo.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        jbNuevo.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jbNuevo.addActionListener(this::jbNuevoActionPerformed);
         jdescritorio.add(jbNuevo, new org.netbeans.lib.awtextra.AbsoluteConstraints(19, 390, 240, -1));
 
         jbActualizar.setForeground(java.awt.Color.darkGray);
         jbActualizar.setText("Actualizar");
         jbActualizar.setToolTipText("");
-        jbActualizar.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        jbActualizar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jbActualizar.addActionListener(this::jbActualizarActionPerformed);
         jdescritorio.add(jbActualizar, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 450, 240, -1));
 
         jbEliminar.setForeground(java.awt.Color.darkGray);
         jbEliminar.setText("Eliminar");
         jbEliminar.setToolTipText("");
-        jbEliminar.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        jbEliminar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jbEliminar.addActionListener(this::jbEliminarActionPerformed);
         jdescritorio.add(jbEliminar, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 480, 240, -1));
 
         jbAltaBaja.setForeground(java.awt.Color.darkGray);
         jbAltaBaja.setText("Alta/Baja");
         jbAltaBaja.setToolTipText("");
-        jbAltaBaja.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        jbAltaBaja.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jbAltaBaja.addActionListener(this::jbAltaBajaActionPerformed);
         jdescritorio.add(jbAltaBaja, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 510, 240, -1));
 
         jbGuardar.setForeground(java.awt.Color.darkGray);
         jbGuardar.setText("Guardar");
         jbGuardar.setToolTipText("");
-        jbGuardar.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        jbGuardar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jbGuardar.addActionListener(this::jbGuardarActionPerformed);
         jdescritorio.add(jbGuardar, new org.netbeans.lib.awtextra.AbsoluteConstraints(19, 420, 240, -1));
 
         jbMostrar.setForeground(java.awt.Color.darkGray);
         jbMostrar.setText("Mostrar Socios");
         jbMostrar.setToolTipText("");
-        jbMostrar.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        jbMostrar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jbMostrar.addActionListener(this::jbMostrarActionPerformed);
         jdescritorio.add(jbMostrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 510, 376, -1));
 
         jbBuscar.setForeground(java.awt.Color.darkGray);
         jbBuscar.setText("Buscar");
         jbBuscar.setToolTipText("");
-        jbBuscar.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        jbBuscar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jbBuscar.addActionListener(this::jbBuscarActionPerformed);
         jdescritorio.add(jbBuscar, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 360, 240, -1));
 

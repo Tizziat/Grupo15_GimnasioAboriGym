@@ -31,14 +31,7 @@ public class vistaAsistencia extends javax.swing.JInternalFrame {
         limpiarCampos();
         cargarTabla(new AsistenciaData().listarAsistencias());
 
-        ((javax.swing.JComponent) this.getContentPane()).setOpaque(false);
-        jDesktopPane1.setOpaque(false);
-        jDesktopPane1.setBackground(new java.awt.Color(0, 0, 0, 0));
-
-        this.setBackground(new java.awt.Color(0, 0, 0, 0));
-        this.getRootPane().setOpaque(false);
-        ((javax.swing.JComponent) this.getContentPane()).setOpaque(false);
-        jDesktopPane1.setOpaque(false);
+ 
     }
 
     private void cargarComboSocios() {
@@ -94,7 +87,7 @@ public class vistaAsistencia extends javax.swing.JInternalFrame {
     private void initComponents() {
 
         jTextField2 = new javax.swing.JTextField();
-        jDesktopPane1 = new javax.swing.JDesktopPane();
+        jDesktopPane1 = new DesktopFondo();
         jlDatos = new javax.swing.JLabel();
         jLid = new javax.swing.JLabel();
         jlSocio = new javax.swing.JLabel();
@@ -190,7 +183,7 @@ public class vistaAsistencia extends javax.swing.JInternalFrame {
         jDesktopPane1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 60, 480, 470));
 
         jbNuevo.setText("Nuevo");
-        jbNuevo.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        jbNuevo.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jbNuevo.addActionListener(this::jbNuevoActionPerformed);
         jDesktopPane1.add(jbNuevo, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 350, 269, -1));
 
@@ -204,27 +197,27 @@ public class vistaAsistencia extends javax.swing.JInternalFrame {
         jDesktopPane1.add(jCBopcion, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 260, 139, -1));
 
         jbBuscar.setText("Buscar");
-        jbBuscar.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        jbBuscar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jbBuscar.addActionListener(this::jbBuscarActionPerformed);
         jDesktopPane1.add(jbBuscar, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 310, 269, -1));
 
         jbModificar.setText("Modificar");
-        jbModificar.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        jbModificar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jbModificar.addActionListener(this::jbModificarActionPerformed);
         jDesktopPane1.add(jbModificar, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 390, 269, -1));
 
         jbEliminar.setText("Eliminar");
-        jbEliminar.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        jbEliminar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jbEliminar.addActionListener(this::jbEliminarActionPerformed);
         jDesktopPane1.add(jbEliminar, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 430, 269, -1));
 
         jbGuardar.setText("Guardar");
-        jbGuardar.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        jbGuardar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jbGuardar.addActionListener(this::jbGuardarActionPerformed);
         jDesktopPane1.add(jbGuardar, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 470, 269, -1));
 
         jbLimpiar.setText("Limpiar");
-        jbLimpiar.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        jbLimpiar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jbLimpiar.addActionListener(this::jbLimpiarActionPerformed);
         jDesktopPane1.add(jbLimpiar, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 510, 269, -1));
 

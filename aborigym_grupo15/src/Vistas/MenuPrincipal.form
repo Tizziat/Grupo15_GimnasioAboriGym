@@ -174,7 +174,7 @@
         </Property>
       </Properties>
       <AuxValues>
-        <AuxValue name="JavaCodeGenerator_CreateCodeCustom" type="java.lang.String" value="new DesktopFondo()"/>
+        <AuxValue name="JavaCodeGenerator_CreateCodeCustom" type="java.lang.String" value="new DesktopFondo(&quot;/imagenes/fondoAborigym.jpeg&quot;)"/>
       </AuxValues>
 
       <Layout>
