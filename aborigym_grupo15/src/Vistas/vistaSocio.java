@@ -522,10 +522,12 @@ public class vistaSocio extends javax.swing.JInternalFrame {
         socio.setEstado(estado);
 
         SocioData socioData = new SocioData();
-        socioData.guardarSocio(socio);
-        cargarTabla();
-
-        JOptionPane.showMessageDialog(this, " El Socio se ha guardado correctamente.");
+        if (socioData.guardarSocio(socio)) {
+            cargarTabla();
+            JOptionPane.showMessageDialog(this, "El Socio se ha guardado correctamente.");
+        } else {
+            JOptionPane.showMessageDialog(this, "No se pudo guardar: el DNI ya está registrado.");
+        }
     }//GEN-LAST:event_jbGuardarActionPerformed
 
     private void jbBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbBuscarActionPerformed

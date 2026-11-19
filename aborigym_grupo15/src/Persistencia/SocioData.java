@@ -20,10 +20,10 @@ public class SocioData {
 
     /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     // INSERT INTO socio
-    public void guardarSocio(Socio s) {
-        String sql = "INSERT INTO socios (dni, nombre, apellido, edad, correo, telefono, estado) VALUES (?,?,?,?,?,?,?)";//1
+    public boolean guardarSocio(Socio s) {
+        String sql = "INSERT INTO socios (dni, nombre, apellido, edad, correo, telefono, estado) VALUES (?,?,?,?,?,?,?)";
         try {
-            PreparedStatement ps = con.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);//2
+            PreparedStatement ps = con.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
             ps.setString(1, s.getDni());
             ps.setString(2, s.getNombre());
             ps.setString(3, s.getApellido());
@@ -32,16 +32,18 @@ public class SocioData {
             ps.setString(6, s.getTelefono());
             ps.setBoolean(7, s.isEstado());
 
-            ps.executeUpdate();//3
+            int filas = ps.executeUpdate();
 
-            ResultSet rs = ps.getGeneratedKeys();// id generado por la bdd
+            ResultSet rs = ps.getGeneratedKeys();
             if (rs.next()) {
-                s.setIdSocio(rs.getInt(1)); // se lo asignamos al objeto socio
+                s.setIdSocio(rs.getInt(1));
                 System.out.println("Socio guardado con exito. ID: " + s.getIdSocio());
             }
             ps.close();
+            return filas > 0;
         } catch (SQLException ex) {
             System.err.println("Error al guardar el socio: " + ex.getMessage());
+            return false;
         }
     }
 
