@@ -83,82 +83,82 @@ jdescritorio.setOpaque(false);
         jLid.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLid.setForeground(new java.awt.Color(255, 255, 255));
         jLid.setText("ID Socio");
-        jdescritorio.add(jLid, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 300, -1, -1));
+        jdescritorio.add(jLid, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 330, -1, -1));
 
         jlDNI.setBackground(new java.awt.Color(255, 255, 255));
         jlDNI.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jlDNI.setForeground(new java.awt.Color(255, 255, 255));
         jlDNI.setText("DNI:");
-        jdescritorio.add(jlDNI, new org.netbeans.lib.awtextra.AbsoluteConstraints(19, 59, -1, -1));
+        jdescritorio.add(jlDNI, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 60, -1, -1));
 
         jlNombre.setFont(new java.awt.Font("Segoe UI Black", 1, 14)); // NOI18N
         jlNombre.setForeground(new java.awt.Color(255, 255, 255));
         jlNombre.setText("Nombre:");
-        jdescritorio.add(jlNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(19, 93, -1, -1));
+        jdescritorio.add(jlNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 100, -1, -1));
 
         jlDatos.setBackground(new java.awt.Color(255, 255, 255));
         jlDatos.setFont(new java.awt.Font("Segoe UI Historic", 1, 24)); // NOI18N
         jlDatos.setForeground(new java.awt.Color(255, 255, 255));
         jlDatos.setText("Datos del Socio");
-        jdescritorio.add(jlDatos, new org.netbeans.lib.awtextra.AbsoluteConstraints(39, 0, -1, -1));
+        jdescritorio.add(jlDatos, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 10, -1, -1));
 
         jtfID.setEditable(false);
         jtfID.setForeground(java.awt.Color.darkGray);
         jtfID.setToolTipText("");
         jtfID.addActionListener(this::jtfIDActionPerformed);
-        jdescritorio.add(jtfID, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 299, 69, -1));
+        jdescritorio.add(jtfID, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 330, 69, -1));
 
         jtfDNI.setForeground(java.awt.Color.darkGray);
         jtfDNI.setToolTipText("");
-        jdescritorio.add(jtfDNI, new org.netbeans.lib.awtextra.AbsoluteConstraints(99, 56, 141, -1));
+        jdescritorio.add(jtfDNI, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 60, 141, -1));
 
         jtfNombre.setForeground(java.awt.Color.darkGray);
         jtfNombre.setToolTipText("");
         jtfNombre.addActionListener(this::jtfNombreActionPerformed);
-        jdescritorio.add(jtfNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(99, 90, 141, -1));
+        jdescritorio.add(jtfNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 100, 141, -1));
 
         jlApellido.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jlApellido.setForeground(new java.awt.Color(255, 255, 255));
         jlApellido.setText("Apellido:");
-        jdescritorio.add(jlApellido, new org.netbeans.lib.awtextra.AbsoluteConstraints(19, 127, -1, -1));
+        jdescritorio.add(jlApellido, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 140, -1, -1));
 
         jtfApellido.setForeground(java.awt.Color.darkGray);
         jtfApellido.setToolTipText("");
         jtfApellido.addActionListener(this::jtfApellidoActionPerformed);
-        jdescritorio.add(jtfApellido, new org.netbeans.lib.awtextra.AbsoluteConstraints(99, 124, 141, -1));
+        jdescritorio.add(jtfApellido, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 140, 141, -1));
 
         jlEdad.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jlEdad.setForeground(new java.awt.Color(255, 255, 255));
         jlEdad.setText("Edad:");
-        jdescritorio.add(jlEdad, new org.netbeans.lib.awtextra.AbsoluteConstraints(19, 161, -1, -1));
+        jdescritorio.add(jlEdad, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 180, -1, -1));
 
         jtfEdad.setForeground(java.awt.Color.darkGray);
         jtfEdad.setToolTipText("");
-        jdescritorio.add(jtfEdad, new org.netbeans.lib.awtextra.AbsoluteConstraints(169, 158, 71, -1));
+        jdescritorio.add(jtfEdad, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 180, 71, -1));
 
         jlCorreo.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jlCorreo.setForeground(new java.awt.Color(255, 255, 255));
         jlCorreo.setText("Correo:");
-        jdescritorio.add(jlCorreo, new org.netbeans.lib.awtextra.AbsoluteConstraints(19, 195, -1, -1));
+        jdescritorio.add(jlCorreo, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 220, -1, -1));
 
         jtfCorreo.setForeground(java.awt.Color.darkGray);
         jtfCorreo.setToolTipText("");
-        jdescritorio.add(jtfCorreo, new org.netbeans.lib.awtextra.AbsoluteConstraints(99, 192, 141, -1));
+        jdescritorio.add(jtfCorreo, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 220, 141, -1));
 
         jlTelefono.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jlTelefono.setForeground(new java.awt.Color(255, 255, 255));
         jlTelefono.setText("Telefono:");
-        jdescritorio.add(jlTelefono, new org.netbeans.lib.awtextra.AbsoluteConstraints(19, 229, -1, -1));
+        jdescritorio.add(jlTelefono, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 260, -1, -1));
 
         jtfTelefono.setForeground(java.awt.Color.darkGray);
         jtfTelefono.setToolTipText("");
         jtfTelefono.addActionListener(this::jtfTelefonoActionPerformed);
-        jdescritorio.add(jtfTelefono, new org.netbeans.lib.awtextra.AbsoluteConstraints(99, 226, 141, -1));
+        jdescritorio.add(jtfTelefono, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 260, 141, -1));
 
         jlEstado.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jlEstado.setForeground(new java.awt.Color(255, 255, 255));
         jlEstado.setText("Estado:");
-        jdescritorio.add(jlEstado, new org.netbeans.lib.awtextra.AbsoluteConstraints(19, 260, -1, -1));
+        jdescritorio.add(jlEstado, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 300, -1, -1));
 
         buttonGroup1.add(jrbActivo);
         jrbActivo.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
@@ -166,19 +166,19 @@ jdescritorio.setOpaque(false);
         jrbActivo.setSelected(true);
         jrbActivo.setText("Activo");
         jrbActivo.addActionListener(this::jrbActivoActionPerformed);
-        jdescritorio.add(jrbActivo, new org.netbeans.lib.awtextra.AbsoluteConstraints(81, 260, -1, -1));
+        jdescritorio.add(jrbActivo, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 300, -1, -1));
 
         buttonGroup1.add(jrbInactivo);
         jrbInactivo.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jrbInactivo.setForeground(java.awt.Color.white);
         jrbInactivo.setText("Inactivo");
-        jdescritorio.add(jrbInactivo, new org.netbeans.lib.awtextra.AbsoluteConstraints(175, 260, -1, -1));
+        jdescritorio.add(jrbInactivo, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 300, -1, -1));
 
         jlListaSocios.setBackground(new java.awt.Color(255, 255, 255));
         jlListaSocios.setFont(new java.awt.Font("Segoe UI Historic", 1, 24)); // NOI18N
         jlListaSocios.setForeground(new java.awt.Color(255, 255, 255));
         jlListaSocios.setText("Lista de Socios");
-        jdescritorio.add(jlListaSocios, new org.netbeans.lib.awtextra.AbsoluteConstraints(373, 0, -1, -1));
+        jdescritorio.add(jlListaSocios, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 10, -1, -1));
 
         jTable1.setForeground(java.awt.Color.darkGray);
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
@@ -200,56 +200,56 @@ jdescritorio.setOpaque(false);
         });
         jScrollPane1.setViewportView(jTable1);
 
-        jdescritorio.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(257, 56, 376, 265));
+        jdescritorio.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 50, 510, 450));
 
         jbNuevo.setForeground(java.awt.Color.darkGray);
         jbNuevo.setText("Nuevo");
         jbNuevo.setToolTipText("");
-        jbNuevo.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jbNuevo.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         jbNuevo.addActionListener(this::jbNuevoActionPerformed);
-        jdescritorio.add(jbNuevo, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 380, 229, -1));
+        jdescritorio.add(jbNuevo, new org.netbeans.lib.awtextra.AbsoluteConstraints(19, 390, 240, -1));
 
         jbActualizar.setForeground(java.awt.Color.darkGray);
         jbActualizar.setText("Actualizar");
         jbActualizar.setToolTipText("");
-        jbActualizar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jbActualizar.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         jbActualizar.addActionListener(this::jbActualizarActionPerformed);
-        jdescritorio.add(jbActualizar, new org.netbeans.lib.awtextra.AbsoluteConstraints(257, 380, 376, -1));
+        jdescritorio.add(jbActualizar, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 450, 240, -1));
 
         jbEliminar.setForeground(java.awt.Color.darkGray);
         jbEliminar.setText("Eliminar");
         jbEliminar.setToolTipText("");
-        jbEliminar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jbEliminar.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         jbEliminar.addActionListener(this::jbEliminarActionPerformed);
-        jdescritorio.add(jbEliminar, new org.netbeans.lib.awtextra.AbsoluteConstraints(453, 339, 180, -1));
+        jdescritorio.add(jbEliminar, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 480, 240, -1));
 
         jbAltaBaja.setForeground(java.awt.Color.darkGray);
         jbAltaBaja.setText("Alta/Baja");
         jbAltaBaja.setToolTipText("");
-        jbAltaBaja.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jbAltaBaja.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         jbAltaBaja.addActionListener(this::jbAltaBajaActionPerformed);
-        jdescritorio.add(jbAltaBaja, new org.netbeans.lib.awtextra.AbsoluteConstraints(257, 339, 178, -1));
+        jdescritorio.add(jbAltaBaja, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 510, 240, -1));
 
         jbGuardar.setForeground(java.awt.Color.darkGray);
         jbGuardar.setText("Guardar");
         jbGuardar.setToolTipText("");
-        jbGuardar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jbGuardar.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         jbGuardar.addActionListener(this::jbGuardarActionPerformed);
-        jdescritorio.add(jbGuardar, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 421, 229, -1));
+        jdescritorio.add(jbGuardar, new org.netbeans.lib.awtextra.AbsoluteConstraints(19, 420, 240, -1));
 
         jbMostrar.setForeground(java.awt.Color.darkGray);
         jbMostrar.setText("Mostrar Socios");
         jbMostrar.setToolTipText("");
-        jbMostrar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jbMostrar.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         jbMostrar.addActionListener(this::jbMostrarActionPerformed);
-        jdescritorio.add(jbMostrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(257, 421, 376, -1));
+        jdescritorio.add(jbMostrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 510, 376, -1));
 
         jButton1.setForeground(java.awt.Color.darkGray);
         jButton1.setText("Buscar");
         jButton1.setToolTipText("");
-        jButton1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jButton1.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         jButton1.addActionListener(this::jButton1ActionPerformed);
-        jdescritorio.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 339, 230, -1));
+        jdescritorio.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 360, 240, -1));
 
         getContentPane().add(jdescritorio, java.awt.BorderLayout.CENTER);
 

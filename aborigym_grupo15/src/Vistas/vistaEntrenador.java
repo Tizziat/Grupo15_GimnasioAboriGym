@@ -122,47 +122,47 @@ jDesktopPane1.setOpaque(false);
         jlDNI.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jlDNI.setForeground(java.awt.Color.white);
         jlDNI.setText("DNI:");
-        jDesktopPane1.add(jlDNI, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 70, -1, -1));
+        jDesktopPane1.add(jlDNI, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 70, -1, -1));
 
         jlNombre.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jlNombre.setForeground(java.awt.Color.white);
         jlNombre.setText("Nombre:");
-        jDesktopPane1.add(jlNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 110, -1, -1));
+        jDesktopPane1.add(jlNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 120, -1, -1));
 
         jlApellido.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jlApellido.setForeground(java.awt.Color.white);
         jlApellido.setText("Apellido:");
-        jDesktopPane1.add(jlApellido, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 150, -1, -1));
+        jDesktopPane1.add(jlApellido, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 170, -1, -1));
 
         jlEspecialidad.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jlEspecialidad.setForeground(java.awt.Color.white);
         jlEspecialidad.setText("Especialidad:");
-        jDesktopPane1.add(jlEspecialidad, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 190, -1, -1));
+        jDesktopPane1.add(jlEspecialidad, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 220, -1, -1));
 
         jtfDNI.setForeground(java.awt.Color.darkGray);
-        jDesktopPane1.add(jtfDNI, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 70, 140, -1));
+        jDesktopPane1.add(jtfDNI, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 70, 130, -1));
 
         jtfNombre.setForeground(java.awt.Color.darkGray);
-        jDesktopPane1.add(jtfNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 110, 140, -1));
+        jDesktopPane1.add(jtfNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 120, 130, -1));
 
         jtfApellido.setForeground(java.awt.Color.darkGray);
-        jDesktopPane1.add(jtfApellido, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 150, 140, -1));
+        jDesktopPane1.add(jtfApellido, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 170, 130, -1));
 
         jrbActivo.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jrbActivo.setForeground(java.awt.Color.white);
         jrbActivo.setText("Activo");
-        jDesktopPane1.add(jrbActivo, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 220, -1, -1));
+        jDesktopPane1.add(jrbActivo, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 260, -1, -1));
 
         jrbInactivo.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jrbInactivo.setForeground(java.awt.Color.white);
         jrbInactivo.setText("Inactivo");
         jrbInactivo.addActionListener(this::jrbInactivoActionPerformed);
-        jDesktopPane1.add(jrbInactivo, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 220, -1, -1));
+        jDesktopPane1.add(jrbInactivo, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 260, -1, -1));
 
         jlLista.setFont(new java.awt.Font("Segoe UI Historic", 1, 24)); // NOI18N
         jlLista.setForeground(java.awt.Color.white);
         jlLista.setText("Lista de Entrenadores");
-        jDesktopPane1.add(jlLista, new org.netbeans.lib.awtextra.AbsoluteConstraints(342, 6, -1, -1));
+        jDesktopPane1.add(jlLista, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 10, -1, -1));
 
         jTable1.setForeground(java.awt.Color.darkGray);
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
@@ -184,7 +184,7 @@ jDesktopPane1.setOpaque(false);
                 return canEdit [columnIndex];
             }
         });
-        jTable1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jTable1.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         jTable1.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jTable1MouseClicked(evt);
@@ -192,58 +192,58 @@ jDesktopPane1.setOpaque(false);
         });
         jScrollPane1.setViewportView(jTable1);
 
-        jDesktopPane1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 60, 394, 400));
+        jDesktopPane1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(284, 60, 530, 440));
 
         jcbEspecialidad.setForeground(java.awt.Color.darkGray);
         jcbEspecialidad.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        jDesktopPane1.add(jcbEspecialidad, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 190, 140, -1));
+        jDesktopPane1.add(jcbEspecialidad, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 220, 130, -1));
 
         jlEstado.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jlEstado.setForeground(java.awt.Color.white);
         jlEstado.setText("Estado:");
-        jDesktopPane1.add(jlEstado, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 220, -1, -1));
+        jDesktopPane1.add(jlEstado, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 260, -1, -1));
 
         jbNuevo.setForeground(java.awt.Color.darkGray);
         jbNuevo.setText("Nuevo");
-        jbNuevo.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jbNuevo.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         jbNuevo.addActionListener(this::jbNuevoActionPerformed);
-        jDesktopPane1.add(jbNuevo, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 280, 232, -1));
+        jDesktopPane1.add(jbNuevo, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 350, 232, -1));
 
         jbGuardar.setForeground(java.awt.Color.darkGray);
         jbGuardar.setText("Guardar");
-        jbGuardar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jbGuardar.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         jbGuardar.addActionListener(this::jbGuardarActionPerformed);
-        jDesktopPane1.add(jbGuardar, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 310, 232, -1));
+        jDesktopPane1.add(jbGuardar, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 390, 232, -1));
 
         jbActualizar.setForeground(java.awt.Color.darkGray);
         jbActualizar.setText("Actualizar");
-        jbActualizar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jbActualizar.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         jbActualizar.addActionListener(this::jbActualizarActionPerformed);
-        jDesktopPane1.add(jbActualizar, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 340, 232, -1));
+        jDesktopPane1.add(jbActualizar, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 430, 232, -1));
 
         jbEliminar.setForeground(java.awt.Color.darkGray);
         jbEliminar.setText("Eliminar");
-        jbEliminar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jbEliminar.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         jbEliminar.addActionListener(this::jbEliminarActionPerformed);
-        jDesktopPane1.add(jbEliminar, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 370, 232, -1));
+        jDesktopPane1.add(jbEliminar, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 470, 232, -1));
 
         jbAltaBaja.setForeground(java.awt.Color.darkGray);
         jbAltaBaja.setText("Alta/Baja");
-        jbAltaBaja.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jbAltaBaja.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         jbAltaBaja.addActionListener(this::jbAltaBajaActionPerformed);
-        jDesktopPane1.add(jbAltaBaja, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 400, 232, -1));
+        jDesktopPane1.add(jbAltaBaja, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 510, 232, -1));
 
         jbMostrar.setForeground(java.awt.Color.darkGray);
         jbMostrar.setText("Mostrar Entrenadores");
-        jbMostrar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jbMostrar.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         jbMostrar.addActionListener(this::jbMostrarActionPerformed);
-        jDesktopPane1.add(jbMostrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 430, 232, -1));
+        jDesktopPane1.add(jbMostrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 510, 340, -1));
 
         jbBuscar.setForeground(java.awt.Color.darkGray);
         jbBuscar.setText("Buscar");
-        jbBuscar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jbBuscar.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         jbBuscar.addActionListener(this::jbBuscarActionPerformed);
-        jDesktopPane1.add(jbBuscar, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 250, 232, -1));
+        jDesktopPane1.add(jbBuscar, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 310, 232, -1));
 
         getContentPane().add(jDesktopPane1, java.awt.BorderLayout.CENTER);
 
