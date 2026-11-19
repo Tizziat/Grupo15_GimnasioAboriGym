@@ -60,67 +60,59 @@
                   <EmptySpace min="-2" pref="193" max="-2" attributes="0"/>
               </Group>
               <Group type="102" alignment="0" attributes="0">
-                  <Group type="103" groupAlignment="1" attributes="0">
-                      <Group type="102" alignment="1" attributes="0">
+                  <Group type="103" groupAlignment="0" attributes="0">
+                      <Group type="102" attributes="0">
                           <EmptySpace min="-2" pref="12" max="-2" attributes="0"/>
-                          <Component id="jLabel6" min="-2" max="-2" attributes="0"/>
-                      </Group>
-                      <Group type="102" alignment="1" attributes="0">
                           <Group type="103" groupAlignment="0" attributes="0">
-                              <Group type="102" attributes="0">
-                                  <EmptySpace min="-2" pref="12" max="-2" attributes="0"/>
+                              <Component id="jlNombre" alignment="0" min="-2" max="-2" attributes="0"/>
+                              <Component id="jlId" alignment="0" min="-2" max="-2" attributes="0"/>
+                              <Component id="jlEstado" alignment="0" min="-2" max="-2" attributes="0"/>
+                              <Component id="jlCapacidad" alignment="0" min="-2" max="-2" attributes="0"/>
+                              <Component id="jlHorario" alignment="0" min="-2" max="-2" attributes="0"/>
+                              <Component id="jlEntrenador" alignment="0" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Component id="jcbEntrenador" alignment="1" max="32767" attributes="0"/>
+                              <Component id="jtfNombre" alignment="1" max="32767" attributes="0"/>
+                              <Group type="102" alignment="1" attributes="0">
+                                  <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                                   <Group type="103" groupAlignment="0" attributes="0">
-                                      <Component id="jlNombre" alignment="0" min="-2" max="-2" attributes="0"/>
-                                      <Component id="jlId" alignment="0" min="-2" max="-2" attributes="0"/>
-                                      <Component id="jlEstado" alignment="0" min="-2" max="-2" attributes="0"/>
-                                      <Component id="jlCapacidad" alignment="0" min="-2" max="-2" attributes="0"/>
-                                      <Component id="jlHorario" alignment="0" min="-2" max="-2" attributes="0"/>
-                                      <Component id="jlEntrenador" alignment="0" min="-2" max="-2" attributes="0"/>
-                                  </Group>
-                                  <EmptySpace max="-2" attributes="0"/>
-                                  <Group type="103" groupAlignment="0" attributes="0">
-                                      <Component id="jcbEntrenador" alignment="1" max="32767" attributes="0"/>
-                                      <Component id="jtfNombre" alignment="1" max="32767" attributes="0"/>
                                       <Group type="102" alignment="1" attributes="0">
-                                          <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
-                                          <Group type="103" groupAlignment="0" attributes="0">
-                                              <Group type="102" alignment="1" attributes="0">
-                                                  <Component id="jrbActivo" min="-2" max="-2" attributes="0"/>
-                                                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                                                  <Component id="jrbInactivo" min="-2" max="-2" attributes="0"/>
-                                              </Group>
-                                              <Component id="jtfID" alignment="1" min="-2" pref="82" max="-2" attributes="0"/>
-                                              <Group type="103" alignment="1" groupAlignment="0" max="-2" attributes="0">
-                                                  <Component id="jtfHorario" alignment="1" pref="91" max="32767" attributes="0"/>
-                                                  <Component id="jtfCapacidad" alignment="1" max="32767" attributes="0"/>
-                                              </Group>
-                                          </Group>
+                                          <Component id="jrbActivo" min="-2" max="-2" attributes="0"/>
+                                          <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                                          <Component id="jrbInactivo" min="-2" max="-2" attributes="0"/>
+                                      </Group>
+                                      <Component id="jtfID" alignment="1" min="-2" pref="82" max="-2" attributes="0"/>
+                                      <Group type="103" alignment="1" groupAlignment="0" max="-2" attributes="0">
+                                          <Component id="jtfHorario" alignment="1" pref="91" max="32767" attributes="0"/>
+                                          <Component id="jtfCapacidad" alignment="1" max="32767" attributes="0"/>
                                       </Group>
                                   </Group>
                               </Group>
-                              <Group type="102" alignment="1" attributes="0">
-                                  <EmptySpace pref="20" max="32767" attributes="0"/>
-                                  <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                      <Component id="jbBuscar" alignment="1" max="32767" attributes="0"/>
-                                      <Component id="jbAltaBaja" alignment="1" max="32767" attributes="0"/>
-                                      <Component id="jbEliminar" alignment="1" max="32767" attributes="0"/>
-                                      <Component id="jbGuardar" alignment="1" max="32767" attributes="0"/>
-                                      <Component id="jbActualizar" alignment="1" max="32767" attributes="0"/>
-                                      <Component id="jbNuevo" alignment="1" min="-2" pref="259" max="-2" attributes="0"/>
-                                  </Group>
-                                  <EmptySpace min="-2" pref="8" max="-2" attributes="0"/>
-                              </Group>
                           </Group>
-                          <Group type="103" groupAlignment="0" attributes="0">
-                              <Group type="102" attributes="0">
-                                  <EmptySpace type="separate" max="-2" attributes="0"/>
-                                  <Component id="jScrollPane1" min="-2" pref="492" max="-2" attributes="0"/>
-                              </Group>
-                              <Group type="102" alignment="0" attributes="0">
-                                  <EmptySpace min="-2" pref="101" max="-2" attributes="0"/>
-                                  <Component id="jbMostrar" min="-2" pref="323" max="-2" attributes="0"/>
-                              </Group>
+                      </Group>
+                      <Group type="102" alignment="1" attributes="0">
+                          <EmptySpace pref="20" max="32767" attributes="0"/>
+                          <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                              <Component id="jbBuscar" alignment="1" max="32767" attributes="0"/>
+                              <Component id="jbAltaBaja" alignment="1" max="32767" attributes="0"/>
+                              <Component id="jbEliminar" alignment="1" max="32767" attributes="0"/>
+                              <Component id="jbGuardar" alignment="1" max="32767" attributes="0"/>
+                              <Component id="jbActualizar" alignment="1" max="32767" attributes="0"/>
+                              <Component id="jbNuevo" alignment="1" min="-2" pref="259" max="-2" attributes="0"/>
                           </Group>
+                          <EmptySpace min="-2" pref="8" max="-2" attributes="0"/>
+                      </Group>
+                  </Group>
+                  <Group type="103" groupAlignment="0" attributes="0">
+                      <Group type="102" attributes="0">
+                          <EmptySpace type="separate" max="-2" attributes="0"/>
+                          <Component id="jScrollPane1" min="-2" pref="492" max="-2" attributes="0"/>
+                      </Group>
+                      <Group type="102" alignment="0" attributes="0">
+                          <EmptySpace min="-2" pref="101" max="-2" attributes="0"/>
+                          <Component id="jbMostrar" min="-2" pref="323" max="-2" attributes="0"/>
                       </Group>
                   </Group>
                   <EmptySpace min="-2" pref="18" max="-2" attributes="0"/>
@@ -135,9 +127,7 @@
                       <Component id="jlTitulo" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="jlClases" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
-                  <EmptySpace min="-2" max="-2" attributes="0"/>
-                  <Component id="jLabel6" min="-2" pref="0" max="-2" attributes="0"/>
-                  <EmptySpace max="-2" attributes="0"/>
+                  <EmptySpace min="-2" pref="12" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" attributes="0">
                           <Group type="103" groupAlignment="0" max="-2" attributes="0">
@@ -298,11 +288,6 @@
             </Property>
           </Properties>
         </Component>
-        <Component class="javax.swing.JLabel" name="jLabel6">
-          <Properties>
-            <Property name="text" type="java.lang.String" value="Capacidad"/>
-          </Properties>
-        </Component>
         <Component class="javax.swing.JTextField" name="jtfCapacidad">
           <Properties>
             <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
@@ -391,7 +376,7 @@
             </Property>
             <Property name="text" type="java.lang.String" value="Actualizar"/>
             <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
-              <Color id="Default Cursor"/>
+              <Color id="Cursor Por defecto"/>
             </Property>
           </Properties>
           <Events>
@@ -405,7 +390,7 @@
             </Property>
             <Property name="text" type="java.lang.String" value="Alta/Baja"/>
             <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
-              <Color id="Default Cursor"/>
+              <Color id="Cursor Por defecto"/>
             </Property>
           </Properties>
           <Events>
@@ -419,7 +404,7 @@
             </Property>
             <Property name="text" type="java.lang.String" value="Nuevo"/>
             <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
-              <Color id="Default Cursor"/>
+              <Color id="Cursor Por defecto"/>
             </Property>
           </Properties>
           <Events>
@@ -433,7 +418,7 @@
             </Property>
             <Property name="text" type="java.lang.String" value="Eliminar"/>
             <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
-              <Color id="Default Cursor"/>
+              <Color id="Cursor Por defecto"/>
             </Property>
           </Properties>
         </Component>
@@ -444,7 +429,7 @@
             </Property>
             <Property name="text" type="java.lang.String" value="Guardar"/>
             <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
-              <Color id="Default Cursor"/>
+              <Color id="Cursor Por defecto"/>
             </Property>
           </Properties>
           <Events>
@@ -458,7 +443,7 @@
             </Property>
             <Property name="text" type="java.lang.String" value="Buscar"/>
             <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
-              <Color id="Default Cursor"/>
+              <Color id="Cursor Por defecto"/>
             </Property>
           </Properties>
         </Component>
@@ -480,7 +465,7 @@
             </Property>
             <Property name="text" type="java.lang.String" value="Mostrar Clases"/>
             <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
-              <Color id="Default Cursor"/>
+              <Color id="Cursor Por defecto"/>
             </Property>
           </Properties>
           <Events>

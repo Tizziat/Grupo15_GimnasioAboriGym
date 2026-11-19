@@ -424,7 +424,7 @@ jdescritorio.setOpaque(false);
     if (dni.isEmpty() || apellido.isEmpty() || nombre.isEmpty()
             || telefono.isEmpty() || correo.isEmpty()
             || jtfEdad.getText().isEmpty()) {
-        JOptionPane.showMessageDialog(this, "Debe ompletar todos los campos.");
+        JOptionPane.showMessageDialog(this, "Debe completar todos los campos.");
         return;
     }
 
