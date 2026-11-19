@@ -581,7 +581,7 @@ public class vistaPase extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_formMouseClicked
 
     private void jTable1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable1MouseClicked
-        // TODO add your handling code here:
+       formMouseClicked(evt);   // al hacer clic en la tabla, carga la fila en los campos
     }//GEN-LAST:event_jTable1MouseClicked
 
     private void jtfInicioKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jtfInicioKeyReleased
