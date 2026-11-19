@@ -14,25 +14,24 @@ import javax.swing.table.DefaultTableModel;
  * @author Luly2
  */
 public class vistaSocio extends javax.swing.JInternalFrame {
+    
 
-       
     /**
      * Creates new form vistaSocio
      */
     public vistaSocio() {
         initComponents();
         cargarTabla();
-        
-      ((javax.swing.JComponent) this.getContentPane()).setOpaque(false);
-      jdescritorio.setOpaque(false);
-      jdescritorio.setBackground(new java.awt.Color(0, 0, 0, 0)); 
 
+        ((javax.swing.JComponent) this.getContentPane()).setOpaque(false);
+        jdescritorio.setOpaque(false);
+        jdescritorio.setBackground(new java.awt.Color(0, 0, 0, 0));
 
-this.setBackground(new java.awt.Color(0, 0, 0, 0));
-this.getRootPane().setOpaque(false);
-((javax.swing.JComponent) this.getContentPane()).setOpaque(false);
-jdescritorio.setOpaque(false);
-        
+        this.setBackground(new java.awt.Color(0, 0, 0, 0));
+        this.getRootPane().setOpaque(false);
+        ((javax.swing.JComponent) this.getContentPane()).setOpaque(false);
+        jdescritorio.setOpaque(false);
+
     }
     /**
      * This method is called from within the constructor to initialize the form.
@@ -72,7 +71,7 @@ jdescritorio.setOpaque(false);
         jbAltaBaja = new javax.swing.JButton();
         jbGuardar = new javax.swing.JButton();
         jbMostrar = new javax.swing.JButton();
-        jButton1 = new javax.swing.JButton();
+        jbBuscar = new javax.swing.JButton();
 
         setForeground(java.awt.Color.white);
 
@@ -191,7 +190,15 @@ jdescritorio.setOpaque(false);
             new String [] {
                 "ID Socio", "DNI", "Nombre", "Apellido", "Edad", "Correo", "Telefono", "Estado"
             }
-        ));
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false, false, false, false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
         jTable1.setToolTipText("");
         jTable1.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -200,7 +207,7 @@ jdescritorio.setOpaque(false);
         });
         jScrollPane1.setViewportView(jTable1);
 
-        jdescritorio.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 50, 510, 450));
+        jdescritorio.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 50, 510, 430));
 
         jbNuevo.setForeground(java.awt.Color.darkGray);
         jbNuevo.setText("Nuevo");
@@ -244,12 +251,12 @@ jdescritorio.setOpaque(false);
         jbMostrar.addActionListener(this::jbMostrarActionPerformed);
         jdescritorio.add(jbMostrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 510, 376, -1));
 
-        jButton1.setForeground(java.awt.Color.darkGray);
-        jButton1.setText("Buscar");
-        jButton1.setToolTipText("");
-        jButton1.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        jButton1.addActionListener(this::jButton1ActionPerformed);
-        jdescritorio.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 360, 240, -1));
+        jbBuscar.setForeground(java.awt.Color.darkGray);
+        jbBuscar.setText("Buscar");
+        jbBuscar.setToolTipText("");
+        jbBuscar.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        jbBuscar.addActionListener(this::jbBuscarActionPerformed);
+        jdescritorio.add(jbBuscar, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 360, 240, -1));
 
         getContentPane().add(jdescritorio, java.awt.BorderLayout.CENTER);
 
@@ -290,32 +297,70 @@ jdescritorio.setOpaque(false);
     }//GEN-LAST:event_jbNuevoActionPerformed
 
     private void jbActualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbActualizarActionPerformed
-       if (jtfID.getText().isEmpty()) {
-        JOptionPane.showMessageDialog(this, "Seleccione un socio de la tabla.");
-        return;
-    }
+        if (jtfID.getText().isEmpty()) {
+            JOptionPane.showMessageDialog(this, "Seleccione un socio de la tabla.");
+            return;
+        }
 
-    try {
-        Socio socio = new Socio();
+        String dni = jtfDNI.getText().trim();
+        String apellido = jtfApellido.getText().trim();
+        String nombre = jtfNombre.getText().trim();
+        String edadTexto = jtfEdad.getText().trim();
+        String telefono = jtfTelefono.getText().trim();
+        String correo = jtfCorreo.getText().trim();
 
-        socio.setIdSocio(Integer.parseInt(jtfID.getText()));
-        socio.setDni(jtfDNI.getText());
-        socio.setApellido(jtfApellido.getText());
-        socio.setNombre(jtfNombre.getText());
-        socio.setEdad(Integer.parseInt(jtfEdad.getText()));
-        socio.setCorreo(jtfCorreo.getText());
-        socio.setTelefono(jtfTelefono.getText());
-        socio.setEstado(jrbActivo.isSelected());
+        if (dni.isEmpty() || apellido.isEmpty() || nombre.isEmpty() || telefono.isEmpty() || correo.isEmpty() || edadTexto.isEmpty()) {
+            JOptionPane.showMessageDialog(this, "Debe completar todos los campos.");
+            return;
+        }
+        if (!jrbActivo.isSelected() && !jrbInactivo.isSelected()) {
+            JOptionPane.showMessageDialog(this, "Seleccione un estado (Activo o Inactivo).");
+            return;
+        }
+        if (!dni.matches("\\d{7,8}")) {
+            JOptionPane.showMessageDialog(this, "El DNI debe tener 7 u 8 números (sin puntos ni letras).");
+            return;
+        }
+        if (!nombre.matches("[a-zA-ZáéíóúÁÉÍÓÚñÑ\\s]+") || !apellido.matches("[a-zA-ZáéíóúÁÉÍÓÚñÑ\\s]+")) {
+            JOptionPane.showMessageDialog(this, "El nombre y el apellido solo pueden contener letras.");
+            return;
+        }
+        if (!telefono.matches("\\d{7,15}")) {
+            JOptionPane.showMessageDialog(this, "El teléfono debe contener solo números.");
+            return;
+        }
+        if (!correo.matches("^[\\w.-]+@[\\w.-]+\\.[a-zA-Z]{2,}$")) {
+            JOptionPane.showMessageDialog(this, "Ingrese un correo electrónico válido.");
+            return;
+        }
 
-        SocioData socioData = new SocioData();
-        socioData.actualizarSocio(socio);
+        try {
+            
+            int edad = Integer.parseInt(edadTexto);
+            if (edad < 15 || edad > 70) {
+                JOptionPane.showMessageDialog(this, "Ingrese una edad válida (entre 15 y 70 años).");
+                return;
+            }
+            Socio socio = new Socio();
 
-        cargarTabla();
-        JOptionPane.showMessageDialog(this, "Se actualizo correctamente.");
+            socio.setIdSocio(Integer.parseInt(jtfID.getText()));
+            socio.setDni(dni);
+            socio.setApellido(apellido);
+            socio.setNombre(nombre);
+            socio.setEdad(edad);
+            socio.setCorreo(correo);
+            socio.setTelefono(telefono);
+            socio.setEstado(jrbActivo.isSelected());
 
-    } catch (NumberFormatException e) {
-        JOptionPane.showMessageDialog(this, "El ID y la edad deben ser números.");
-}
+            SocioData socioData = new SocioData();
+            socioData.actualizarSocio(socio);
+
+            cargarTabla();
+            JOptionPane.showMessageDialog(this, "Se actualizo correctamente.");
+
+        } catch (NumberFormatException e) {
+            JOptionPane.showMessageDialog(this, "El ID y la edad deben ser números.");
+        }
     }//GEN-LAST:event_jbActualizarActionPerformed
 
     private void jbEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbEliminarActionPerformed
@@ -414,52 +459,83 @@ jdescritorio.setOpaque(false);
     }
 }
     private void jbGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbGuardarActionPerformed
-                                        
-    String dni = jtfDNI.getText();
-    String apellido = jtfApellido.getText();
-    String nombre = jtfNombre.getText();
-    String telefono = jtfTelefono.getText();
-    String correo = jtfCorreo.getText();
 
-    if (dni.isEmpty() || apellido.isEmpty() || nombre.isEmpty()
-            || telefono.isEmpty() || correo.isEmpty()
-            || jtfEdad.getText().isEmpty()) {
-        JOptionPane.showMessageDialog(this, "Debe completar todos los campos.");
-        return;
-    }
+        String dni = jtfDNI.getText().trim();
+        String apellido = jtfApellido.getText().trim();
+        String nombre = jtfNombre.getText().trim();
+        String edadTexto = jtfEdad.getText().trim();
+        String telefono = jtfTelefono.getText().trim();
+        String correo = jtfCorreo.getText().trim();
 
-    int edad;
+        if (dni.isEmpty() || apellido.isEmpty() || nombre.isEmpty()
+                || telefono.isEmpty() || correo.isEmpty()
+                || edadTexto.isEmpty()) {
+            JOptionPane.showMessageDialog(this, "Debe completar todos los campos.");
+            return;
+        }
 
-    try {
-        edad = Integer.parseInt(jtfEdad.getText());
-    } catch (NumberFormatException e) {
-        JOptionPane.showMessageDialog(this, "La edad debe ser un número.");
-        return;
-    }
+        if (!jrbActivo.isSelected() && !jrbInactivo.isSelected()) {
+            JOptionPane.showMessageDialog(this, "Seleccione un estado (Activo o Inactivo).");
+            return;
+        }
 
-    boolean estado = jrbActivo.isSelected();
+        if (!dni.matches("\\d{7,8}")) {
+            JOptionPane.showMessageDialog(this, "El DNI debe tener 7 u 8 números (sin puntos ni letras).");
+            return;
+        }
 
-    Socio socio = new Socio();
-    socio.setDni(dni);
-    socio.setApellido(apellido);
-    socio.setNombre(nombre);
-    socio.setTelefono(telefono);
-    socio.setEdad(edad);
-    socio.setCorreo(correo);
-    socio.setEstado(estado);
+        if (!nombre.matches("[a-zA-ZáéíóúÁÉÍÓÚñÑ\\s]+") || !apellido.matches("[a-zA-ZáéíóúÁÉÍÓÚñÑ\\s]+")) {
+            JOptionPane.showMessageDialog(this, "El nombre y el apellido solo pueden contener letras.");
+            return;
+        }
 
-    SocioData socioData = new SocioData();
-    socioData.guardarSocio(socio);
-    cargarTabla();
+        if (!telefono.matches("\\d{7,15}")) {
+            JOptionPane.showMessageDialog(this, "El teléfono debe contener solo números (sin guiones ni espacios).");
+            return;
+        }
 
-    JOptionPane.showMessageDialog(this, " El Socio se ha guardado correctamente.");
+        if (!correo.matches("^[\\w.-]+@[\\w.-]+\\.[a-zA-Z]{2,}$")) {
+            JOptionPane.showMessageDialog(this, "Ingrese un correo electrónico válido (ej: socio@mail.com).");
+            return;
+        }
+
+        int edad;
+
+        try {
+            edad = Integer.parseInt(edadTexto);
+            if (edad < 15 || edad > 70) {
+                JOptionPane.showMessageDialog(this, "Ingrese una edad válida (entre 15 y 70 años).");
+                return;
+            }
+        } catch (NumberFormatException e) {
+            JOptionPane.showMessageDialog(this, "La edad debe ser un número.");
+            return;
+        }
+
+        boolean estado = jrbActivo.isSelected();
+
+        Socio socio = new Socio();
+        socio.setDni(dni);
+        socio.setApellido(apellido);
+        socio.setNombre(nombre);
+        socio.setTelefono(telefono);
+        socio.setEdad(edad);
+        socio.setCorreo(correo);
+        socio.setEstado(estado);
+
+        SocioData socioData = new SocioData();
+        socioData.guardarSocio(socio);
+        cargarTabla();
+
+        JOptionPane.showMessageDialog(this, " El Socio se ha guardado correctamente.");
     }//GEN-LAST:event_jbGuardarActionPerformed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void jbBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbBuscarActionPerformed
         // TODO add your handling code here:
         String dni = jtfDNI.getText().trim();
-        if(dni.isEmpty()){
-            JOptionPane.showMessageDialog(this, "Ingrese un dni para buscar.");
+        if (!dni.matches("\\d{7,8}")) {
+            JOptionPane.showMessageDialog(this, "Ingrese un DNI válido (7 u 8 números sin puntos) para buscar.");
+            jtfDNI.requestFocus();
             return;
         }
         SocioData socioData = new SocioData();
@@ -481,7 +557,7 @@ jdescritorio.setOpaque(false);
         } else{
             JOptionPane.showMessageDialog(this, "No se encontró ningún socio con ese dni.");
         }        
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_jbBuscarActionPerformed
 
     private void jTable1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable1MouseClicked
         // TODO add your handling code here:
@@ -512,12 +588,12 @@ jdescritorio.setOpaque(false);
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.ButtonGroup buttonGroup1;
-    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLid;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTable1;
     private javax.swing.JButton jbActualizar;
     private javax.swing.JButton jbAltaBaja;
+    private javax.swing.JButton jbBuscar;
     private javax.swing.JButton jbEliminar;
     private javax.swing.JButton jbGuardar;
     private javax.swing.JButton jbMostrar;
