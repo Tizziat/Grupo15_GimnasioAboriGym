@@ -81,6 +81,7 @@ public class ClaseGym {
 
     @Override
     public String toString() {
-        return idClase + " - " + nombre;
+        String prof = (entrenador != null) ? " (" + entrenador.getApellido() + ")" : "";
+        return nombre + " - " + horario + prof;
     }
 }

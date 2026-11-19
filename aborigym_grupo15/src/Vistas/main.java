@@ -36,7 +36,7 @@ public class main {
         Socio socioEncontrado = socioData.buscarSocio(dniABuscar);
 
         if (socioEncontrado != null) {
-            System.out.println("¡Socio encontrado con éxito!");
+            System.out.println("Socio encontrado con exito!");
             System.out.println("ID: " + socioEncontrado.getIdSocio());
             System.out.println("Nombre: " + socioEncontrado.getNombre() + " " + socioEncontrado.getApellido());
         } else {

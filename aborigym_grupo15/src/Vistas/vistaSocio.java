@@ -66,7 +66,7 @@ public class vistaSocio extends javax.swing.JInternalFrame {
 
         setForeground(java.awt.Color.white);
 
-        jdescritorio.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jdescritorio.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         jdescritorio.setOpaque(true);
         jdescritorio.setPreferredSize(new java.awt.Dimension(669, 501));
         jdescritorio.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -204,49 +204,50 @@ public class vistaSocio extends javax.swing.JInternalFrame {
         jbNuevo.setForeground(java.awt.Color.darkGray);
         jbNuevo.setText("Nuevo");
         jbNuevo.setToolTipText("");
-        jbNuevo.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jbNuevo.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         jbNuevo.addActionListener(this::jbNuevoActionPerformed);
         jdescritorio.add(jbNuevo, new org.netbeans.lib.awtextra.AbsoluteConstraints(19, 390, 240, -1));
 
         jbActualizar.setForeground(java.awt.Color.darkGray);
         jbActualizar.setText("Actualizar");
         jbActualizar.setToolTipText("");
-        jbActualizar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jbActualizar.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         jbActualizar.addActionListener(this::jbActualizarActionPerformed);
         jdescritorio.add(jbActualizar, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 450, 240, -1));
 
-        jbEliminar.setForeground(java.awt.Color.darkGray);
+        jbEliminar.setBackground(new java.awt.Color(255, 0, 0));
+        jbEliminar.setForeground(java.awt.Color.white);
         jbEliminar.setText("Eliminar");
         jbEliminar.setToolTipText("");
-        jbEliminar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jbEliminar.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         jbEliminar.addActionListener(this::jbEliminarActionPerformed);
-        jdescritorio.add(jbEliminar, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 480, 240, -1));
+        jdescritorio.add(jbEliminar, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 510, 240, -1));
 
         jbAltaBaja.setForeground(java.awt.Color.darkGray);
         jbAltaBaja.setText("Alta/Baja");
         jbAltaBaja.setToolTipText("");
-        jbAltaBaja.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jbAltaBaja.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         jbAltaBaja.addActionListener(this::jbAltaBajaActionPerformed);
-        jdescritorio.add(jbAltaBaja, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 510, 240, -1));
+        jdescritorio.add(jbAltaBaja, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 480, 240, -1));
 
         jbGuardar.setForeground(java.awt.Color.darkGray);
         jbGuardar.setText("Guardar");
         jbGuardar.setToolTipText("");
-        jbGuardar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jbGuardar.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         jbGuardar.addActionListener(this::jbGuardarActionPerformed);
         jdescritorio.add(jbGuardar, new org.netbeans.lib.awtextra.AbsoluteConstraints(19, 420, 240, -1));
 
         jbMostrar.setForeground(java.awt.Color.darkGray);
         jbMostrar.setText("Mostrar Socios");
         jbMostrar.setToolTipText("");
-        jbMostrar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jbMostrar.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         jbMostrar.addActionListener(this::jbMostrarActionPerformed);
         jdescritorio.add(jbMostrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 510, 376, -1));
 
         jbBuscar.setForeground(java.awt.Color.darkGray);
         jbBuscar.setText("Buscar");
         jbBuscar.setToolTipText("");
-        jbBuscar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jbBuscar.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         jbBuscar.addActionListener(this::jbBuscarActionPerformed);
         jdescritorio.add(jbBuscar, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 360, 240, -1));
 

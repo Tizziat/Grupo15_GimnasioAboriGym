@@ -96,4 +96,9 @@ public class Pase {
     public void setEstado(boolean estado) {
         this.estado = estado;
     }
+    
+    @Override
+    public String toString(){
+        return "Pase #" + idPase + " (" + cantidadEntradas + " entradas - Vence: " + fechaFin + ")";
+    }
 }

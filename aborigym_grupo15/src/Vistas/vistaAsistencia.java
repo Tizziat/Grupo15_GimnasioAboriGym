@@ -103,10 +103,9 @@ public class vistaAsistencia extends javax.swing.JInternalFrame {
         jlBuscarPor = new javax.swing.JLabel();
         jCBopcion = new javax.swing.JComboBox<>();
         jbBuscar = new javax.swing.JButton();
-        jbModificar = new javax.swing.JButton();
+        jbActualizar = new javax.swing.JButton();
         jbEliminar = new javax.swing.JButton();
         jbGuardar = new javax.swing.JButton();
-        jbLimpiar = new javax.swing.JButton();
         jlDatos1 = new javax.swing.JLabel();
 
         jTextField2.setText("jTextField2");
@@ -183,7 +182,7 @@ public class vistaAsistencia extends javax.swing.JInternalFrame {
         jDesktopPane1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 60, 480, 470));
 
         jbNuevo.setText("Nuevo");
-        jbNuevo.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jbNuevo.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         jbNuevo.addActionListener(this::jbNuevoActionPerformed);
         jDesktopPane1.add(jbNuevo, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 350, 269, -1));
 
@@ -197,29 +196,26 @@ public class vistaAsistencia extends javax.swing.JInternalFrame {
         jDesktopPane1.add(jCBopcion, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 260, 139, -1));
 
         jbBuscar.setText("Buscar");
-        jbBuscar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jbBuscar.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         jbBuscar.addActionListener(this::jbBuscarActionPerformed);
         jDesktopPane1.add(jbBuscar, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 310, 269, -1));
 
-        jbModificar.setText("Modificar");
-        jbModificar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jbModificar.addActionListener(this::jbModificarActionPerformed);
-        jDesktopPane1.add(jbModificar, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 390, 269, -1));
+        jbActualizar.setText("Actualizar");
+        jbActualizar.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        jbActualizar.addActionListener(this::jbActualizarActionPerformed);
+        jDesktopPane1.add(jbActualizar, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 390, 269, -1));
 
+        jbEliminar.setBackground(new java.awt.Color(255, 0, 0));
+        jbEliminar.setForeground(new java.awt.Color(255, 255, 255));
         jbEliminar.setText("Eliminar");
-        jbEliminar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jbEliminar.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         jbEliminar.addActionListener(this::jbEliminarActionPerformed);
-        jDesktopPane1.add(jbEliminar, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 430, 269, -1));
+        jDesktopPane1.add(jbEliminar, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 500, 269, -1));
 
         jbGuardar.setText("Guardar");
-        jbGuardar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jbGuardar.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         jbGuardar.addActionListener(this::jbGuardarActionPerformed);
-        jDesktopPane1.add(jbGuardar, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 470, 269, -1));
-
-        jbLimpiar.setText("Limpiar");
-        jbLimpiar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jbLimpiar.addActionListener(this::jbLimpiarActionPerformed);
-        jDesktopPane1.add(jbLimpiar, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 510, 269, -1));
+        jDesktopPane1.add(jbGuardar, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 430, 269, -1));
 
         jlDatos1.setBackground(new java.awt.Color(255, 255, 255));
         jlDatos1.setFont(new java.awt.Font("Segoe UI Historic", 1, 24)); // NOI18N
@@ -242,9 +238,10 @@ public class vistaAsistencia extends javax.swing.JInternalFrame {
 
     private void jbNuevoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbNuevoActionPerformed
         limpiarCampos();
+        cargarTabla(new AsistenciaData().listarAsistencias());
     }//GEN-LAST:event_jbNuevoActionPerformed
 
-    private void jbModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbModificarActionPerformed
+    private void jbActualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbActualizarActionPerformed
         // TODO add your handling code here:
         if (jTFid.getText().equals("")) {
             JOptionPane.showMessageDialog(this, "Seleccione una asistencia de la tabla.");
@@ -269,7 +266,7 @@ public class vistaAsistencia extends javax.swing.JInternalFrame {
         } catch (Exception ex) {
             JOptionPane.showMessageDialog(this, "Fecha invalida. Use el formato AAAA-MM-DD.");
         }
-    }//GEN-LAST:event_jbModificarActionPerformed
+    }//GEN-LAST:event_jbActualizarActionPerformed
 
     private void jbEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbEliminarActionPerformed
         if (jTFid.getText().equals("")) {
@@ -283,12 +280,6 @@ public class vistaAsistencia extends javax.swing.JInternalFrame {
         cargarTabla(ad.listarAsistencias());
 
     }//GEN-LAST:event_jbEliminarActionPerformed
-
-    private void jbLimpiarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbLimpiarActionPerformed
-        limpiarCampos();
-        cargarTabla(new AsistenciaData().listarAsistencias());
-    
-    }//GEN-LAST:event_jbLimpiarActionPerformed
 
     private void jCBopcionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCBopcionActionPerformed
         // TODO add your handling code here:
@@ -389,11 +380,10 @@ public class vistaAsistencia extends javax.swing.JInternalFrame {
     private javax.swing.JTextField jTFid;
     private javax.swing.JTable jTable1;
     private javax.swing.JTextField jTextField2;
+    private javax.swing.JButton jbActualizar;
     private javax.swing.JButton jbBuscar;
     private javax.swing.JButton jbEliminar;
     private javax.swing.JButton jbGuardar;
-    private javax.swing.JButton jbLimpiar;
-    private javax.swing.JButton jbModificar;
     private javax.swing.JButton jbNuevo;
     private javax.swing.JLabel jlBuscarPor;
     private javax.swing.JLabel jlClaseGym;

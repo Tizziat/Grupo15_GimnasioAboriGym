@@ -9,6 +9,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.sql.Date;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 import javax.swing.JOptionPane;
@@ -43,7 +44,12 @@ public class PaseData {
             JOptionPane.showMessageDialog(null, "El socio ya posee un pase activo vigente.");
             return;
         }
-
+        
+        // Validar que se haya seleccionado una fecha de inicio
+        if (pase.getFechaInicio() == null) {
+            pase.setFechaInicio(LocalDate.now());
+        }
+        
         // Calcular automaticamente fecha_fin a 30 dias si no fue asignada
         if (pase.getFechaFin() == null && pase.getFechaInicio() != null) {
             pase.setFechaFin(pase.getFechaInicio().plusDays(30));
@@ -84,6 +90,12 @@ public class PaseData {
         int cant = pase.getCantidadEntradas();
         if (cant < 0) {
             JOptionPane.showMessageDialog(null, "La cantidad de entradas no puede ser negativa.");
+            return;
+        }
+        
+        // Validar que las fechas de inicio y fin no sean nulas
+        if (pase.getFechaInicio() == null || pase.getFechaFin() == null) {
+            JOptionPane.showMessageDialog(null, "Las fechas de inicio y fin son obligatorias.");
             return;
         }
 

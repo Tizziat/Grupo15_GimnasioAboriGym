@@ -60,4 +60,9 @@ public class Asistencia {
     public void setFechaAsistencia(LocalDate fechaAsistencia) {
         this.fechaAsistencia = fechaAsistencia;
     }
+    
+    @Override
+    public String toString() {
+        return "Asistencia #" + idAsistencia + " - " + fechaAsistencia;
+    }
 }
