@@ -15,7 +15,12 @@ import javax.swing.table.DefaultTableModel;
  */
 public class vistaEntrenador extends javax.swing.JInternalFrame {
 
-    private DefaultTableModel modelo = new DefaultTableModel();
+    private DefaultTableModel modelo = new DefaultTableModel() {
+        @Override
+        public boolean isCellEditable(int row, int column) {
+            return false;
+        }
+    };
     private int idEntrenador = -1;
     private EntrenadorData entrenadorData = new EntrenadorData();
 
@@ -83,6 +88,7 @@ jDesktopPane1.setOpaque(false);
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        buttonGroup1 = new javax.swing.ButtonGroup();
         jDesktopPane1 = new javax.swing.JDesktopPane();
         jlDatos = new javax.swing.JLabel();
         jlDNI = new javax.swing.JLabel();
@@ -108,6 +114,7 @@ jDesktopPane1.setOpaque(false);
         jbBuscar = new javax.swing.JButton();
 
         setBorder(null);
+        setClosable(true);
         setForeground(java.awt.Color.darkGray);
         setPreferredSize(new java.awt.Dimension(669, 501));
 
@@ -148,11 +155,13 @@ jDesktopPane1.setOpaque(false);
         jtfApellido.setForeground(java.awt.Color.darkGray);
         jDesktopPane1.add(jtfApellido, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 170, 130, -1));
 
+        buttonGroup1.add(jrbActivo);
         jrbActivo.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jrbActivo.setForeground(java.awt.Color.white);
         jrbActivo.setText("Activo");
         jDesktopPane1.add(jrbActivo, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 260, -1, -1));
 
+        buttonGroup1.add(jrbInactivo);
         jrbInactivo.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jrbInactivo.setForeground(java.awt.Color.white);
         jrbInactivo.setText("Inactivo");
@@ -167,17 +176,17 @@ jDesktopPane1.setOpaque(false);
         jTable1.setForeground(java.awt.Color.darkGray);
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null}
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null}
             },
             new String [] {
-                "ID Entrenador", "DNI", "Nombre", "Apellido", "Especialidad", "Estado"
+                "DNI", "Nombre", "Apellido", "Especialidad", "Estado"
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, false, false, false, false, false
+                false, false, false, false, false
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
@@ -297,20 +306,37 @@ jDesktopPane1.setOpaque(false);
                 return;
             }
 
+            if (!jrbActivo.isSelected() && !jrbInactivo.isSelected()) {
+                JOptionPane.showMessageDialog(this, "Seleccione un estado (Activo o Inactivo).");
+                return;
+            }
+
+            if (!dni.matches("\\d{7,8}")) {
+                JOptionPane.showMessageDialog(this, "El DNI debe tener 7 u 8 números (sin puntos ni letras).");
+                jtfDNI.requestFocus();
+                return;
+            }
+
+            if (!nombre.matches("[a-zA-ZáéíóúÁÉÍÓÚñÑ\\s]+") || !apellido.matches("[a-zA-ZáéíóúÁÉÍÓÚñÑ\\s]+")) {
+                JOptionPane.showMessageDialog(this, "El nombre y el apellido solo pueden contener letras.");
+                return;
+            }
+
             String especialidad = jcbEspecialidad.getSelectedItem().toString();
             boolean estado = jrbActivo.isSelected();
 
             Entrenador nuevo = new Entrenador(dni, nombre, apellido, especialidad, estado);
             entrenadorData.guardarEntrenador(nuevo);
 
-            idEntrenador = nuevo.getIdEntrenador();
-            JOptionPane.showMessageDialog(this, "Entrenador guardado.");
-            cargarTabla();
-
-            jbGuardar.setEnabled(false);
-            jbActualizar.setEnabled(true);
-            jbEliminar.setEnabled(true);
-            jbAltaBaja.setEnabled(true);
+            if (nuevo.getIdEntrenador() > 0) {
+                idEntrenador = nuevo.getIdEntrenador();
+                JOptionPane.showMessageDialog(this, "Entrenador guardado.");
+                cargarTabla();
+                jbGuardar.setEnabled(false);
+                jbActualizar.setEnabled(true);
+                jbEliminar.setEnabled(true);
+                jbAltaBaja.setEnabled(true);
+            }
         } catch (Exception ex) {
             JOptionPane.showMessageDialog(this, "Error al registrar: " + ex.getMessage());
         }
@@ -329,6 +355,22 @@ jDesktopPane1.setOpaque(false);
 
         if (dni.isEmpty() || nombre.isEmpty() || apellido.isEmpty() || jcbEspecialidad.getSelectedIndex() <= 0) {
             JOptionPane.showMessageDialog(this, "Complete todos los campos.");
+            return;
+        }
+
+        if (!jrbActivo.isSelected() && !jrbInactivo.isSelected()) {
+            JOptionPane.showMessageDialog(this, "Seleccione un estado (Activo o Inactivo).");
+            return;
+        }
+
+        if (!dni.matches("\\d{7,8}")) {
+            JOptionPane.showMessageDialog(this, "El DNI debe tener 7 u 8 números (sin puntos ni letras).");
+            jtfDNI.requestFocus();
+            return;
+        }
+
+        if (!nombre.matches("[a-zA-ZáéíóúÁÉÍÓÚñÑ\\s]+") || !apellido.matches("[a-zA-ZáéíóúÁÉÍÓÚñÑ\\s]+")) {
+            JOptionPane.showMessageDialog(this, "El nombre y el apellido solo pueden contener letras.");
             return;
         }
 
@@ -422,6 +464,7 @@ jDesktopPane1.setOpaque(false);
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.ButtonGroup buttonGroup1;
     private javax.swing.JDesktopPane jDesktopPane1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTable1;
