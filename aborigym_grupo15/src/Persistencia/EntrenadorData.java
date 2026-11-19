@@ -8,6 +8,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
+import javax.swing.JOptionPane;
 
 public class EntrenadorData {
 
@@ -146,7 +147,11 @@ public class EntrenadorData {
             ps.close();
 
         } catch (SQLException ex) {
+            if (ex.getErrorCode() == 1451) {
+                JOptionPane.showMessageDialog(null, "No se puede eliminar el entrenador porque tiene clases asignadas. Use la baja lógica.");
+            } else {
             System.out.println("Error al borrar el entrenador: " + ex.getMessage());
+            }
         }
     }
     public void actualizarEntrenador(Entrenador e) {
