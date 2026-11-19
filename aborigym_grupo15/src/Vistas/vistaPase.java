@@ -481,10 +481,9 @@ public class vistaPase extends javax.swing.JInternalFrame {
 
     private void jbGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbGuardarActionPerformed
         try {
-            String dni = JOptionPane.showInputDialog(this, "Ingrese el DNI del socio:");
-            Socio socio = new Persistencia.SocioData().buscarSocio(dni);
+           Socio socio = (Socio) jcbSocio.getSelectedItem();   // el socio elegido en el combo
             if (socio == null) {
-                JOptionPane.showMessageDialog(this, "Socio no encontrado.");
+                JOptionPane.showMessageDialog(this, "Seleccione un socio.");
                 return;
             }
             if (!socio.isEstado()) {
