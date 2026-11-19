@@ -102,7 +102,7 @@ public class Socio {
 
     @Override
     public String toString() {
-        return idSocio + " - " + dni + " - " + nombre;
-    }
+        return nombre + " " + apellido + " (DNI: " + dni + ")";
+}
     
 }

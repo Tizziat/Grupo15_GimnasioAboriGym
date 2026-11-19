@@ -7,7 +7,10 @@ package Vistas;
 import Modelo.Pase;
 import Modelo.Socio;
 import Persistencia.PaseData;
+import Persistencia.SocioData;
 import java.math.BigDecimal;
+import java.time.LocalDate;
+import java.util.List;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
@@ -24,35 +27,51 @@ public class vistaPase extends javax.swing.JInternalFrame {
     public vistaPase() {
         initComponents();
         getContentPane().setComponentZOrder(jDesktopPane1, getContentPane().getComponentCount() - 1);
-        modelo.addColumn("ID Pase");
-        modelo.addColumn("ID Socio");
-        modelo.addColumn("Entradas");
-        modelo.addColumn("Fecha Inicio");
-        modelo.addColumn("Fecha Fin");
-        modelo.addColumn("Costo");
-        modelo.addColumn("Estado");
-        jTable1.setModel(modelo);
 
-        cargarTabla();
+        modelo = (DefaultTableModel) jTable1.getModel();
+        jtfIdPase.setEditable(false);
+        jtfFin.setEditable(false);
+
+        cargarComboSocios();
+        limpiarCampos();
+        cargarTabla(paseData.listarPases());
+
         ((javax.swing.JComponent) this.getContentPane()).setOpaque(false);
-      jDesktopPane1.setOpaque(false);
-      jDesktopPane1.setBackground(new java.awt.Color(0, 0, 0, 0)); 
+        jDesktopPane1.setOpaque(false);
+        jDesktopPane1.setBackground(new java.awt.Color(0, 0, 0, 0));
 
-
-this.setBackground(new java.awt.Color(0, 0, 0, 0));
-this.getRootPane().setOpaque(false);
-((javax.swing.JComponent) this.getContentPane()).setOpaque(false);
-jDesktopPane1.setOpaque(false);
-        
+        this.setBackground(new java.awt.Color(0, 0, 0, 0));
+        this.getRootPane().setOpaque(false);
+        ((javax.swing.JComponent) this.getContentPane()).setOpaque(false);
+        jDesktopPane1.setOpaque(false);
     }
 
-    private void cargarTabla() {
+    private void cargarComboSocios() {
+        jcbSocio.removeAllItems();
+        SocioData sd = new SocioData();
+        for (Socio s : sd.listarSocios()) {
+            jcbSocio.addItem(s);
+        }
+    }
+    
+    private void limpiarCampos() {
+        idPase = -1;
+        jtfIdPase.setText("");
+        jcbSocio.setSelectedIndex(-1);
+        jtfCantidad.setText("");
+        jtfInicio.setText(LocalDate.now().toString());
+        jtfFin.setText(LocalDate.now().plusDays(30).toString());
+        jtfCosto.setText("");
+        jrbActivo.setSelected(true);
+        jTable1.clearSelection();
+    }
+    
+    private void cargarTabla(List<Pase> lista) {
         modelo.setRowCount(0);
-
-        for (Pase p : paseData.listarPases()) {
+        for (Pase p : lista) {
             modelo.addRow(new Object[]{
                 p.getIdPase(),
-                p.getSocio().getIdSocio(),
+                p.getSocio(),
                 p.getCantidadEntradas(),
                 p.getFechaInicio(),
                 p.getFechaFin(),
@@ -98,6 +117,8 @@ jDesktopPane1.setOpaque(false);
         jtfIdPase = new javax.swing.JTextField();
         jLIdPase = new javax.swing.JLabel();
         jlCantidad = new javax.swing.JLabel();
+        jlSocio = new javax.swing.JLabel();
+        jcbSocio = new javax.swing.JComboBox<>();
 
         jTextField1.setText("jTextField1");
 
@@ -117,15 +138,28 @@ jDesktopPane1.setOpaque(false);
         jTable1.setForeground(java.awt.Color.darkGray);
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null}
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null}
             },
             new String [] {
-                "ID pase", "Cantidad", "Fecha de Inicio", "Fecha de fin", "Costo", "Estado"
+                "ID pase", "Socio", "Cantidad", "Fecha de Inicio", "Fecha de fin", "Costo", "Estado"
             }
-        ));
+        ) {
+            boolean[] canEdit = new boolean [] {
+                true, false, true, false, false, false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        jTable1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jTable1MouseClicked(evt);
+            }
+        });
         jScrollPane1.setViewportView(jTable1);
 
         jbMostrar.setForeground(java.awt.Color.darkGray);
@@ -188,6 +222,11 @@ jDesktopPane1.setOpaque(false);
 
         jtfInicio.setForeground(java.awt.Color.darkGray);
         jtfInicio.addActionListener(this::jtfInicioActionPerformed);
+        jtfInicio.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                jtfInicioKeyReleased(evt);
+            }
+        });
 
         jlTitulo.setFont(new java.awt.Font("Segoe UI Historic", 1, 24)); // NOI18N
         jlTitulo.setForeground(new java.awt.Color(255, 255, 255));
@@ -201,6 +240,7 @@ jDesktopPane1.setOpaque(false);
         jlFin.setForeground(new java.awt.Color(255, 255, 255));
         jlFin.setText("Fecha fin:");
 
+        jtfFin.setEditable(false);
         jtfFin.setForeground(java.awt.Color.darkGray);
 
         jtfCantidad.setForeground(java.awt.Color.darkGray);
@@ -216,6 +256,8 @@ jDesktopPane1.setOpaque(false);
         jlCantidad.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jlCantidad.setForeground(new java.awt.Color(255, 255, 255));
         jlCantidad.setText("Cantidad :");
+
+        jlSocio.setText("Socio");
 
         jDesktopPane1.setLayer(jlPase, javax.swing.JLayeredPane.DEFAULT_LAYER);
         jDesktopPane1.setLayer(jScrollPane1, javax.swing.JLayeredPane.DEFAULT_LAYER);
@@ -240,6 +282,8 @@ jDesktopPane1.setOpaque(false);
         jDesktopPane1.setLayer(jtfIdPase, javax.swing.JLayeredPane.DEFAULT_LAYER);
         jDesktopPane1.setLayer(jLIdPase, javax.swing.JLayeredPane.DEFAULT_LAYER);
         jDesktopPane1.setLayer(jlCantidad, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        jDesktopPane1.setLayer(jlSocio, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        jDesktopPane1.setLayer(jcbSocio, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
         javax.swing.GroupLayout jDesktopPane1Layout = new javax.swing.GroupLayout(jDesktopPane1);
         jDesktopPane1.setLayout(jDesktopPane1Layout);
@@ -260,12 +304,19 @@ jDesktopPane1.setOpaque(false);
                             .addGroup(jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                                 .addGroup(jDesktopPane1Layout.createSequentialGroup()
                                     .addComponent(jlFin, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 26, Short.MAX_VALUE)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                     .addComponent(jtfFin, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jDesktopPane1Layout.createSequentialGroup()
-                                    .addComponent(jlCosto)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(jtfCosto, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGroup(jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addGroup(jDesktopPane1Layout.createSequentialGroup()
+                                            .addComponent(jlCosto)
+                                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                        .addGroup(jDesktopPane1Layout.createSequentialGroup()
+                                            .addComponent(jlSocio, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                            .addGap(28, 28, 28)))
+                                    .addGroup(jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                        .addComponent(jtfCosto, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(jcbSocio, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)))
                                 .addGroup(jDesktopPane1Layout.createSequentialGroup()
                                     .addComponent(jLIdPase, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -306,7 +357,7 @@ jDesktopPane1.setOpaque(false);
                 .addGroup(jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jlTitulo)
                     .addComponent(jlPase))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 7, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jDesktopPane1Layout.createSequentialGroup()
                         .addGroup(jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -324,7 +375,11 @@ jDesktopPane1.setOpaque(false);
                         .addGroup(jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jlFin)
                             .addComponent(jtfFin, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(19, 19, 19)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jlSocio)
+                            .addComponent(jcbSocio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jlCosto)
                             .addComponent(jtfCosto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -353,7 +408,7 @@ jDesktopPane1.setOpaque(false);
                 .addGap(37, 37, 37))
         );
 
-        getContentPane().add(jDesktopPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 830, 550));
+        getContentPane().add(jDesktopPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 830, 560));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -402,7 +457,7 @@ jDesktopPane1.setOpaque(false);
             paseData.modificarPase(p);
 
             JOptionPane.showMessageDialog(this, "Datos actualizados correctamente.");
-            cargarTabla();
+            cargarTabla(paseData.listarPases());
 
         } catch (NumberFormatException ex) {
             JOptionPane.showMessageDialog(this, "Cantidad y costo deben ser valores numeros válidos.");
@@ -413,6 +468,13 @@ jDesktopPane1.setOpaque(false);
 
     private void jbEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbEliminarActionPerformed
         // TODO add your handling code here:
+        if (idPase == -1) {
+            JOptionPane.showMessageDialog(this, "Seleccione un pase de la tabla.");
+            return;
+        }
+        paseData.eliminarPase(idPase);
+        limpiarCampos();
+        cargarTabla(paseData.listarPases());   
     }//GEN-LAST:event_jbEliminarActionPerformed
 
     private void jbGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbGuardarActionPerformed
@@ -443,7 +505,7 @@ jDesktopPane1.setOpaque(false);
             paseData.guardarPase(p);
            if (p.getIdPase() > 0) {   // solo si la base le asignó un ID, o sea, si se guardó
                 JOptionPane.showMessageDialog(this, "Pase guardado. ID: " + p.getIdPase());
-                cargarTabla();
+                cargarTabla(paseData.listarPases());
             }
         } catch (Exception ex) {
             JOptionPane.showMessageDialog(this, "Datos inválidos: cantidad y costo numéricos, fechas AAAA-MM-DD.");
@@ -491,11 +553,11 @@ jDesktopPane1.setOpaque(false);
             paseData.modificarPase(p);
             jrbActivo.setSelected(true);
         }
-        cargarTabla();
+        cargarTabla(paseData.listarPases());
     }//GEN-LAST:event_jbAltaBajaActionPerformed
 
     private void jbMostrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbMostrarActionPerformed
-        cargarTabla();
+        cargarTabla(paseData.listarPases());
     }//GEN-LAST:event_jbMostrarActionPerformed
 
     private void formMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_formMouseClicked
@@ -516,6 +578,20 @@ jDesktopPane1.setOpaque(false);
         }
     }//GEN-LAST:event_formMouseClicked
 
+    private void jTable1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable1MouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTable1MouseClicked
+
+    private void jtfInicioKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jtfInicioKeyReleased
+        // TODO add your handling code here:
+        try {
+            LocalDate inicio = LocalDate.parse(jtfInicio.getText());
+            jtfFin.setText(inicio.plusDays(30).toString());
+        } catch (Exception ex) {
+            jtfFin.setText("");
+        }
+    }//GEN-LAST:event_jtfInicioKeyReleased
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.ButtonGroup buttonGroup1;
@@ -531,12 +607,14 @@ jDesktopPane1.setOpaque(false);
     private javax.swing.JButton jbGuardar;
     private javax.swing.JButton jbMostrar;
     private javax.swing.JButton jbNuevo;
+    private javax.swing.JComboBox<Socio> jcbSocio;
     private javax.swing.JLabel jlCantidad;
     private javax.swing.JLabel jlCosto;
     private javax.swing.JLabel jlEstado;
     private javax.swing.JLabel jlFin;
     private javax.swing.JLabel jlInicio;
     private javax.swing.JLabel jlPase;
+    private javax.swing.JLabel jlSocio;
     private javax.swing.JLabel jlTitulo;
     private javax.swing.JRadioButton jrbActivo;
     private javax.swing.JRadioButton jrbInactivo;

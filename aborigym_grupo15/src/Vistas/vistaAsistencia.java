@@ -155,6 +155,7 @@ public class vistaAsistencia extends javax.swing.JInternalFrame {
         jlFecha.setText("Fecha Asistencia:");
         jDesktopPane1.add(jlFecha, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 220, -1, -1));
 
+        jTFid.setEditable(false);
         jTFid.addActionListener(this::jTFidActionPerformed);
         jDesktopPane1.add(jTFid, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 100, 77, -1));
 
