@@ -281,10 +281,10 @@ public class vistaPase extends javax.swing.JInternalFrame {
 
         jlSocio.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jlSocio.setForeground(new java.awt.Color(255, 255, 255));
-        jlSocio.setText("Socio");
+        jlSocio.setText("Socio:");
         jDesktopPane1.add(jlSocio, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 230, 68, -1));
 
-        jDesktopPane1.add(jcbSocio, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 230, 160, -1));
+        jDesktopPane1.add(jcbSocio, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 230, 210, -1));
 
         getContentPane().add(jDesktopPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 830, 580));
 
