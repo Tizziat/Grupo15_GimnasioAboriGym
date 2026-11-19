@@ -22,6 +22,7 @@ public class vistaSocio extends javax.swing.JInternalFrame {
     public vistaSocio() {
         initComponents();
         cargarTabla();
+        jTable1.setDefaultEditor(Object.class, null);
 
     }
     /**
@@ -64,7 +65,10 @@ public class vistaSocio extends javax.swing.JInternalFrame {
         jbMostrar = new javax.swing.JButton();
         jbBuscar = new javax.swing.JButton();
 
+        setClosable(true);
         setForeground(java.awt.Color.white);
+        setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        getContentPane().setLayout(null);
 
         jdescritorio.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         jdescritorio.setOpaque(true);
@@ -74,7 +78,7 @@ public class vistaSocio extends javax.swing.JInternalFrame {
         jLid.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLid.setForeground(new java.awt.Color(255, 255, 255));
         jLid.setText("ID Socio");
-        jdescritorio.add(jLid, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 330, -1, -1));
+        jdescritorio.add(jLid, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 340, -1, -1));
 
         jlDNI.setBackground(new java.awt.Color(255, 255, 255));
         jlDNI.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
@@ -91,13 +95,13 @@ public class vistaSocio extends javax.swing.JInternalFrame {
         jlDatos.setFont(new java.awt.Font("Segoe UI Historic", 1, 24)); // NOI18N
         jlDatos.setForeground(new java.awt.Color(255, 255, 255));
         jlDatos.setText("Datos del Socio");
-        jdescritorio.add(jlDatos, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 10, -1, -1));
+        jdescritorio.add(jlDatos, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 0, -1, -1));
 
         jtfID.setEditable(false);
         jtfID.setForeground(java.awt.Color.darkGray);
         jtfID.setToolTipText("");
         jtfID.addActionListener(this::jtfIDActionPerformed);
-        jdescritorio.add(jtfID, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 330, 69, -1));
+        jdescritorio.add(jtfID, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 340, 69, -1));
 
         jtfDNI.setForeground(java.awt.Color.darkGray);
         jtfDNI.setToolTipText("");
@@ -169,7 +173,7 @@ public class vistaSocio extends javax.swing.JInternalFrame {
         jlListaSocios.setFont(new java.awt.Font("Segoe UI Historic", 1, 24)); // NOI18N
         jlListaSocios.setForeground(new java.awt.Color(255, 255, 255));
         jlListaSocios.setText("Lista de Socios");
-        jdescritorio.add(jlListaSocios, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 10, -1, -1));
+        jdescritorio.add(jlListaSocios, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 0, -1, -1));
 
         jTable1.setForeground(java.awt.Color.darkGray);
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
@@ -199,59 +203,60 @@ public class vistaSocio extends javax.swing.JInternalFrame {
         });
         jScrollPane1.setViewportView(jTable1);
 
-        jdescritorio.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 50, 510, 430));
+        jdescritorio.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 50, 510, 470));
 
         jbNuevo.setForeground(java.awt.Color.darkGray);
         jbNuevo.setText("Nuevo");
         jbNuevo.setToolTipText("");
-        jbNuevo.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        jbNuevo.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jbNuevo.addActionListener(this::jbNuevoActionPerformed);
-        jdescritorio.add(jbNuevo, new org.netbeans.lib.awtextra.AbsoluteConstraints(19, 390, 240, -1));
+        jdescritorio.add(jbNuevo, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 410, 240, -1));
 
         jbActualizar.setForeground(java.awt.Color.darkGray);
         jbActualizar.setText("Actualizar");
         jbActualizar.setToolTipText("");
-        jbActualizar.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        jbActualizar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jbActualizar.addActionListener(this::jbActualizarActionPerformed);
-        jdescritorio.add(jbActualizar, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 450, 240, -1));
+        jdescritorio.add(jbActualizar, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 470, 240, -1));
 
-        jbEliminar.setBackground(new java.awt.Color(255, 0, 0));
+        jbEliminar.setBackground(new java.awt.Color(180, 40, 40));
         jbEliminar.setForeground(java.awt.Color.white);
         jbEliminar.setText("Eliminar");
         jbEliminar.setToolTipText("");
-        jbEliminar.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        jbEliminar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jbEliminar.addActionListener(this::jbEliminarActionPerformed);
-        jdescritorio.add(jbEliminar, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 510, 240, -1));
+        jdescritorio.add(jbEliminar, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 530, 240, -1));
 
         jbAltaBaja.setForeground(java.awt.Color.darkGray);
         jbAltaBaja.setText("Alta/Baja");
         jbAltaBaja.setToolTipText("");
-        jbAltaBaja.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        jbAltaBaja.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jbAltaBaja.addActionListener(this::jbAltaBajaActionPerformed);
-        jdescritorio.add(jbAltaBaja, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 480, 240, -1));
+        jdescritorio.add(jbAltaBaja, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 500, 240, -1));
 
         jbGuardar.setForeground(java.awt.Color.darkGray);
         jbGuardar.setText("Guardar");
         jbGuardar.setToolTipText("");
-        jbGuardar.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        jbGuardar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jbGuardar.addActionListener(this::jbGuardarActionPerformed);
-        jdescritorio.add(jbGuardar, new org.netbeans.lib.awtextra.AbsoluteConstraints(19, 420, 240, -1));
+        jdescritorio.add(jbGuardar, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 440, 240, -1));
 
         jbMostrar.setForeground(java.awt.Color.darkGray);
         jbMostrar.setText("Mostrar Socios");
         jbMostrar.setToolTipText("");
-        jbMostrar.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        jbMostrar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jbMostrar.addActionListener(this::jbMostrarActionPerformed);
-        jdescritorio.add(jbMostrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 510, 376, -1));
+        jdescritorio.add(jbMostrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 530, 376, -1));
 
         jbBuscar.setForeground(java.awt.Color.darkGray);
         jbBuscar.setText("Buscar");
         jbBuscar.setToolTipText("");
-        jbBuscar.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        jbBuscar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jbBuscar.addActionListener(this::jbBuscarActionPerformed);
-        jdescritorio.add(jbBuscar, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 360, 240, -1));
+        jdescritorio.add(jbBuscar, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 380, 240, -1));
 
-        getContentPane().add(jdescritorio, java.awt.BorderLayout.CENTER);
+        getContentPane().add(jdescritorio);
+        jdescritorio.setBounds(0, 0, 840, 590);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents

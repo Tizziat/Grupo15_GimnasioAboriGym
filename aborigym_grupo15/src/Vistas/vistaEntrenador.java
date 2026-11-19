@@ -108,7 +108,9 @@ public class vistaEntrenador extends javax.swing.JInternalFrame {
         setBorder(null);
         setClosable(true);
         setForeground(java.awt.Color.darkGray);
+        setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         setPreferredSize(new java.awt.Dimension(669, 501));
+        getContentPane().setLayout(null);
 
         jDesktopPane1.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         jDesktopPane1.setPreferredSize(new java.awt.Dimension(669, 501));
@@ -117,7 +119,7 @@ public class vistaEntrenador extends javax.swing.JInternalFrame {
         jlDatos.setFont(new java.awt.Font("Segoe UI Historic", 1, 24)); // NOI18N
         jlDatos.setForeground(java.awt.Color.white);
         jlDatos.setText("Datos del Entrenador");
-        jDesktopPane1.add(jlDatos, new org.netbeans.lib.awtextra.AbsoluteConstraints(9, 6, -1, -1));
+        jDesktopPane1.add(jlDatos, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 0, -1, -1));
 
         jlDNI.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jlDNI.setForeground(java.awt.Color.white);
@@ -152,19 +154,19 @@ public class vistaEntrenador extends javax.swing.JInternalFrame {
         jrbActivo.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jrbActivo.setForeground(java.awt.Color.white);
         jrbActivo.setText("Activo");
-        jDesktopPane1.add(jrbActivo, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 260, -1, -1));
+        jDesktopPane1.add(jrbActivo, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 270, -1, -1));
 
         buttonGroup1.add(jrbInactivo);
         jrbInactivo.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jrbInactivo.setForeground(java.awt.Color.white);
         jrbInactivo.setText("Inactivo");
         jrbInactivo.addActionListener(this::jrbInactivoActionPerformed);
-        jDesktopPane1.add(jrbInactivo, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 260, -1, -1));
+        jDesktopPane1.add(jrbInactivo, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 270, -1, -1));
 
         jlLista.setFont(new java.awt.Font("Segoe UI Historic", 1, 24)); // NOI18N
         jlLista.setForeground(java.awt.Color.white);
         jlLista.setText("Lista de Entrenadores");
-        jDesktopPane1.add(jlLista, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 10, -1, -1));
+        jDesktopPane1.add(jlLista, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 0, -1, -1));
 
         jTable1.setForeground(java.awt.Color.darkGray);
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
@@ -203,52 +205,53 @@ public class vistaEntrenador extends javax.swing.JInternalFrame {
         jlEstado.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jlEstado.setForeground(java.awt.Color.white);
         jlEstado.setText("Estado:");
-        jDesktopPane1.add(jlEstado, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 260, -1, -1));
+        jDesktopPane1.add(jlEstado, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 270, -1, -1));
 
         jbNuevo.setForeground(java.awt.Color.darkGray);
         jbNuevo.setText("Nuevo");
-        jbNuevo.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        jbNuevo.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jbNuevo.addActionListener(this::jbNuevoActionPerformed);
-        jDesktopPane1.add(jbNuevo, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 350, 232, -1));
+        jDesktopPane1.add(jbNuevo, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 370, 232, -1));
 
         jbGuardar.setForeground(java.awt.Color.darkGray);
         jbGuardar.setText("Guardar");
-        jbGuardar.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        jbGuardar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jbGuardar.addActionListener(this::jbGuardarActionPerformed);
-        jDesktopPane1.add(jbGuardar, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 390, 232, -1));
+        jDesktopPane1.add(jbGuardar, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 410, 232, -1));
 
         jbActualizar.setForeground(java.awt.Color.darkGray);
         jbActualizar.setText("Actualizar");
-        jbActualizar.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        jbActualizar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jbActualizar.addActionListener(this::jbActualizarActionPerformed);
-        jDesktopPane1.add(jbActualizar, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 430, 232, -1));
+        jDesktopPane1.add(jbActualizar, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 450, 232, -1));
 
-        jbEliminar.setBackground(new java.awt.Color(255, 0, 0));
+        jbEliminar.setBackground(new java.awt.Color(180, 40, 40));
         jbEliminar.setForeground(new java.awt.Color(255, 255, 255));
         jbEliminar.setText("Eliminar");
-        jbEliminar.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        jbEliminar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jbEliminar.addActionListener(this::jbEliminarActionPerformed);
-        jDesktopPane1.add(jbEliminar, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 510, 232, -1));
+        jDesktopPane1.add(jbEliminar, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 530, 232, -1));
 
         jbAltaBaja.setForeground(java.awt.Color.darkGray);
         jbAltaBaja.setText("Alta/Baja");
-        jbAltaBaja.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        jbAltaBaja.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jbAltaBaja.addActionListener(this::jbAltaBajaActionPerformed);
-        jDesktopPane1.add(jbAltaBaja, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 470, 232, -1));
+        jDesktopPane1.add(jbAltaBaja, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 490, 232, -1));
 
         jbMostrar.setForeground(java.awt.Color.darkGray);
         jbMostrar.setText("Mostrar Entrenadores");
-        jbMostrar.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        jbMostrar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jbMostrar.addActionListener(this::jbMostrarActionPerformed);
-        jDesktopPane1.add(jbMostrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 510, 340, -1));
+        jDesktopPane1.add(jbMostrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 530, 340, -1));
 
         jbBuscar.setForeground(java.awt.Color.darkGray);
         jbBuscar.setText("Buscar");
-        jbBuscar.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        jbBuscar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jbBuscar.addActionListener(this::jbBuscarActionPerformed);
-        jDesktopPane1.add(jbBuscar, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 310, 232, -1));
+        jDesktopPane1.add(jbBuscar, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 330, 232, -1));
 
-        getContentPane().add(jDesktopPane1, java.awt.BorderLayout.CENTER);
+        getContentPane().add(jDesktopPane1);
+        jDesktopPane1.setBounds(0, 0, 850, 610);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents

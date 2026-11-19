@@ -24,7 +24,7 @@ public class vistaAsistencia extends javax.swing.JInternalFrame {
         initComponents();
         modelo = (DefaultTableModel) jTable1.getModel();
         jTFid.setEditable(false);
-
+        jTable1.setDefaultEditor(Object.class, null);
         cargarComboSocios();
         cargarClases();
         cargarOpcionesBuscar();
@@ -112,6 +112,8 @@ public class vistaAsistencia extends javax.swing.JInternalFrame {
 
         setBackground(new java.awt.Color(255, 255, 255));
         setBorder(null);
+        setClosable(true);
+        setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         setPreferredSize(new java.awt.Dimension(669, 501));
 
         jDesktopPane1.setPreferredSize(new java.awt.Dimension(669, 501));
@@ -127,7 +129,7 @@ public class vistaAsistencia extends javax.swing.JInternalFrame {
         jLid.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLid.setForeground(new java.awt.Color(255, 255, 255));
         jLid.setText("ID Asistencia:");
-        jDesktopPane1.add(jLid, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 100, -1, -1));
+        jDesktopPane1.add(jLid, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 90, -1, -1));
 
         jlSocio.setBackground(new java.awt.Color(255, 255, 255));
         jlSocio.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
@@ -139,27 +141,27 @@ public class vistaAsistencia extends javax.swing.JInternalFrame {
         jlClaseGym.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jlClaseGym.setForeground(new java.awt.Color(255, 255, 255));
         jlClaseGym.setText("Clase Gym:");
-        jDesktopPane1.add(jlClaseGym, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 180, -1, -1));
+        jDesktopPane1.add(jlClaseGym, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 190, -1, -1));
 
         jlFecha.setBackground(new java.awt.Color(255, 255, 255));
         jlFecha.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jlFecha.setForeground(new java.awt.Color(255, 255, 255));
         jlFecha.setText("Fecha Asistencia:");
-        jDesktopPane1.add(jlFecha, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 220, -1, -1));
+        jDesktopPane1.add(jlFecha, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 240, -1, -1));
 
         jTFid.setEditable(false);
         jTFid.addActionListener(this::jTFidActionPerformed);
-        jDesktopPane1.add(jTFid, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 100, 77, -1));
+        jDesktopPane1.add(jTFid, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 90, 70, -1));
 
         jCBsocio.addActionListener(this::jCBsocioActionPerformed);
-        jDesktopPane1.add(jCBsocio, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 140, 139, -1));
+        jDesktopPane1.add(jCBsocio, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 140, 140, -1));
 
         jCBclaseG.addActionListener(this::jCBclaseGActionPerformed);
-        jDesktopPane1.add(jCBclaseG, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 180, 139, -1));
+        jDesktopPane1.add(jCBclaseG, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 190, 140, -1));
 
         jTFfecha.setText("AAAA-MM-DD");
         jTFfecha.setToolTipText("");
-        jDesktopPane1.add(jTFfecha, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 220, 139, -1));
+        jDesktopPane1.add(jTFfecha, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 240, 140, -1));
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -171,7 +173,15 @@ public class vistaAsistencia extends javax.swing.JInternalFrame {
             new String [] {
                 "ID Asistencia", "Socio", "Clase Gym", "Fecha Asistencia"
             }
-        ));
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
         jTable1.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jTable1MouseClicked(evt);
@@ -182,40 +192,40 @@ public class vistaAsistencia extends javax.swing.JInternalFrame {
         jDesktopPane1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 60, 480, 470));
 
         jbNuevo.setText("Nuevo");
-        jbNuevo.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        jbNuevo.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jbNuevo.addActionListener(this::jbNuevoActionPerformed);
-        jDesktopPane1.add(jbNuevo, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 350, 269, -1));
+        jDesktopPane1.add(jbNuevo, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 380, 269, -1));
 
         jlBuscarPor.setBackground(new java.awt.Color(255, 255, 255));
         jlBuscarPor.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jlBuscarPor.setForeground(new java.awt.Color(255, 255, 255));
         jlBuscarPor.setText("Buscar por:");
-        jDesktopPane1.add(jlBuscarPor, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 260, -1, -1));
+        jDesktopPane1.add(jlBuscarPor, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 290, -1, -1));
 
         jCBopcion.addActionListener(this::jCBopcionActionPerformed);
-        jDesktopPane1.add(jCBopcion, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 260, 139, -1));
+        jDesktopPane1.add(jCBopcion, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 290, 140, -1));
 
         jbBuscar.setText("Buscar");
-        jbBuscar.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        jbBuscar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jbBuscar.addActionListener(this::jbBuscarActionPerformed);
-        jDesktopPane1.add(jbBuscar, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 310, 269, -1));
+        jDesktopPane1.add(jbBuscar, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 340, 269, -1));
 
         jbActualizar.setText("Actualizar");
-        jbActualizar.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        jbActualizar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jbActualizar.addActionListener(this::jbActualizarActionPerformed);
-        jDesktopPane1.add(jbActualizar, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 390, 269, -1));
+        jDesktopPane1.add(jbActualizar, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 420, 269, -1));
 
-        jbEliminar.setBackground(new java.awt.Color(255, 0, 0));
+        jbEliminar.setBackground(new java.awt.Color(180, 40, 40));
         jbEliminar.setForeground(new java.awt.Color(255, 255, 255));
         jbEliminar.setText("Eliminar");
-        jbEliminar.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        jbEliminar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jbEliminar.addActionListener(this::jbEliminarActionPerformed);
         jDesktopPane1.add(jbEliminar, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 500, 269, -1));
 
         jbGuardar.setText("Guardar");
-        jbGuardar.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        jbGuardar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jbGuardar.addActionListener(this::jbGuardarActionPerformed);
-        jDesktopPane1.add(jbGuardar, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 430, 269, -1));
+        jDesktopPane1.add(jbGuardar, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 460, 269, -1));
 
         jlDatos1.setBackground(new java.awt.Color(255, 255, 255));
         jlDatos1.setFont(new java.awt.Font("Segoe UI Historic", 1, 24)); // NOI18N
